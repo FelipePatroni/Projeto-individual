@@ -59,10 +59,11 @@
             <input type="text" id="input_confirmar_senha" class="pagina__registro__row__caixa" placeholder="Confirmar senha">
             </div>
                 <div class="pagina__botao__posicao">
-                    <button onclick="analisar()" class="pagina__botao">
+                    <button onclick="cadastrar()" class="pagina__botao">
                         <b>Registrar</b>
                     </button>
                 </div>
+            <div id="div_mensagem"></div>
     </div>
   
 </body>
@@ -76,8 +77,9 @@
             var telefone = input_telefone.value;
             var email = input_email.value;
             var senha = input_senha.value;
-            var senhaConfirm = input_confirmarSenha.value;
-            var sexo = select_sexo.value
+            var senhaConfirm = input_confirmar_senha.value;
+            var sexo = select_sexo.value;
+            var cep = input_cep.value
 
             var caixaBaixaNome = nome.toLowerCase();
             var caixaBaixaEmail = email.toLowerCase();
@@ -85,6 +87,7 @@
             var tamanhoSenha = senha.length;
 
             var cpfTamanho = cpf.length;
+            var cepTamanho = cep.length;
             var telefoneTamanho = telefone.length;
             var senhaTamanho = senha.length;
 
@@ -107,7 +110,7 @@
                 email == "" ||
                 senha == "" ||
                 senhaConfirm == "" ||
-                sexo == 0 
+                sexo == '0'
             ) {
                 div_mensagem.innerHTML =
                 `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
@@ -131,7 +134,7 @@
                     fazerCadastro = false;
                 } 
 
-            if (cpfTamanho != 8
+            if (cepTamanho != 8
             ) {
                 div_mensagem.innerHTML = 
                 `<span style="color: yellow;"> - CEP inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
