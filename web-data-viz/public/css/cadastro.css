@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #B9F1D6;
+}
+
+.header {
+    background: #0D0F36;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 4rem;
+    width: 1200px;
+    border-radius: 35px;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+  
+.container {
+    display: flex;
+    margin: auto;
+}
+  
+.navbar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 400px;
+    justify-content: space-between;
+    color: #69D2CD;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 600px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #69D2CD;
+}
+  
+.cabecalho {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+}
+  
+.pagina__registro {
+    display: flex;
+    flex-direction: column;
+    align-items: left; 
+    margin: auto;
+    margin-top: 100px;
+    padding: 70px; 
+    border-radius: 40px; 
+    border: 5px solid black; 
+    background-color: #69D2CD;
+    width: 500px;
+    height:500px; 
+}
+  
+.pagina__registro__row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    padding: 1rem 1rem 3rem 1rem;
+}
+  
+.pagina__registro__row__caixa {
+    margin-right: 120px;
+    border: 1px solid rgb(87, 62, 38);
+    border-radius: 15px;
+    height: 40px;
+    position: end;
+    background-color: #f6fad9;
+}
+
+.pagina__registro__row__caixa_select {
+    border: 1px solid rgb(87, 62, 38);
+    border-radius: 15px;
+    height: 43px;
+    background-color: #f6fad9;
+}
+
+.pagina__registro__row__caixa_telefone {
+    border: 1px solid rgb(87, 62, 38);
+    border-radius: 15px;
+    height: 40px;
+    background-color: #f6fad9;
+    margin-left: 145px;
+}
+  
+.pagina__botao__posicao {
+    text-align: center;
+}
+  
+.pagina__botao {
+    background-color: white;
+    border: 3px solid #000000;
+    color: black;
+    border-radius: 24px;
+    padding: 15px 0;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+button:hover {
+    background-color: #B9F1D6 ;
+}
+
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }

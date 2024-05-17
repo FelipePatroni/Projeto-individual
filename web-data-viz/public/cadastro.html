@@ -10,163 +10,194 @@
 
   <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./css/estilo.css" />
+  <link rel="stylesheet" href="./css/cadastro.css" />
   <link rel="icon" href="./assets/icon/favicon2.ico" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
 <body onload="listar()">
-  <!--header inicio-->
-  <div class="header">
+  <div class="header"> 
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Inicial</a>
-        </li>
-        <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
+        <ul class="navbar">
+            <li>Inicio</li>
+            <li><a href="./index.html">Voltar</a></li>
+            <li>|</li>
+            <l1>Cadastro</l1> 
+            <li><a href="./Login.html">Login</a></li>
+        </ul>
     </div>
-  </div>
-  <!--header fim-->
+</div>
 
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-          <div class="campo">
-            <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
-              <option selected>Selecione uma empresa</option>
+    <div class="pagina__registro">
+        <div><h1 class="cabecalho"><B>CADASTRO</B></h1> </div>
+            <div class="pagina__registro__row">
+            <p class="pagina__registro__row__texto"></p>
+            <input type="text" id="input_nome" class="pagina__registro__row__caixa" placeholder="Nome">
+            <p class="pagina__registro__row__texto"></p>
+            <input type="text" id="input_email" class="pagina__registro__row__caixa" placeholder="Email">
+            </div>
+            <div class="pagina__registro__row">
+            <p class="pagina__registro__row__texto"></p>
+            <input type="text" id="input_cpf" class="pagina__registro__row__caixa" placeholder="CPF">
+            <p class="pagina__registro__row__texto"></p> 
+            <input type="text" id="input_cep" class="pagina__registro__row__caixa" placeholder="CEP"> 
+            </div>
+            <div class="pagina__registro__row">
+            <p class="pagina__registro__row__texto"></p> 
+            <select id="select_sexo" class="pagina__registro__row__caixa_select">
+              <option value="0">Selecione seu gênero</option>
+              <option value="1">Masculino</option>
+              <option value="2">Feminino</option>
             </select>
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
-
-        <div id="div_erros_login"></div>
-      </div>
+            <p class="pagina__registro__row__texto"></p>
+            <input type="text" id="input_telefone" class="pagina__registro__row__caixa_telefone" placeholder="Telefone">
+            </div>
+            <div class="pagina__registro__row"> 
+            <p class="pagina__registro__row__texto"></p>
+            <input type="text" id="input_senha" class="pagina__registro__row__caixa" placeholder="Senha">
+            <p class="pagina__registro__row__texto"></p>
+            <input type="text" id="input_confirmar_senha" class="pagina__registro__row__caixa" placeholder="Confirmar senha">
+            </div>
+                <div class="pagina__botao__posicao">
+                    <button onclick="analisar()" class="pagina__botao">
+                        <b>Registrar</b>
+                    </button>
+                </div>
     </div>
-  </div>
-
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
-    </div>
-  </div>
-  <!--footer fim-->
+  
 </body>
 
 </html>
 
 <script>
   function cadastrar() {
-    aguardar();
+            var nome = input_nome.value;
+            var cpf = input_cpf.value;
+            var telefone = input_telefone.value;
+            var email = input_email.value;
+            var senha = input_senha.value;
+            var senhaConfirm = input_confirmarSenha.value;
+            var sexo = select_sexo.value
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      empresaVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+            var caixaBaixaNome = nome.toLowerCase();
+            var caixaBaixaEmail = email.toLowerCase();
 
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+            var tamanhoSenha = senha.length;
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        empresaServer: empresaVar
-      }),
-    })
-      .then(function (resposta) {
+            var cpfTamanho = cpf.length;
+            var telefoneTamanho = telefone.length;
+            var senhaTamanho = senha.length;
+
+            var indiceArrobaSenha = senha.indexOf('@');
+            var indiceHashtagSenha = senha.indexOf('#');
+            var indiceCifraoSenha = senha.indexOf('$');
+            var indiceComercialSenha = senha.indexOf('&');
+
+            var indiceArrobaEmail = email.indexOf('@');
+            var indicePontoEmail = email.indexOf('.');
+            
+            var fazerCadastro = true;
+
+            div_mensagem.innerHTML = ` `;
+
+            if (nome == "" ||
+                cpf == "" ||
+                cep == "" ||
+                telefone == "" ||
+                email == "" ||
+                senha == "" ||
+                senhaConfirm == "" ||
+                sexo == 0 
+            ) {
+                div_mensagem.innerHTML =
+                `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            if (indiceArrobaSenha < 0 && 
+                indiceCifraoSenha < 0 && 
+                indiceComercialSenha < 0 && 
+                indiceHashtagSenha < 0
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            if (cpfTamanho != 11
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            if (cpfTamanho != 8
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - CEP inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                    fazerCadastro = false;
+                }     
+
+            if (telefoneTamanho != 11
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            if (senha != senhaConfirm
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            if (tamanhoSenha < 5 
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres)</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            if (indiceArrobaEmail < 0 || 
+                indicePontoEmail < 0
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".")</span><br><br>`;
+                    fazerCadastro = false;
+                } 
+
+            
+            fetch("/usuario/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            telefoneServer: telefone,
+            cepServer: cep,
+            nomeServer: nome,
+            cpfServer: cpf,
+            telefoneServer: telefone,
+            emailServer: email,
+            senhaServer: senha,
+            }),
+        })
+        .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
 
-          mensagem_erro.innerHTML =
+          div_mensagem.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
+            window.location.href = "login.html";
 
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
+        } 
       })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    return false;
-  }
+    }   
 
   function listar() {
     fetch("/empresas/listar", {
@@ -183,8 +214,5 @@
         console.log(`#ERRO: ${resposta}`);
       });
   }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+    </script>
 </script>
