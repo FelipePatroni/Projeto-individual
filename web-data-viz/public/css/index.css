@@ -27,7 +27,7 @@ body {
     list-style: none;
     width: 400px;
     justify-content: space-between;
-    color: #69D2CD;
+    color:#0846C0;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     margin-left: 600px;
@@ -35,27 +35,52 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: #69D2CD;
+    color: white;
   }
 
-.carousel {
-    width: 80%; 
-    margin: 0 auto; 
-    overflow: hidden; 
+.Inicio {
+    background-image: url(../assets/imgs/Design\ sem\ nome.png);
+    padding: 325px;
+    border-bottom: 7px solid black;
 }
+
+.blocoGeral {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
   
-.carousel-images {
-    display: flex; 
-    transition: transform 0.5s ease; 
-}
+  .blocoEspecifico {
+    display: flex;
+  }
   
-.carousel-images img {
-    object-fit:scale-down; 
-    margin-top: 100px;
-    margin-left: 125px;
-    border-radius: 35px;
-    border: #0D0F36 4px solid;
-}
+  .blocoEscrita {
+    width: 60vw;
+    margin-left: 5%;
+    margin-top: 3%;
+  }
+  
+  .blocoEscrita h1 {
+    color: #DD940D;
+    font-family: 'Times New Roman';
+    font-size: 90px;
+    margin: 0;
+  }
+  
+  .blocoEscrita h4 {
+    font-family: 'Arial';
+    font-size: 60px;
+    margin: 0;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #DD940D;
+  }
+  
+  .linha {
+    width: 4px;
+    height: 30vh;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }  
 
 .bordafinal{
     border-top: #0D0F36 3px solid;
@@ -68,24 +93,27 @@ body {
     justify-content: space-between;
     border-radius: 35px;
     margin-left: 100px;
-    width: 700px;
-    height: 450px;
 }
 
 .titulosite {
+    font-size: 40px;
+    
+}
+
+.paragrafo1{
     display: flex;
+    align-items: center;
+
 }
 
 .textosite {
-    display: flex;
     font-size: 150%;
     text-align: justify;
-    flex-direction: row;
+    margin-right: 300px;
 }
 
 .fotosite {
-    display: flex;
-    
+    margin-right: 200px;
 }
 
 .banner2 {
