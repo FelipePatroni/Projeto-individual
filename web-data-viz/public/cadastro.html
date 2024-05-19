@@ -20,10 +20,10 @@
     <div class="container">
         <ul class="navbar">
             <li>Inicio</li>
-            <li><a href="./index.html">Voltar</a></li>
+            <li><a href="index.html">Voltar</a></li>
             <li>|</li>
             <l1>Cadastro</l1> 
-            <li><a href="./Login.html">Login</a></li>
+            <li><a href="login.html">Login</a></li>
         </ul>
     </div>
 </div>
@@ -186,6 +186,7 @@
             telefoneServer: telefone,
             emailServer: email,
             senhaServer: senha,
+            sexoServer: sexo,
             }),
         })
         .then(function (resposta) {
@@ -202,20 +203,20 @@
       })
     }   
 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+    window.onload = function listar() {
+            fetch("/usuario/listar", {
+                method: "GET",
+            })
+                .then(function (resposta) {
+                    resposta.json().then((usuario) => {
+                        usuario.forEach((usuario) => {
+                            listaUsuario.innerHTML += `<option value='${usuario.idusuario}'>${usuario.nome}</option>`;
+                        });
+                    });
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+        }
     </script>
 </script>
