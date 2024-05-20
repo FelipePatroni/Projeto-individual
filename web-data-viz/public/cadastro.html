@@ -134,14 +134,14 @@
                     fazerCadastro = false;
                 } 
 
-            if (cepTamanho != 9
+            if (cepTamanho != 8
             ) {
                 div_mensagem.innerHTML = 
                 `<span style="color: yellow;"> - CEP inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                     fazerCadastro = false;
                 }     
 
-            if (telefoneTamanho != 12
+            if (telefoneTamanho != 13
             ) {
                 div_mensagem.innerHTML = 
                 `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
@@ -183,7 +183,6 @@
             cepServer: cep,
             nomeServer: nome,
             cpfServer: cpf,
-            telefoneServer: telefone,
             emailServer: email,
             senhaServer: senha,
             }),

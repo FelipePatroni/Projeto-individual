@@ -1,14 +1,14 @@
-Create database Projeto;
-use projeto;
+Create database Projeto_volei;
+use projeto_volei;
 
 Create table usuario (
 idUsuario int primary key auto_increment,
-Nome varchar(45),
-Email varchar(70),
-CEP char(9),
-CPF char(11),
-Sexo varchar(45),
-telefone char(12),
+nome varchar(45),
+email varchar(70),
+cep char(8),
+cpf char(14),
+sexo varchar(45),
+telefone char(13),
 senha varchar(70)
 );
 
@@ -26,3 +26,5 @@ fkUsuario INT,
 constraint fktimeseguidor foreign key (fkTime) references selecao(idSelecao),
 constraint fkusuarioseguidor foreign key (fkUsuario) references usuario(idusuario)
 );
+
+select * from usuario;
