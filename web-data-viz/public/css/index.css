@@ -1,7 +1,7 @@
 body {
     margin: 0%;
     padding: 0;
-    background-color: #72C3FA;
+   background-color: #4265ac;
 }
 
 .header {
@@ -91,8 +91,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 35px;
     margin-left: 100px;
+   
 
 }
 
@@ -121,7 +121,7 @@ body {
     display: flex;
     padding: 80px;
     justify-content: space-between;
-    background: linear-gradient(180deg, #72C3FA 25%, #4265ac 85%);
+    background: linear-gradient(180deg, #4265ac 25%, #4265ac 85%);
 }
 
 .card {
