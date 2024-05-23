@@ -1,7 +1,7 @@
 body {
     margin: 0%;
     padding: 0;
-   background-color: #4265ac;
+    background-color: #4265ac;
 }
 
 .header {
@@ -28,7 +28,7 @@ body {
     width: 400px;
     justify-content: space-between;
     color: #0846C0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 18px;
     margin-left: 600px;
 }
@@ -62,13 +62,13 @@ body {
 
 .blocoEscrita h1 {
     color: #DD940D;
-    font-family: 'Times New Roman';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 90px;
     margin: 0;
 }
 
 .blocoEscrita h4 {
-    font-family: 'Arial';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 60px;
     margin: 0;
     -webkit-text-stroke-width: 2px;
@@ -92,19 +92,18 @@ body {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 100px;
-   
-
 }
 
 .titulosite {
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Arial';
 }
 
 .paragrafo1 {
     display: flex;
     align-items: center;
-    font-family: 'Arial';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #ffffff;
 }
 
 .textosite {
@@ -125,7 +124,7 @@ body {
 }
 
 .card {
-    background-color: rgb(204, 187, 106);
+    background-color: rgb(255, 225, 77);
     border: 5px solid black;
     width: 400px;
     height: 550px;
@@ -155,7 +154,7 @@ body {
 }
 
 .card_texto {
-    font-family: 'Arial';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 25px;    
     margin: 10% ;
 }
@@ -171,14 +170,15 @@ body {
 }
 
 .titulo {
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Arial';
 }
 
 .paragrafo2 {
     display: flex;
     align-items: center;
-    font-family: 'Arial';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #ffffff;
 }
 
 .textomim {
