@@ -1,0 +1,134 @@
+body{
+  background-color: #4265ac;
+}
+.dashboard{
+  background-color: #4265ac;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  background: #0D0F36;
+  display: flex;
+  width: 15%;
+  height: 97vh;
+  border-radius: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  height: 100%;
+  width: 50%;
+  justify-content:space-evenly;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+}
+
+.card1 {
+  background-color: white;
+  border-radius: 25px;
+  width: 400px;
+  height: 390px;
+  margin-left: 100px;
+  margin-top: 120px;
+}
+
+.titulocard1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.img1 {
+  display: flex;
+  height: 150px;
+  width: 350px;
+  margin-left: 10px;
+  flex-direction: column;
+}
+
+.img1 img{
+  border-radius: 25px;
+}
+
+.paragrafo1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  margin-left: 45px;
+}
+
+.botao1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 250px;
+  font-size: 25px;
+  background-color: aqua;
+  border: 2px solid black;
+  border-radius: 35px;
+}
+
+.botao1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.card2 {
+  background-color: white;
+  border-radius: 25px;
+  width: 400px;
+  height: 390px;
+  margin-left: 100px;
+  margin-top: 120px;
+}
+
+.titulocard2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin-left: 30px;
+}
+
+.img2 {
+  display: flex;
+  width: 250px;
+  height: 100px;
+  margin-left: 50px;
+  flex-direction: column;
+}
+
+.img2 img{
+  border-radius: 25px;
+}
+
+.paragrafo2{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.botao2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 250px;
+  font-size: 25px;
+  background-color: aqua;
+  border: 2px solid black;
+  border-radius: 35px;
+  margin-right: 35%;
+ 
+}
+
+.botao2 a {
+  text-decoration: none;
+  color: black;
+}
