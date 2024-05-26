@@ -1,0 +1,491 @@
+body{
+    background-color: #4265ac;
+  }
+  .dashboard{
+    background-color: #4265ac;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .header {
+    background: #0D0F36;
+    display: flex;
+    width: 15%;
+    height: 97vh;
+    border-radius: 15px;
+    position: fixed;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    height: 100%;
+    width: 50%;
+    justify-content:space-evenly;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .noticia {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .card1 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 380px;
+    margin-top: 120px;
+  }
+  
+  .titulocard1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img1 {
+    display: flex;
+    height: 150px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img1 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao1 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card2 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 120px;
+  }
+  
+  .titulocard2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img2 {
+    display: flex;
+    height: 150px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img2 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao2 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card3 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 120px;
+  }
+  
+  .titulocard3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img3 {
+    display: flex;
+    height: 100px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img3 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 13px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao3 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card4 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 380px;
+    margin-top: 120px;
+  }
+  
+  .titulocard4 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img4 {
+    display: flex;
+    height: 100px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img4 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo4 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao4 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao4 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card5 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 120px;
+  }
+  
+  .titulocard5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img5 {
+    display: flex;
+    height: 150px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img5 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo5{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao5 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card6 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 120px;
+  }
+  
+  .titulocard6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img6 {
+    display: flex;
+    height: 150px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img6 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao6 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card7 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 380px;
+    margin-top: 120px;
+  }
+  
+  .titulocard7 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img7 {
+    display: flex;
+    height: 100px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img7 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo7 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 13px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao7 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao7 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card8 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 120px;
+  }
+  
+  .titulocard8 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img8 {
+    display: flex;
+    height: 150px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img8 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo8 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 13px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao8 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao8 a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card9 {
+    background-color: white;
+    border-radius: 25px;
+    width: 400px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 120px;
+  }
+  
+  .titulocard9 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .img9 {
+    display: flex;
+    height: 150px;
+    width: 350px;
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  
+  .img9 img{
+    border-radius: 25px;
+  }
+  
+  .paragrafo9 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    margin-left: 20px;
+    text-align: justify;
+  }
+  
+  .botao9 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 250px;
+    font-size: 25px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 35px;
+    margin-left: 25px;
+  }
+  
+  .botao9 a {
+    text-decoration: none;
+    color: black;
+  }
