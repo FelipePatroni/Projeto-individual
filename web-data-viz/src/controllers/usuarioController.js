@@ -83,13 +83,16 @@ function cadastrar(req, res) {
 function buscarQuiz(req, res) {
     var PontoCerto = req.body.PontoCertoServer;
     var PontoErrado = req.body.PontoErradoServer;
+    var FkUsuario = req.body.FkUsuarioServer;
 
     if (PontoCerto == undefined) {
         res.status(400).send("Seu Ponto certo está undefined!");
     } else if (PontoErrado == undefined) {
         res.status(400).send("Seu Ponto errado está undefined!");
+    } else if (FkUsuario == undefined) {
+        res.status(400).send("Seu Ponto errado está undefined!");
     } else {
-        usuarioModel.buscarQuiz(PontoCerto, PontoErrado)
+        usuarioModel.buscarQuiz(PontoCerto, PontoErrado, FkUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);

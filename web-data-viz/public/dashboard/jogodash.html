@@ -192,8 +192,8 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                acertos: corretas,
-                erros: incorretas,
+                PontoCerto: corretas,
+                PontoErrado: incorretas,
                 idUsuarioServer: sessionStorage.ID_USUARIO
             })
         })
@@ -253,7 +253,7 @@
         var incorretasVar = incorretas;
         // var idUsuario = idUsuario;
 
-        fetch("/usuarios/registrar", {
+        fetch("/usuarios/buscarQuiz", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -296,5 +296,7 @@
     //         }
     //     })
     // }, 200)
+
+   
 </script>
 </html>
