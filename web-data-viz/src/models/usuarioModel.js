@@ -22,11 +22,22 @@ function cadastrar(nome, email, cep, cpf, telefone, senha) {
     return database.executar(instrucaoSql);
 }
 
-function buscarQuiz(PontoCerto, PontoErrado, FkUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscarQuiz():", PontoCerto, PontoErrado, FkUsuario);
+function registrarQuiz(PontoCerto, PontoErrado, idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registrar():", PontoCerto, PontoErrado, idUsuario);
 
-    var instrucaoSql = `INSERT INTO usuario (PontoCerto, PontoErrado, FkUsuari) VALUES ('${PontoCerto}', '${PontoErrado}', '${FkUsuario}');`;
+    var instrucaoSql = 
+        `INSERT INTO Pontuacao (PontoCerto, PontoErrado, FkUsuario) VALUES (${PontoCerto}, ${PontoErrado}, ${idUsuario});`
+    ;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
+function buscarQuiz(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function quizSelect():", idUsuario);
+
+    var instrucaoSql = 
+        `SELECT usuario.nome, Pontuacao.PontoCerto, Pontuacao.PontoErrado FROM usuario JOIN Pontuacao ON FkUsuario = ${idUsuario};`
+    ;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -34,5 +45,6 @@ function buscarQuiz(PontoCerto, PontoErrado, FkUsuario) {
 module.exports = {
     autenticar,
     cadastrar,
+    registrarQuiz,
     buscarQuiz
 };

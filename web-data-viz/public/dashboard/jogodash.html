@@ -49,22 +49,31 @@
         <div id="quiz" style="display: none;">
             <div id="pergunta1" class="pergunta">
                 <h2>Quantos ouros olímpicos seleção brasileira feminina e masculina possuem juntos?</h2>
-                <button onclick="responder(this, '6 ouros')">Nenhuma</button>
-                <button onclick="responder(this, '6 ouros')">4 ouros</button>
-                <button onclick="responder(this, '6 ouros')">6 ouros</button>
-                <button onclick="responder(this, '6 ouros')">2 ouros</button>
+                    <button onclick="responder(this, '6 ouros')" class="botao1">Nenhuma</button>
+                    <button onclick="responder(this, '6 ouros')" class="botao1">4 ouros</button>
+                    <button onclick="responder(this, '6 ouros')" class="botao1">6 ouros</button>
+                    <button onclick="responder(this, '6 ouros')" class="botao1">2 ouros</button>
             </div>
             <div id="pergunta2" class="pergunta" style="display: none;">
                 <h2>O que é um uma bola de xeque no volei?</h2>
-                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando o líbero faz um ponto</button>
-                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando faz ponto de bloqueio</button>
-                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca</button>
-                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando o jogador faz ponto de saque</button>
+                <button
+                    onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando
+                    o líbero faz um ponto</button>
+                <button
+                    onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando
+                    faz ponto de bloqueio</button>
+                <button
+                    onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando
+                    a bola volta para uma equipe e essa, no primeiro toque, já ataca</button>
+                <button
+                    onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando
+                    o jogador faz ponto de saque</button>
             </div>
             <div id="pergunta3" class="pergunta" style="display: none;">
                 <h2>O que é um ACE?</h2>
                 <button onclick="responder(this, 'Quando faz ponto de saque')">Quando o jogador é expulso</button>
-                <button onclick="responder(this, 'Quando faz ponto de saque')">Quando o jogador faz ponto de bloqueio</button>
+                <button onclick="responder(this, 'Quando faz ponto de saque')">Quando o jogador faz ponto de
+                    bloqueio</button>
                 <button onclick="responder(this, 'Quando faz ponto de saque')">Quando faz ponto de saque</button>
                 <button onclick="responder(this, 'Quando faz ponto de saque')">Não existe ACE no vôlei</button>
             </div>
@@ -98,10 +107,13 @@
             </div>
             <div id="pergunta8" class="pergunta" style="display: none;">
                 <h2>Qual a função do líbero?</h2>
-                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Defender todas as bolas</button>
-                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Não deixar a bola ir para fora</button>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Defender todas as
+                    bolas</button>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Não deixar a bola
+                    ir para fora</button>
                 <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Fazer ACE</button>
-                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Recepcionar o saque e repassar para o levantador</button>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Recepcionar o
+                    saque e repassar para o levantador</button>
             </div>
             <div id="pergunta9" class="pergunta" style="display: none;">
                 <h2>Das opções abaixo, qual não é considerado um ponto?</h2>
@@ -126,9 +138,9 @@
 </body>
 
 <script>
-     var certasDash = 0;
+    var certasDash = 0;
     var erradasDash = 0;
-    
+
     // Define o nome do usuário a partir da sessão
     // const b_usuario = document.getElementById('b_usuario');
     // if (sessionStorage.NOME_USUARIO) {
@@ -137,7 +149,7 @@
     //     b_usuario.innerHTML = 'usuário';
     // }
 
-    var corretas = 0;   
+    var corretas = 0;
     var incorretas = 0;
 
     function iniciar() {
@@ -160,7 +172,7 @@
             perguntaAtual++;
             document.getElementById("pergunta" + perguntaAtual).style.display = "block";
         } else {
-            mensagem.innerHTML = `<button onclick="registrar(), timeout">Finalizar</button>` //exibirResultados();
+            mensagem.innerHTML = `<button onclick="registrarQuiz(), timeout">Finalizar</button>` //exibirResultados();
         }
     }
 
@@ -170,7 +182,7 @@
 
     function exibirResultados() {
         const fk_usuario = obterIdUsuario();
-        document.getElementById("quiz").style.display = "none";
+        document.getElementById("buscarQuiz").style.display = "none";
         document.getElementById("resultados").style.display = "block";
 
         const totalRespostas = corretas + incorretas;
@@ -183,60 +195,6 @@
         } else {
             document.getElementById("acimaOuAbaixo").textContent = "abaixo";
         }
-
-        
-
-        fetch('/usuario/buscarQuiz', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                PontoCerto: corretas,
-                PontoErrado: incorretas,
-                idUsuarioServer: sessionStorage.ID_USUARIO
-            })
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao salvar resultados');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Resultados salvos com sucesso:', data);
-            })
-            .catch(error => {
-                console.error('Erro ao salvar resultados:', error);
-            });
-
-        const ctx = document.getElementById('graficoResultados').getContext('2d');
-        const quizChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Respostas Corretas', 'Respostas Incorretas'],
-                datasets: [{
-                    label: 'Quantidade',
-                    data: [corretas, incorretas],
-                    backgroundColor: [
-                        'rgba(75, 192, 192)',
-                        'rgba(255, 99, 132)',
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
     }
 
     function voltar() {
@@ -248,55 +206,25 @@
         window.location.href = '../index.html';
     }
 
-    function registrar() {
-        var corretasVar = corretas;
-        var incorretasVar = incorretas;
+    function registrarQuiz() {
+        var respostasCorretasVar = corretas;
+        var respostasIncorretasVar = incorretas;
         // var idUsuario = idUsuario;
 
-        fetch("/usuarios/buscarQuiz", {
+
+        fetch("/usuarios/registrarQuiz", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                corretasServer: corretasVar,
-                incorretasServer: incorretasVar,
+                PontoCertoServer: respostasCorretasVar,
+                PontoErradoServer: respostasIncorretasVar,
                 idUsuarioServer: sessionStorage.ID_USUARIO,
             }),
         })
+        window.location.href = './dashboard.html'
     }
-
-    // var timeout = setTimeout(function quizSelect() {
-    //     fetch("/usuarios/quizSelect", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             idUsuarioServer: sessionStorage.ID_USUARIO
-    //         })
-    //     }).then(function (resposta) {
-    //         console.log("ESTOU NO THEN DO entrar()!")
-    //         if (resposta.ok) {
-    //             console.log(resposta);
-
-    //             resposta.json().then(json => {
-    //                 console.log(json);
-    //                 console.log(JSON.stringify(json));
-    //                 console.log(json.resultado_Quiz[0])
-
-    //                 var resultado = json.resultado_Quiz[0];
-
-    //                 var certasBD = resultado.certas;
-    //                 var erradasBD = resultado.erradas;
-
-    //                 certasDash = certasBD;
-    //                 erradasDash = erradasBD;
-    //             })
-    //         }
-    //     })
-    // }, 200)
-
-   
 </script>
+
 </html>

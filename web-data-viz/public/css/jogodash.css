@@ -87,3 +87,25 @@ body{
     margin-left: 70px;
     font-size: 20px;
   }
+
+  #pergunta1 {
+    display: flex;
+    flex-direction: column;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 15vh;
+    margin-left: 3vh;
+    align-items: center;
+  }
+  
+
+  .botao1 {
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: space-evenly;
+    background-color: #bcbffc;
+    font-size: 30px;
+    width: 20vh;
+    height: 5vh;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
