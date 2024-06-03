@@ -1,501 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
+    <link rel="shortcut icon" href="../assets/imgs/logo-removebg-preview.png" type="image/x-icon">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/jogodash.css">
-    <title>Palavras-Cruzadas</title>
+    <title>Quiz</title>
 
-  
+    <link rel="stylesheet" href="./../css/jogodash.css">
+
+    <script src="../js/sessao.js"></script>
+    <!-- <script src="../js/alerta.js"></script> -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,70
+        0;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script> -->
 </head>
 
-
 <body>
-
-    <div class="header2" id="#iniciodash">
-        <div class="container2">
-            <ul class="navbar">
-                <a href="../dashboard/dashboard.html">
-                    <li>Inicio</li>
-                </a>
-                <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
-                <li> <a href="#iniciodash">Jogo</a></li>
-                <li><a href="./login.html">Pontuação</a></li>
-                <li><a href="../index.html">Sair</a></li>
-            </ul>
+    <div class="dashboard">
+        <div class="header" id="noticia">
+            <div class="container">
+                <ul class="navbar">
+                    <a href="../dashboard/dashboard.html">
+                        <li>Inicio</li>
+                    </a>
+                    <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
+                    <li> <a href="#jogo">Jogo</a></li>
+                    <li><a href="./login.html">Pontuação</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <header>
-        <div class="container">
-            <h1>Palavras-Cruzadas</h1><br>
-            <div class="div_button">
-                <center>
-                    <button class="button" id="bt_start" onclick="start()">Começar o Jogo</button>
-                    <button class="button" style="display: none" id="bt_destroyGame" onclick="destroyGrid()">Encerrar o
-                        Jogo</button>
-                </center>
-            </div>
-            <br>
+    <div class="caixa">
+        <div id="start">
+            <h1 class="titulo"><b>Quiz Sobre Vôlei</b></h1>
+            <p class="paragrafo1">O quanto você sabe sobre Vôlei?</p>
+            <button onclick="iniciar()" class="iniciar">
+                <p class="paragrafo2">jogar</p>
+            </button>
         </div>
-    </header>
-    <article>
-        <div class="container">
-            <div style="display: none" id="div_verifiedAnswer">
-                <h3>Resposta Correta</h3>
+        <div id="quiz" style="display: none;">
+            <div id="pergunta1" class="pergunta">
+                <h2>Quantos ouros olímpicos seleção brasileira feminina e masculina possuem juntos?</h2>
+                <button onclick="responder(this, '6 ouros')">Nenhuma</button>
+                <button onclick="responder(this, '6 ouros')">4 ouros</button>
+                <button onclick="responder(this, '6 ouros')">6 ouros</button>
+                <button onclick="responder(this, '6 ouros')">2 ouros</button>
             </div>
-            <div id="div_game">
-                <br>
-                <div id="div_information">
-                    <h2>Intruções do Jogo</h2><br><br>
-                    <p>
-                        Clique em "Começar o Jogo" para iniciar uma partida <br><br>
-                        Perguntas serão exibidas na parte inferior do quadro <br><br>
-                        Insira a sua resposta na caixa de texto e clique em "Verificar" para conferir a sua
-                        resposta<br><br>
-                        A partida acaba quando as 16 questões forem respondidas <br><br>
-                    </p>
-                </div>
-                <br>
-                <div id="div_canvasCruzada"></div>
-                <br>
-                <div style="display: none" id="div_questions">
-                    <center>
-                        <span id="span_questionText">Vamos encontrar as esferas do dragao</span>
-                        <input type="text" id="input_answer" placeholder="Sua Reposta"><br>
-                        <button id="button_verify" onclick="verify()" class="button">Verificar</button>
-                    </center>
-
-
-                </div>
+            <div id="pergunta2" class="pergunta" style="display: none;">
+                <h2>O que é um uma bola de xeque no volei?</h2>
+                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando o líbero faz um ponto</button>
+                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando faz ponto de bloqueio</button>
+                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca</button>
+                <button onclick="responder(this, 'Quando a bola volta para uma equipe e essa, no primeiro toque, já ataca')">Quando o jogador faz ponto de saque</button>
+            </div>
+            <div id="pergunta3" class="pergunta" style="display: none;">
+                <h2>O que é um ACE?</h2>
+                <button onclick="responder(this, 'Quando faz ponto de saque')">Quando o jogador é expulso</button>
+                <button onclick="responder(this, 'Quando faz ponto de saque')">Quando o jogador faz ponto de bloqueio</button>
+                <button onclick="responder(this, 'Quando faz ponto de saque')">Quando faz ponto de saque</button>
+                <button onclick="responder(this, 'Quando faz ponto de saque')">Não existe ACE no vôlei</button>
+            </div>
+            <div id="pergunta4" class="pergunta" style="display: none;">
+                <h2>Quantos toque são permitidas, ao máximo, em uma jogada de vôlei?</h2>
+                <button onclick="responder(this, '3 toques')">2 toques</button>
+                <button onclick="responder(this, '3 toques')">3 toques</button>
+                <button onclick="responder(this, '3 toques')">4 toques</button>
+                <button onclick="responder(this, '3 toques')">5 toques</button>
+            </div>
+            <div id="pergunta5" class="pergunta" style="display: none;">
+                <h2>Qual o nome da Capitã do time brasileiro</h2>
+                <button onclick="responder(this, 'Gabriela')">Gabriela</button>
+                <button onclick="responder(this, 'Gabriela')">Marta</button>
+                <button onclick="responder(this, 'Gabriela')">Carol</button>
+                <button onclick="responder(this, 'Gabriela')">Ana</button>
+            </div>
+            <div id="pergunta6" class="pergunta" style="display: none;">
+                <h2>Quantos metros de altura tem uma rede de volei?</h2>
+                <button onclick="responder(this, '2.43 Metros')">3.0 Metros</button>
+                <button onclick="responder(this, '2.43 Metros')">2.43 Metros</button>
+                <button onclick="responder(this, '2.43 Metros')">1.80 Metros</button>
+                <button onclick="responder(this, '2.43 Metros')">2.0 Metros</button>
+            </div>
+            <div id="pergunta7" class="pergunta" style="display: none;">
+                <h2>Quantos jogadores entram em quadra em um jogo de volêi?</h2>
+                <button onclick="responder(this, '6 Jogadores')">5 Jogadores</button>
+                <button onclick="responder(this, '6 Jogadores')">4 Jogadores</button>
+                <button onclick="responder(this, '6 Jogadores')">6 Jogadores</button>
+                <button onclick="responder(this, '6 Jogadores')">7 Jogadores</button>
+            </div>
+            <div id="pergunta8" class="pergunta" style="display: none;">
+                <h2>Qual a função do líbero?</h2>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Defender todas as bolas</button>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Não deixar a bola ir para fora</button>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Fazer ACE</button>
+                <button onclick="responder(this, 'Recepcionar o saque e repassar para o levantador')">Recepcionar o saque e repassar para o levantador</button>
+            </div>
+            <div id="pergunta9" class="pergunta" style="display: none;">
+                <h2>Das opções abaixo, qual não é considerado um ponto?</h2>
+                <button onclick="responder(this, 'Levantamento')">Ataque</button>
+                <button onclick="responder(this, 'Levantamento')">Levantamento</button>
+                <button onclick="responder(this, 'Levantamento')">Bloqueio</button>
+                <button onclick="responder(this, 'Levantamentoo')">Saque</button>
+            </div>
+            <div id="pergunta10" class="pergunta" style="display: none;">
+                <h2>Quantos pontos são necessários para finalizar um SET? </h2>
+                <button onclick="responder(this, '25 Pontos<')">15 Pontos</button>
+                <button onclick="responder(this, '25 Pontos<')">25 Pontos</button>
+                <button onclick="responder(this, '25 Pontos<')">30 Pontos</button>
+                <button onclick="responder(this, '25 Pontos<')">20 Pontos</button>
             </div>
         </div>
-        </div>
-    </article><br><br>
-    <script>
-    var special_words = ['Gabriela', 'Juiz', 'Brasil', 'París', 'Ponteiro', 'Central', 'Bruninho', 'Levantador', 'Líbero', 'Manchete', 'Toque', 'Ataque', 'Oposto', 'Bloqueio', 'Rede', 'Darlan'];
-
-var questions_list = [
-    'Qual é a sigla para Central Process Unit?',
-    'Um circuto digital que realiza operações lógicas e aritméticas. Qual é o nome deste componente?',
-    'Tipo de memória que se encontra no topo da hierarquia de memória',
-    'Tipo de memória volátil que tem como nome Random Acess Memory. Qual é a sigla deste componente?',
-    'Tipo de memória não volátil que oferece dados apenas para leitura',
-    'Tipo de memória não volátil que precisa ter seu chip exposto a luz ultravioleta para apagar seu conteúdo',
-    'Tipo particular de EEPROM que mantém as informações armazenadas sem a necessidade de uma fonte de energia elétrica',
-    'Tipo de memória que precisa ter seu conteúdo copiado na RAM para poder ser executado pela CPU',
-    'Permite que periféricos acessem diretamente a RAM sem ocupar processamento',
-    'Também conhecido como Slave Select (SS). Usado para selecionar um ou um conjunto de circuitos que estão conectados no computador',
-    'Grupo de linhas ou trilhas usadas para se referir a um endereço físico na memória. O número de trilhas determina a quantidade de endereços na memória física',
-    'Também chamado de Memory Bus. É responsável para carregar os dados.',
-    'Modelo de processador desenvolvido pela Intel qu teve sua primeira versão lançada em setembro de 2009',
-    'Modelo de processador desenvolvido pela Intel qu teve sua primeira versão lançada em novembro de 2008',    
-    'Tipo de processador que possui dois processadores ou melhor dizendo ‘dois centros, núcleos ou cores de execução‘ no mesmo circuito integrado.  Cada core tem sua própria memória cash e controlador o que permite que funcione mais efetivamente do que um processador single',
-    'Segue o mesmo princípio de um dual-core, mas agora em teoria tem o dobro da capacidade de processamento'
-];
-
-var filledCell = [2, 20, 38, 133, 134, 135, 59, 77, 95, 113, 131, 149,
-    167, 185, 203, 221, 239, 257, 275, 59, 60, 61, 272, 290, 308, 236,
-    254, 272, 290, 308, 116, 134, 152, 170, 188, 27, 45, 63, 81, 99, 117,
-    135, 153, 171, 189, 207, 225, 243, 261, 279, 297, 203, 204, 205, 312,
-    313, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 187, 20, 223,
-    241, 259, 277, 295, 313, 117, 118, 113, 114, 37, 38, 39, 40, 41, 42,
-    43, 44, 45, 3, 21, 39, 57, 75, 93, 111, 129, 147];
-
-var firstIndex= [2, 133, 59, 59, 272, 236, 116, 27, 203, 312, 270, 187, 117, 113, 37, 3];
-
-var word = {
-
-    word1: {
-        letter: special_words[0].split(''),
-        position: [2, 20, 38],
-        write: function () {
-
-            for (i in word.word1.letter) {
-                var findCell = document.querySelector(`#cell_${word.word1.position[i]}`);
-
-                findCell.innerHTML = word.word1.letter[i];
-                console.log(word.word1.letter[i]);
-            }
-            cell_2.innerHTML = '<span style="color: red; font-size:10px">1</span>C';
-        }
-    },
-    word2: {
-        letter: special_words[1].split(''),
-        position: [133, 134, 135],
-        write: function () {
-            for (i in word.word2.letter) {
-                var findCell = document.querySelector(`#cell_${word.word2.position[i]}`);
-
-                findCell.innerHTML = word.word2.letter[i];
-                console.log(word.word2.letter[i]);
-            }
-            cell_133.innerHTML = '<span style="color: red; font-size:10px">2</span>U';
-
-        }
-    },
-    word3: {
-        letter: special_words[2].split(''),
-        position: [59, 77, 95, 113, 131, 149, 167, 185, 203, 221, 239, 257, 275],
-        write: function () {
-            for (i in word.word3.letter) {
-                var findCell = document.querySelector(`#cell_${word.word3.position[i]}`);
-
-                findCell.innerHTML = word.word3.letter[i];   
-                console.log(word.word3.letter[i]);
-            }
-            cell_59.innerHTML = '<span style="color: red; font-size:10px">3_4</span>R';
-            cell_113.innerHTML = '<span style="color: red; font-size:10px">14</span>i';
-        }
-    },
-    word4: {
-        letter: special_words[3].split(''),
-        position: [59, 60, 61],
-        write: function () {
-            for (i in word.word4.letter) {
-                var findCell = document.querySelector(`#cell_${word.word4.position[i]}`);
-
-                findCell.innerHTML = word.word4.letter[i];
-                console.log(word.word4.letter[i]);
-            }
-            cell_59.innerHTML = '<span style="color: red; font-size:10px">3_4</span>R';            
-        }
-    },
-    word5: {
-        letter: special_words[4].split(''),
-        position: [272, 290, 308],
-        write: function () {
-            for (i in word.word5.letter) {
-                var findCell = document.querySelector(`#cell_${word.word5.position[i]}`);
-
-                findCell.innerHTML = word.word5.letter[i];
-                console.log(word.word5.letter[i]);
-            }
-            cell_272.innerHTML = '<span style="color: red; font-size:10px">5</span>R';
-        }
-    },
-    word6: {
-        letter: special_words[5].split(''),
-        position: [236, 254, 272, 290, 308],
-        write: function () {
-            for (i in word.word6.letter) {
-                var findCell = document.querySelector(`#cell_${word.word6.position[i]}`);
-
-                findCell.innerHTML = word.word6.letter[i];
-                console.log(word.word6.letter[i]);
-            }
-            cell_236.innerHTML= '<span style="color: red; font-size:10px">6</span>E';
-        }
-    },
-    word7: {
-        letter: special_words[6].split(''),
-        position: [116, 134, 152, 170, 188],
-        write: function () {
-            for (i in word.word7.letter) {
-                var findCell = document.querySelector(`#cell_${word.word7.position[i]}`);
-
-                findCell.innerHTML = word.word7.letter[i];
-                console.log(word.word7.letter[i]);
-            }
-            cell_116.innerHTML = '<span style="color: red; font-size:10px">7</span>F';
-        }
-    },
-    word8: {
-        letter: special_words[7].split(''),
-        position: [27, 45, 63, 81, 99, 117, 135, 153, 171, 189, 207, 225, 243, 261, 279, 297],
-        write: function () {
-            for (i in word.word8.letter) {
-                var findCell = document.querySelector(`#cell_${word.word8.position[i]}`);
-
-                findCell.innerHTML = word.word8.letter[i];
-                console.log(word.word8.letter[i]);
-            }
-            cell_27.innerHTML = '<span style="color: red; font-size:10px">8</span>M';
-            cell_117.innerHTML = '<span style="color: red; font-size:10px">13</span>i';
-            cell_153.innerHTML = '-';
-            cell_207.innerHTML = '-';
-        
-        }
-    },
-    word9: {
-        letter: special_words[8].split(''),
-        position: [203, 204, 205, 312, 313],
-        write: function () {
-            for (i in word.word9.letter) {
-                var findCell = document.querySelector(`#cell_${word.word9.position[i]}`);
-
-                findCell.innerHTML = word.word9.letter[i];
-                console.log(word.word9.letter[i]);
-            }
-            cell_203.innerHTML = '<span style="color: red; font-size:10px">9</span>D';
-        }
-    },
-    word10: {
-        letter: special_words[9].split(''),
-        position: [312, 313],
-        write: function () {
-            for (i in word.word10.letter) {
-                var findCell = document.querySelector(`#cell_${word.word10.position[i]}`);
-
-                findCell.innerHTML = word.word10.letter[i];
-                console.log(word.word10.letter[i]);
-            }
-            cell_312.innerHTML = '<span style="color: red; font-size:10px">10</span>C';
-        }
-    },
-    word11: {
-        letter: special_words[10].split(''),
-        position: [270, 271, 272, 273, 274, 275, 276, 277, 278, 279],
-        write: function () {
-            for (i in word.word11.letter) {
-                var findCell = document.querySelector(`#cell_${word.word11.position[i]}`);
-
-                findCell.innerHTML = word.word11.letter[i];
-                console.log(word.word11.letter[i]);
-            }
-            cell_270.innerHTML = '<span style="color: red; font-size:10px">11</span>A';
-            cell_276.innerHTML = '-';
-        }
-    },
-    word12: {
-        letter: special_words[11].split(''),
-        position: [187, 205, 223, 241, 259, 277, 295, 313, 117, 118],
-        write: function () {
-            for (i in word.word12.letter) {
-                var findCell = document.querySelector(`#cell_${word.word12.position[i]}`);
-
-                findCell.innerHTML = word.word12.letter[i];
-                console.log(word.word12.letter[i]);
-            }
-            cell_187.innerHTML = '<span style="color: red; font-size:10px">12</span>D';
-            cell_259.innerHTML = '-';
-        }
-    },
-    word13: {
-        letter: special_words[12].split(''),
-        position: [117, 118],
-        write: function () {
-            for (i in word.word13.letter) {
-                var findCell = document.querySelector(`#cell_${word.word13.position[i]}`);
-
-                findCell.innerHTML = word.word13.letter[i];
-                console.log(word.word13.letter[i]);
-            }
-            cell_117.innerHTML = '<span style="color: red; font-size:10px">13</span>I';
-        }
-    },
-    word14: {
-        letter: special_words[13].split(''),
-        position: [113, 114],
-        write: function () {
-            for (i in word.word14.letter) {
-                var findCell = document.querySelector(`#cell_${word.word14.position[i]}`);
-
-                findCell.innerHTML = word.word14.letter[i];
-                console.log(word.word14.letter[i]);
-            }
-            cell_113.innerHTML = '<span style="color: red; font-size:10px">14</span>I';
-        }
-    },
-    word15: {
-        letter: special_words[14].split(''),
-        position: [37, 38, 39, 40, 41, 42, 43, 44, 45],
-        write: function () {
-            for (i in word.word15.letter) {
-                var findCell = document.querySelector(`#cell_${word.word15.position[i]}`);
-
-                findCell.innerHTML = word.word15.letter[i];
-                console.log(word.word15.letter[i]);
-            }
-            cell_37.innerHTML = '<span style="color: red; font-size:10px">15</span>D';
-            cell_41.innerHTML = '-';
-        }
-    },
-    word16: {
-        letter: special_words[15].split(''),
-        position: [3, 21, 39, 57, 75, 93, 111, 129, 147],
-        write: function () {
-            for (i in word.word16.letter) {
-                var findCell = document.querySelector(`#cell_${word.word16.position[i]}`);
-
-                findCell.innerHTML = word.word16.letter[i];
-                console.log(word.word16.letter[i]);
-            }
-            cell_3.innerHTML = '<span style="color: red; font-size:10px">16</span>Q';
-            cell_75.innerHTML = '-';
-        }
-    }
-};
-
-var widthTable = 18;
-var heightTable = 18;
+        <div id="mensagem"></div>
+    </div>
+    </div>
 
 
-var cont_correctAnswer = 0;
-
-function start() {
-    cont_correctAnswer = 0;
-    bt_start.style.display = 'none';
-    bt_destroyGame.style.display = 'block';
-    div_questions.style.display = 'block';
-    div_information.innerHTML = '';
-    renderGrid();
-    gameSequence();
-
-}
-
-function destroyGrid() {
-    bt_start.style.display = 'block';
-    bt_destroyGame.style.display = 'none';
-    div_questions.style.display = 'none';
-
-    document.querySelector('#div_canvasCruzada').innerHTML = '';
-    pontuation();
-}
-
-function gameSequence() {
-    span_questionText.innerHTML = `<b>${cont_correctAnswer + 1}.</b> ${questions_list[cont_correctAnswer]}`;
-
-    if (cont_correctAnswer == 1) {
-        word.word1.write();
-    }
-    else if (cont_correctAnswer == 2) {
-        word.word2.write();
-    }
-    else if (cont_correctAnswer == 3) {
-        word.word3.write();
-    }
-    else if (cont_correctAnswer == 4) {
-        word.word4.write();
-    }
-    else if (cont_correctAnswer == 5) {
-        word.word5.write();
-    }
-    else if (cont_correctAnswer == 6) {
-        word.word6.write();
-    }
-    else if (cont_correctAnswer == 7) {
-        word.word7.write();
-    }
-    else if (cont_correctAnswer == 8) {
-        word.word8.write();
-    }
-    else if (cont_correctAnswer == 9) {
-        word.word9.write();
-    }
-    else if (cont_correctAnswer == 10) {
-        word.word10.write();
-    }
-    else if (cont_correctAnswer == 11) {
-        word.word11.write();
-    }
-    else if (cont_correctAnswer == 12) {
-        word.word12.write();
-    }
-    else if (cont_correctAnswer == 13) {
-        word.word13.write();
-    }
-    else if (cont_correctAnswer == 14) {
-        word.word14.write();
-    }
-    else if (cont_correctAnswer == 15) {
-        word.word15.write();
-    }
-    else if (cont_correctAnswer == 16) {
-        word.word16.write();
-
-        setTimeout(function () {
-            destroyGrid();
-        }, 3000);
-    }
-
-
-}
-
-
-function pontuation() {
-    div_information.style.display = 'block';
-
-    div_information.innerHTML = '<h1 style="text-align: center;">Parabéns!!</h1><br><br><p style="text-align: center;">Você finalizou o jogo</p><br><br>';
-}
-
-function renderGrid() {
-    var tableGame = '<table id="gridGame" cellspacing=0 cellpadding=0>';
-
-    // &nbsp its used to set null value to a cell
-    var cellContent_tableGame = '&nbsp';
-    var cell = 0;
-    for (var row = 1; row <= heightTable; row++) {
-
-        tableGame += `<tr id="row_${row}">`;
-
-        for (var column = 1; column <= widthTable; column++ , cell++) {
-            tableGame += `<td class="deadCell" id="cell_${cell}">` + cellContent_tableGame + '</td>';
-
-        }
-        tableGame += '</tr>';
-
-    }
-    tableGame += '</table>';
-
-    document.querySelector('#div_canvasCruzada').innerHTML = tableGame;
-
-    paintCells();
-}
-
-
-
-function paintCells() {
-    
-    for (item in filledCell) {
-        var paintCell = document.getElementById(`cell_${filledCell[item]}`);
-        paintCell.removeAttribute('deadCell');
-        paintCell.setAttribute('class', 'availableCell');
-    }
-    
-    for(var initial= 0; initial < firstIndex.length; initial++){
-        var paintIndex_cell = document.getElementById(`cell_${firstIndex[initial]}`);
-
-        paintIndex_cell.innerHTML= `<span style="color: red; font-size:10px">${initial + 1}</span>`;
-
-        if(initial== 2 ||initial== 3){
-        paintIndex_cell.innerHTML= `<span style="color: red; font-size:10px">3_4</span>`;
-        }
-    }    
-}
-
-function verify() {
-    var answer = input_answer.value;
-
-    if (answer != '') {
-        // answer = answer.toLowerCase();
-        if (answer == special_words[cont_correctAnswer]) {
-            div_verifiedAnswer.classList.add('correctAnswer');
-            div_verifiedAnswer.innerHTML = '<br>Resposta Correta!';
-            cont_correctAnswer++;
-        }
-        else {
-            div_verifiedAnswer.classList.add('wrongAnswer');
-            div_verifiedAnswer.innerHTML = '<br>Resposta Incorreta, tente novamente';
-        }
-        setTimeout(function () {
-            div_verifiedAnswer.style.display = 'block';
-        }, 500);
-
-        setTimeout(function () {
-            div_verifiedAnswer.style.display = 'none';
-        }, 3000);
-
-        input_answer.value = '';
-        gameSequence();
-    }
-    else {
-        alert('Por Favor, digite uma resposta na caixa de texto');
-    }
-}</script>
 </body>
 
-</html>
+<script>
+     var certasDash = 0;
+    var erradasDash = 0;
+    
+    // Define o nome do usuário a partir da sessão
+    // const b_usuario = document.getElementById('b_usuario');
+    // if (sessionStorage.NOME_USUARIO) {
+    //     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // } else {
+    //     b_usuario.innerHTML = 'usuário';
+    // }
 
+    var corretas = 0;
+    var incorretas = 0;
+
+    function iniciar() {
+        document.getElementById('start').style.display = 'none';
+        document.getElementById('quiz').style.display = 'block';
+    }
+
+    var perguntaAtual = 1;
+    var totalDePerguntas = 10; // Corrigido para o número real de perguntas
+
+    function responder(botao, respostaCorreta) {
+        const respostaSelecionada = botao.textContent;
+        if (respostaSelecionada === respostaCorreta) {
+            corretas++;
+        } else {
+            incorretas++;
+        }
+        document.getElementById("pergunta" + perguntaAtual).style.display = "none";
+        if (perguntaAtual < totalDePerguntas) {
+            perguntaAtual++;
+            document.getElementById("pergunta" + perguntaAtual).style.display = "block";
+        } else {
+            mensagem.innerHTML = `<button onclick="registrar(), timeout">Finalizar</button>` //exibirResultados();
+        }
+    }
+
+    function obterIdUsuario() {
+        return sessionStorage.ID_USUARIO || 'desconhecido';
+    }
+
+    function exibirResultados() {
+        const fk_usuario = obterIdUsuario();
+        document.getElementById("quiz").style.display = "none";
+        document.getElementById("resultados").style.display = "block";
+
+        const totalRespostas = corretas + incorretas;
+        const media = (corretas / totalRespostas) * 100;
+        document.getElementById("media").textContent = media.toFixed(2) + "%";
+
+        const mediaGeral = 70;
+        if (media >= mediaGeral) {
+            document.getElementById("acimaOuAbaixo").textContent = "acima";
+        } else {
+            document.getElementById("acimaOuAbaixo").textContent = "abaixo";
+        }
+
+        var desempenho = '';
+        if (media >= 80) {
+            desempenho = 'Bom';
+        } else if (media >= 50) {
+            desempenho = 'Médio';
+        } else {
+            desempenho = 'Ruim';
+        }
+        document.getElementById("desempenho").textContent = desempenho;
+
+        fetch('/medidas/salvar-resultados', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                acertos: corretas,
+                erros: incorretas,
+                fk_usuario: fk_usuario
+            })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao salvar resultados');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Resultados salvos com sucesso:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao salvar resultados:', error);
+            });
+
+        const ctx = document.getElementById('graficoResultados').getContext('2d');
+        const quizChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Respostas Corretas', 'Respostas Incorretas'],
+                datasets: [{
+                    label: 'Quantidade',
+                    data: [corretas, incorretas],
+                    backgroundColor: [
+                        'rgba(75, 192, 192)',
+                        'rgba(255, 99, 132)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function voltar() {
+        window.location.href = './dashboard.html';
+    }
+
+    function limparSessao() {
+        sessionStorage.clear();
+        window.location.href = '../index.html';
+    }
+
+    function registrar() {
+        var corretasVar = corretas;
+        var incorretasVar = incorretas;
+        // var idUsuario = idUsuario;
+
+        fetch("/usuarios/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                corretasServer: corretasVar,
+                incorretasServer: incorretasVar,
+                idUsuarioServer: sessionStorage.ID_USUARIO,
+            }),
+        })
+    }
+
+    // var timeout = setTimeout(function quizSelect() {
+    //     fetch("/usuarios/quizSelect", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             idUsuarioServer: sessionStorage.ID_USUARIO
+    //         })
+    //     }).then(function (resposta) {
+    //         console.log("ESTOU NO THEN DO entrar()!")
+    //         if (resposta.ok) {
+    //             console.log(resposta);
+
+    //             resposta.json().then(json => {
+    //                 console.log(json);
+    //                 console.log(JSON.stringify(json));
+    //                 console.log(json.resultado_Quiz[0])
+
+    //                 var resultado = json.resultado_Quiz[0];
+
+    //                 var certasBD = resultado.certas;
+    //                 var erradasBD = resultado.erradas;
+
+    //                 certasDash = certasBD;
+    //                 erradasDash = erradasBD;
+    //             })
+    //         }
+    //     })
+    // }, 200)
+</script>
+</html>
