@@ -44,7 +44,7 @@ function cadastrar(req, res) {
     var cep = req.body.cepServer;
     var telefone = req.body.telefoneServer;
     var senha = req.body.senhaServer;
-    
+
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -52,7 +52,7 @@ function cadastrar(req, res) {
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (cpf == undefined) {
-        res.status(400).send("Seu cpf está undefined!")        
+        res.status(400).send("Seu cpf está undefined!")
     } else if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!")
     } else if (telefone == undefined) {
@@ -80,7 +80,36 @@ function cadastrar(req, res) {
     }
 }
 
+function buscarQuiz(req, res) {
+    var PontoCerto = req.body.PontoCertoServer;
+    var PontoErrado = req.body.PontoErradoServer;
+
+    if (PontoCerto == undefined) {
+        res.status(400).send("Seu Ponto certo está undefined!");
+    } else if (PontoErrado == undefined) {
+        res.status(400).send("Seu Ponto errado está undefined!");
+    } else {
+        usuarioModel.buscarQuiz(PontoCerto, PontoErrado)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a pontuação! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    buscarQuiz
 }

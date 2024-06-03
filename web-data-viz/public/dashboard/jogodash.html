@@ -137,7 +137,7 @@
     //     b_usuario.innerHTML = 'usuário';
     // }
 
-    var corretas = 0;
+    var corretas = 0;   
     var incorretas = 0;
 
     function iniciar() {
@@ -184,17 +184,9 @@
             document.getElementById("acimaOuAbaixo").textContent = "abaixo";
         }
 
-        var desempenho = '';
-        if (media >= 80) {
-            desempenho = 'Bom';
-        } else if (media >= 50) {
-            desempenho = 'Médio';
-        } else {
-            desempenho = 'Ruim';
-        }
-        document.getElementById("desempenho").textContent = desempenho;
+        
 
-        fetch('/medidas/salvar-resultados', {
+        fetch('/usuario/buscarQuiz', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -202,7 +194,7 @@
             body: JSON.stringify({
                 acertos: corretas,
                 erros: incorretas,
-                fk_usuario: fk_usuario
+                idUsuarioServer: sessionStorage.ID_USUARIO
             })
         })
             .then(response => {

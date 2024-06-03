@@ -27,4 +27,4 @@ FkPais int,
 constraint FkPais foreign key (FkPais) references usuario(IdUsuario)
 );
 
-select * from usuario;a
+select * from usuario;
