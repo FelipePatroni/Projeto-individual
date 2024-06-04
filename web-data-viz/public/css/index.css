@@ -1,7 +1,7 @@
 body {
     margin: 0%;
     padding: 0;
-    background-color: #4265ac;
+    background-color: #ffffff;
 }
 
 .header {
@@ -10,10 +10,8 @@ body {
     flex-direction: row;
     padding: 0.5rem 4rem;
     position: fixed;
-    width: 1200px;
-    border-radius: 35px;
-    margin-left: 250px;
-    margin-top: 10px;
+    width: 130vh;
+    margin-left: 27vh;
 }
 
 .container {
@@ -25,12 +23,12 @@ body {
     display: flex;
     flex-direction: row;
     list-style: none;
-    width: 400px;
+    width: 50vh;
     justify-content: space-between;
     color: #0846C0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 18px;
-    margin-left: 600px;
+    margin-left: 60vh;
 }
 
 .navbar a {
@@ -39,8 +37,8 @@ body {
 }
 
 .Inicio {
-    background-image: url(../assets/imgs/Design\ sem\ nome.png);
-    padding: 325px;
+    background-image: url(../assets/imgs/brasill.png);
+    padding: 38vh;
     border-bottom: 7px solid black;
 }
 
@@ -55,7 +53,7 @@ body {
 }
 
 .blocoEscrita {
-    width: 60vw;
+    width: 60vh;
     margin-left: 5%;
     margin-top: 3%;
 }
@@ -91,7 +89,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 100px;
+    margin-left: 10vh;
 }
 
 .titulosite {
@@ -103,54 +101,54 @@ body {
     display: flex;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #ffffff;
+    color: black;
 }
 
 .textosite {
     font-size: 150%;
     text-align: justify;
-    margin-right: 100px;
+    margin-right: 10vh;
 }
 
 .fotosite {
-    margin-right: 300px;
+    margin-right: 30vh;
 }
 
 .banner2 {
     display: flex;
-    padding: 80px;
+    padding: 8vh;
     justify-content: space-between;
-    background: linear-gradient(180deg, #4265ac 25%, #4265ac 85%);
+    background: #ffffff;
 }
 
 .card {
-    background-color: rgb(255, 225, 77);
+    background-color:  #00a2ff;
     border: 5px solid black;
-    width: 400px;
-    height: 550px;
+    width: 43vh;
+    height: 55vh;
     border-radius: 40px;
    
 }
 
 .img1 {
     display: flex;
-    height: 200px;
+    height: 20vh;
     margin: 10%;
-    margin-left: 95px;
+    margin-left: 10vh;
 }
 
 .img2 {
     display: flex;
-    height: 230px;
+    height: 23vh;
     margin: 8%;
-    margin-left: 100px;
+    margin-left: 12vh;
 }
 
 .img3 {
     display: flex;
-    height: 230px;
+    height: 23vh;
     margin: 6%;
-    margin-left: 100px;
+    margin-left: 10vh;
 }
 
 .card_texto {
@@ -164,9 +162,9 @@ body {
 .banner3 {
     display: flex;
     flex-direction: row;
-    padding: 100px;
+    padding: 12vh;
     background: #ffffff;
-    background: linear-gradient(180deg,#4265ac 1%, #162F5F 95%);
+    background: #ffffff;
 }
 
 .titulo {
@@ -178,16 +176,16 @@ body {
     display: flex;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #ffffff;
+    color: black;
 }
 
 .textomim {
     font-size: 130%;
     text-align: justify;
-    margin-right: 10px;
+    margin-right: 1vh;
 }
 
 .img4 {
     display: flex;
-    margin-left: 200px;
+    margin-left: 20vh;
 }

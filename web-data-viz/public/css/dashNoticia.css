@@ -1,42 +1,42 @@
 body{
-    background-color: #4265ac;
-  }
-  .dashboard{
-    background-color: #4265ac;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .header {
-    background: #0D0F36;
-    display: flex;
-    width: 15%;
-    height: 97vh;
-    border-radius: 15px;
-    position: fixed;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    height: 100%;
-    width: 50%;
-    justify-content:space-evenly;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 25px;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: white;
-  }
+  background-color: #00a2ff;
+}
+.dashboard{
+  background-color: #00a2ff;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  background: #0D0F36;
+  display: flex;
+  width: 29vh;
+  position: fixed;
+  height: 97vh;
+  border-radius: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  height: 95vh;
+  width: 50%;
+  justify-content:space-evenly;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+}
 
   .noticia {
     display: flex;
@@ -52,23 +52,23 @@ body{
   .card1 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 380px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 40vh;
+    margin-top: 13vh;
   }
   
   .titulocard1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img1 {
     display: flex;
-    height: 150px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -77,20 +77,20 @@ body{
   }
   
   .paragrafo1{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    margin-left: 20px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao1 a {
@@ -101,23 +101,23 @@ body{
   .card2 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 100px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 10vh;
+    margin-top: 13vh;
   }
   
   .titulocard2 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img2 {
     display: flex;
-    height: 150px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -126,20 +126,20 @@ body{
   }
   
   .paragrafo2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
-    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15.5px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao2 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao2 a {
@@ -150,23 +150,23 @@ body{
   .card3 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 100px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 10vh;
+    margin-top: 13vh;
   }
   
   .titulocard3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img3 {
     display: flex;
-    height: 100px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -175,20 +175,20 @@ body{
   }
   
   .paragrafo3 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 13px;
-    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13.5px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao3 a {
@@ -199,23 +199,23 @@ body{
   .card4 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 380px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 40vh;
+    margin-top: 13vh;
   }
   
   .titulocard4 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img4 {
     display: flex;
-    height: 100px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -223,21 +223,21 @@ body{
     border-radius: 25px;
   }
   
-  .paragrafo4 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  .paragrafo4{
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    margin-left: 20px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao4 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao4 a {
@@ -248,23 +248,23 @@ body{
   .card5 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 100px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 10vh;
+    margin-top: 13vh;
   }
   
   .titulocard5 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img5 {
     display: flex;
-    height: 150px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -272,21 +272,21 @@ body{
     border-radius: 25px;
   }
   
-  .paragrafo5{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 12px;
-    margin-left: 20px;
+  .paragrafo5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao5 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao5 a {
@@ -297,23 +297,23 @@ body{
   .card6 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 100px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 10vh;
+    margin-top: 13vh;
   }
   
   .titulocard6 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img6 {
     display: flex;
-    height: 150px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 36vh;
+    margin-left: 2vh;
     flex-direction: column;
   }
   
@@ -322,47 +322,46 @@ body{
   }
   
   .paragrafo6 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 12px;
-    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.6px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao6 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao6 a {
     text-decoration: none;
     color: black;
   }
-
   .card7 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 380px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 40vh;
+    margin-top: 13vh;
   }
   
   .titulocard7 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img7 {
     display: flex;
-    height: 100px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -371,20 +370,20 @@ body{
   }
   
   .paragrafo7 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 13px;
-    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao7 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao7 a {
@@ -395,23 +394,23 @@ body{
   .card8 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 100px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 10vh;
+    margin-top: 13vh;
   }
   
   .titulocard8 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img8 {
     display: flex;
-    height: 150px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -420,20 +419,20 @@ body{
   }
   
   .paragrafo8 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 13px;
-    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13.4px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao8 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao8 a {
@@ -444,23 +443,23 @@ body{
   .card9 {
     background-color: white;
     border-radius: 25px;
-    width: 400px;
-    height: 450px;
-    margin-left: 100px;
-    margin-top: 120px;
+    width: 43vh;
+    height: 49vh;
+    margin-left: 10vh;
+    margin-top: 13vh;
   }
   
   .titulocard9 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 1.8vh;
   }
   
   .img9 {
     display: flex;
-    height: 150px;
-    width: 350px;
-    margin-left: 10px;
+    height: 15vh;
+    width: 38vh;
+    margin-left: 1vh;
     flex-direction: column;
   }
   
@@ -469,20 +468,20 @@ body{
   }
   
   .paragrafo9 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 12px;
-    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.68px;
+    margin-left: 2vh;
     text-align: justify;
   }
   
   .botao9 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 250px;
+    width: 27vh;
     font-size: 25px;
     background-color: aqua;
     border: 2px solid black;
     border-radius: 35px;
-    margin-left: 25px;
+    margin-left: 2.6vh;
   }
   
   .botao9 a {

@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #B9F1D6;
+    background-image: url(../assets/imgs/Design\ sem\ nome.png)
 }
 
 .header {
@@ -9,12 +9,10 @@ body {
     display: flex;
     flex-direction: row;
     padding: 0.5rem 4rem;
-    width: 1200px;
-    border-radius: 35px;
-    margin-left: 250px;
-    margin-top: 10px;
+    width: 130vh;
+    margin-left: 27vh;
 }
-  
+
 .container {
     display: flex;
     margin: auto;
@@ -26,7 +24,7 @@ body {
     list-style: none;
     width: 400px;
     justify-content: space-between;
-    color: #69D2CD;
+    color: #ffffff;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     margin-left: 600px;
@@ -34,7 +32,7 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: #69D2CD;
+    color: #ffffff;
 }
 
 .cabecalho {
@@ -47,12 +45,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    padding: 100px; 
+    padding: 10vh; 
     border-radius: 40px; 
     border: 5px solid black; 
-    background-color: #69D2CD;
-    width: 150px;
-    height:250px;
+    background-color: #00a2ff;
+    width: 17vh;
+    height:25vh;
     margin-left: 750px;
     margin-top: 200px;
 }
@@ -66,7 +64,7 @@ body {
 .pagina__registro__row__texto {
     padding: 0.5rem 2rem 0.5rem 2rem;
     border: 1px solid black;
-    background: #B9F1D6;
+    background: #ffffff;
     margin-right: 1rem;
     border-radius: 15px;
     border: 2px solid black;
@@ -74,11 +72,11 @@ body {
 
 .pagina__registro__row__caixa {
     height: 20%;
-    margin-right: 10px;
+    margin-right: 1vh;
     border: 1px solid #0D0F36;
     border-radius: 15px;
-    width: 150px;
-    height: 30px;
+    width: 18vh;
+    height: 3.5vh;
     position: end;
 }
 
@@ -91,14 +89,9 @@ body {
     border: 1px solid #000000;
     color: black;
     border-radius: 24px;
-    padding: 15px 0;
-    width: 150px;
+    padding: 1.5vh;
+    width: 17vh;
     text-align: center;
-    margin-top: 30px;
-    cursor: pointer;
-    transition: 0.3s;
+    margin-top: 3vh;
 }
   
-button:hover {
-    background-color: #B9F1D6 ;
-}

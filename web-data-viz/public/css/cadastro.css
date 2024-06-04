@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #B9F1D6;
+    background-color: #ffffff;
+    background-image: url(../assets/imgs/Design\ sem\ nome.png)
 }
 
 .header {
@@ -9,10 +10,8 @@ body {
     display: flex;
     flex-direction: row;
     padding: 0.5rem 4rem;
-    width: 1200px;
-    border-radius: 35px;
-    margin-left: 250px;
-    margin-top: 10px;
+    width: 130vh;
+    margin-left: 27vh;
 }
   
 .container {
@@ -26,7 +25,7 @@ body {
     list-style: none;
     width: 400px;
     justify-content: space-between;
-    color: #69D2CD;
+    color: #fcfcfc;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     margin-left: 600px;
@@ -34,7 +33,7 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: #69D2CD;
+    color: #ffffff;
 }
   
 .cabecalho {
@@ -48,28 +47,28 @@ body {
     flex-direction: column;
     align-items: left; 
     margin: auto;
-    margin-top: 70px;
-    padding: 70px; 
-    border-radius: 40px; 
+    margin-top: 7vh;
+    padding: 7vh; 
+    border-radius: 4vh; 
     border: 5px solid black; 
-    background-color: #69D2CD;
-    width: 500px;
-    height:500px; 
+    background-color: #00a2ff;
+    width: 53vh;
+    height:55vh; 
 }
   
 .pagina__registro__row {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 40px;
+    height: 4vh;
     padding: 1rem 1rem 3rem 1rem;
 }
   
 .pagina__registro__row__caixa {
-    margin-right: 120px;
+    margin-right: 12vh;
     border: 1px solid rgb(87, 62, 38);
     border-radius: 15px;
-    height: 40px;
+    height: 4vh;
     position: end;
     background-color: #f6fad9;
 }
@@ -77,16 +76,18 @@ body {
 .pagina__registro__row__caixa_select {
     border: 1px solid rgb(87, 62, 38);
     border-radius: 15px;
-    height: 43px;
+    height: 4.6vh;
+    width: 40vh;
     background-color: #f6fad9;
 }
 
 .pagina__registro__row__caixa_telefone {
     border: 1px solid rgb(87, 62, 38);
     border-radius: 15px;
-    height: 40px;
+    height: 4.2vh;
     background-color: #f6fad9;
-    margin-left: 145px;
+    margin-left: 11.5vh;
+    margin-right: 0.1vh;
 }
   
 .pagina__botao__posicao {
@@ -101,13 +102,8 @@ body {
     padding: 15px 0;
     width: 150px;
     text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
 }
   
-button:hover {
-    background-color: #B9F1D6 ;
-}
 
 .loading-div {
     width: 50px;

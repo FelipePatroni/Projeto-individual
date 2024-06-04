@@ -63,7 +63,7 @@
         document.getElementById("graficos").innerHTML += `
        <div id="grafico">
            <h2 class="tituloGraficos">
-               <span id="tituloGrafico">Gráfico de Tentativas</span>
+               <span id="tituloGrafico">Gráfico de Acertos e Erros</span>
            </h2>
            <div class="graph">
                <canvas id="myChartCanvas"></canvas>
@@ -115,14 +115,14 @@
             labels: labels,
             datasets: [{
                 label: 'Pontuação Certas',
-                data: [],
+                data: [10],
                 backgroundColor: 'green',
                 borderColor: 'green',
                 borderWidth: 2
             },
             {
                 labels: labels,
-                label: 'Pontuação Errados',
+                label:'Pontuação Errados',
                 data: [],
                 backgroundColor: 'red',
                 borderColor: 'red',
@@ -130,11 +130,11 @@
             }]
         };
 
-        for(index = 0 ;index<resposta;index++){
+        for(index = 0 ; index < resposta; index++){
             var registro=resposta[index];
-            dados.datasets[0].data.push(registro.erros)
-            dados.datasets[1].data.push(registro.erros)
-
+            labels.push(`Item ${index + 1}`);   
+            dados.datasets[0].data.push(Pontuacao.PontoCerto)
+            dados.datasets[1].data.push(Pontuacao.PontoErrado)
         }
         const config = {
             type: 'bar',
@@ -146,6 +146,12 @@
             config
         );
 
+    }
+
+
+    function limparSessao() {
+        sessionStorage.clear();
+        window.location.href = '../index.html';
     }
 
 
