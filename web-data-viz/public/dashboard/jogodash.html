@@ -31,8 +31,8 @@
                     </a>
                     <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
                     <li> <a href="#jogo">Jogo</a></li>
-                    <li><a href="./login.html">Pontuação</a></li>
-                    <li><a href="../index.html">Sair</a></li>
+                    <li><a href="../dashboard/graficodash.html">Pontuação</a></li>
+                    <li><a href="../index.html" onclick="limparSessao()">Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -140,15 +140,6 @@
 <script>
     var certasDash = 0;
     var erradasDash = 0;
-
-    // Define o nome do usuário a partir da sessão
-    // const b_usuario = document.getElementById('b_usuario');
-    // if (sessionStorage.NOME_USUARIO) {
-    //     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    // } else {
-    //     b_usuario.innerHTML = 'usuário';
-    // }
-
     var corretas = 0;
     var incorretas = 0;
 
@@ -180,22 +171,22 @@
         return sessionStorage.ID_USUARIO || 'desconhecido';
     }
 
-    function exibirResultados() {
-        const fk_usuario = obterIdUsuario();
-        document.getElementById("buscarQuiz").style.display = "none";
-        document.getElementById("resultados").style.display = "block";
+    // function exibirResultados() {
+    //     const fk_usuario = obterIdUsuario();
+    //     document.getElementById("quiz").style.display = "none";
+    //     document.getElementById("resultados").style.display = "block";
 
-        const totalRespostas = corretas + incorretas;
-        const media = (corretas / totalRespostas) * 100;
-        document.getElementById("media").textContent = media.toFixed(2) + "%";
+    //     const totalRespostas = corretas + incorretas;
+    //     const media = (corretas / totalRespostas) * 100;
+    //     document.getElementById("media").textContent = media.toFixed(2) + "%";
 
-        const mediaGeral = 70;
-        if (media >= mediaGeral) {
-            document.getElementById("acimaOuAbaixo").textContent = "acima";
-        } else {
-            document.getElementById("acimaOuAbaixo").textContent = "abaixo";
-        }
-    }
+    //     const mediaGeral = 70;
+    //     if (media >= mediaGeral) {
+    //         document.getElementById("acimaOuAbaixo").textContent = "acima";
+    //     } else {
+    //         document.getElementById("acimaOuAbaixo").textContent = "abaixo";
+    //     }
+    // }
 
     function voltar() {
         window.location.href = './dashboard.html';
@@ -209,7 +200,7 @@
     function registrarQuiz() {
         var respostasCorretasVar = corretas;
         var respostasIncorretasVar = incorretas;
-        // var idUsuario = idUsuario;
+        // var idUsuario = sessionStorage.ID_USUARIO;
 
 
         fetch("/usuarios/registrarQuiz", {
@@ -220,10 +211,11 @@
             body: JSON.stringify({
                 PontoCertoServer: respostasCorretasVar,
                 PontoErradoServer: respostasIncorretasVar,
-                idUsuarioServer: sessionStorage.ID_USUARIO,
+                idUsuarioServer: sessionStorage.ID_USUARIO
             }),
         })
-        window.location.href = './dashboard.html'
+
+        // window.location.href = './dashboard.html'
     }
 </script>
 

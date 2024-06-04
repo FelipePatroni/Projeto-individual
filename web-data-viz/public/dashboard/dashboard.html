@@ -18,8 +18,8 @@
                     </a>
                     <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
                     <li> <a href="../dashboard/jogodash.html">Jogo</a></li>
-                    <li><a href="./login.html">Pontuação</a></li>
-                    <li><a href="../index.html">Sair</a></li>
+                    <li><a href="../dashboard/graficodash.html">Pontuação</a></li>
+                    <li><a href="../index.html" onclick="limparSessao()">Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -80,5 +80,10 @@
 
     </div>
 </body>
-
+<script>
+    function limparSessao() {
+        sessionStorage.clear();
+        window.location.href = '../index.html';
+    }
+</script>
 </html>

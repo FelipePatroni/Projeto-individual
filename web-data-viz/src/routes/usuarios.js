@@ -20,5 +20,10 @@ router.post("/buscarQuiz", function (req, res) {
     usuarioController.buscarQuiz(req, res);
 });
 
+router.post("/buscarInformacao", function (req, res) {
+    usuarioController.buscarInformacao(req, res);
+});
+
+
 
 module.exports = router;

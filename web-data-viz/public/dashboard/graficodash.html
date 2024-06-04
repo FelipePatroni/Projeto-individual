@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos | SeaOfTypes</title>
+
+    <link rel="stylesheet" href="../css/grafico.css">
+    <script src="../js/sessao.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="buscarUltimoQuiz()">
+
+    <div class="dashboard">
+        <div class="header" id="#iniciodash">
+            <div class="container">
+                <ul class="navbar">
+                    <a href="../dashboard/dashboard.html">
+                        <li>Inicio</li>
+                    </a>
+                    <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
+                    <li> <a href="../dashboard/jogodash.html">Jogo</a></li>
+                    <li><a href="#grafico">Pontuação</a></li>
+                    <li><a href="../index.html" onclick="limparSessao()">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="dash">
+            <div id="alerta">
+            </div>
+
+            <div class="btns-dash" id="btnQuiz">
+            </div>
+            <div id="graficos">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let proximaAtualizacao;
+
+    window.onload = exibir();
+
+    function exibir() {
+        document.getElementById("graficos").innerHTML += `
+       <div id="grafico">
+           <h2 class="tituloGraficos">
+               <span id="tituloGrafico">Gráfico de Tentativas</span>
+           </h2>
+           <div class="graph">
+               <canvas id="myChartCanvas"></canvas>
+           </div>
+           <div class="label-captura">
+               <p id="avisoCaptura"></p>
+           </div>
+       </div>
+   `;
+
+        obterDadosGrafico();
+    }
+
+    function obterDadosGrafico() {
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/usuarios/buscarInformacao/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta) {
+        console.log('Iniciando plotagem do gráfico...');
+
+        let labels = [];
+
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Pontuação Certas',
+                data: [],
+                backgroundColor: 'green',
+                borderColor: 'green',
+                borderWidth: 2
+            },
+            {
+                labels: labels,
+                label: 'Pontuação Errados',
+                data: [],
+                backgroundColor: 'red',
+                borderColor: 'red',
+                borderWidth: 2
+            }]
+        };
+
+        for(index = 0 ;index<resposta;index++){
+            var registro=resposta[index];
+            dados.datasets[0].data.push(registro.erros)
+            dados.datasets[1].data.push(registro.erros)
+
+        }
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas`),
+            config
+        );
+
+    }
+
+
+</script>

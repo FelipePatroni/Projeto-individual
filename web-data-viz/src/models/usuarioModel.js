@@ -3,7 +3,7 @@ var database = require("../database/config")
 function autenticar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucaoSql = `
-        SELECT nome, email FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idUsuario, nome, email FROM usuario WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -23,7 +23,7 @@ function cadastrar(nome, email, cep, cpf, telefone, senha) {
 }
 
 function registrarQuiz(PontoCerto, PontoErrado, idUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registrar():", PontoCerto, PontoErrado, idUsuario);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registrarQuiz():", PontoCerto, PontoErrado, idUsuario);
 
     var instrucaoSql = 
         `INSERT INTO Pontuacao (PontoCerto, PontoErrado, FkUsuario) VALUES (${PontoCerto}, ${PontoErrado}, ${idUsuario});`
@@ -42,9 +42,19 @@ function buscarQuiz(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarInformacao(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED', \n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu bd está RODANDO CORRETAMENTE \n\n funcion buscarInformacao():", idUsuario)
+
+    var instrucaoSql = `
+    SELECT usuario.nome, Pontuacao.PontoCerto, Pontuacao.PontoErrado from usuario join Pontuacao on FkUsuario = ${idUsuario} ORDER BY idPontuacao desc limit 1
+    `;
+    return database.executar(instrucaoSql)
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     registrarQuiz,
-    buscarQuiz
+    buscarQuiz,
+    buscarInformacao
 };

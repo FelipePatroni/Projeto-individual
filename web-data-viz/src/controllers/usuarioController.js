@@ -18,7 +18,18 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                        res.json(resultadoAutenticar)
+
+                        if (resultadoAutenticar.length > 0) {
+                            res.json({
+                                id: resultadoAutenticar[0].idUsuario,
+                                email: resultadoAutenticar[0].email,
+                                nome: resultadoAutenticar[0].nome,
+                                senha: resultadoAutenticar[0].senha
+                            });
+                        } else {
+                            res.status(204).json({ aquarios: [] });
+                        }
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -86,57 +97,59 @@ function registrarQuiz(req, res) {
     var PontoErrado = req.body.PontoErradoServer;
     var idUsuario = req.body.idUsuarioServer;
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.registrarQuiz(PontoCerto, PontoErrado, idUsuario)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar a pontuação! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.registrarQuiz(PontoCerto, PontoErrado, idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a pontuação! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
-    function buscarQuiz(req,res){
-        var idUsuario = req.body.idUsuarioServer
+function buscarQuiz(req, res) {
+    var idUsuario = req.body.idUsuarioServer
 
-        usuarioModel.buscarQuiz(idUsuario)
+    usuarioModel.buscarQuiz(idUsuario)
         .then(
             function (resultado_Quiz) {
 
                 res.json({
                     resultado_Quiz
                 });
-    }
+            }
         )
+}
+
+    function buscarInformacao(req, res) {
+        var idUsuario = req.body.idUsuarioServer;
+
+        usuarioModel.buscarInformacao(idUsuario).then(function(resultado) {
+            if(resultado.length > 0) {
+                res.status(200).json(resultado)
+            } else {
+                res.status(204).send("Nenhum resultado encontrado");
+            }
+        }).catch(function(erro){
+            console.log(erro);
+            console.log("Houve um erro ao buscar a Informação.", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
     }
 
-    // function (req, res) {
-    //     const limite_linhas = 1;
-
-    //     usuarioModel.buscaApreencao(limite_linhas).then(function (resultado) {
-    //         if (resultado.length > 0) {
-    //             res.status(200).json(resultado);
-    //         } else {
-    //             res.status(204).send("Nenhum resultado encontrado!");
-    //         }
-    //     }).catch(function (erro) {
-    //         console.log(erro);
-    //         console.log("Houve um erro ao buscar.", erro.sqlMessage);
-    //         res.status(500).json(erro.sqlMessage);
-    //     });
-    //   }
 
 module.exports = {
     autenticar,
     cadastrar,
     registrarQuiz,
-    buscarQuiz
+    buscarQuiz,
+    buscarInformacao
 }
