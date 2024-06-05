@@ -106,48 +106,47 @@
     }
 
     function plotarGrafico(resposta) {
-        console.log('Iniciando plotagem do gráfico...');
+    console.log('Iniciando plotagem do gráfico...');
 
-        let labels = [];
-
-
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Pontuação Certas',
-                data: [10],
+    let labels = [];
+    let dados = {
+        labels: labels,
+        datasets: [{
+                label: 'Pontuação Certa',
+                data: [],
                 backgroundColor: 'green',
                 borderColor: 'green',
-                borderWidth: 2
+                borderWidth: 4,
+                barPercentage: 0.2  
             },
             {
-                labels: labels,
-                label:'Pontuação Errados',
+                label: 'Pontuação Errada',
                 data: [],
                 backgroundColor: 'red',
                 borderColor: 'red',
-                borderWidth: 2
-            }]
-        };
+                borderWidth: 4,
+                barPercentage: 0.2
+            }
+        ]
+    };
 
-        for(index = 0 ; index < resposta; index++){
-            var registro=resposta[index];
-            labels.push(`Item ${index + 1}`);   
-            dados.datasets[0].data.push(Pontuacao.PontoCerto)
-            dados.datasets[1].data.push(Pontuacao.PontoErrado)
-        }
-        const config = {
-            type: 'bar',
-            data: dados,
-        };
-
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas`),
-            config
-        );
-
+    for (let index = 0; index < resposta.length; index++) {
+        let registro = resposta[index];
+        labels.push(`Item ${index + 1}`);
+        dados.datasets[0].data.push(registro.PontoCerto);
+        dados.datasets[1].data.push(registro.PontoErrado);
     }
 
+    const config = {
+        type: 'bar',
+        data: dados,
+    };
+
+    let myChart = new Chart(
+        document.getElementById(`myChartCanvas`),
+        config
+    );
+}
 
     function limparSessao() {
         sessionStorage.clear();

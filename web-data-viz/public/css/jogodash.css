@@ -1,18 +1,20 @@
 body{
   background-image: url(../assets/imgs/Design\ sem\ nome.png);
 }
-.dashboard{
+
+.dashboard {
+  background-color: #00a2ff;
   display: flex;
   flex-direction: row;
 }
 
 .header {
-  background: #0D0F36;
+  background: #0d0f36;
   display: flex;
-  width: 29vh;
-  position: fixed;
+  width: 35vh;
   height: 97vh;
   border-radius: 15px;
+  position: fixed;
 }
 
 .container {
@@ -27,8 +29,8 @@ body{
   list-style: none;
   height: 95vh;
   width: 50%;
-  justify-content:space-evenly;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  justify-content: space-evenly;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 25px;
 }
 
@@ -41,11 +43,11 @@ body{
     display: flex;
     border: 7px solid black;
     border-radius: 15px;
-    margin-left: 55vh;
+    margin-left: 73vh;
     margin-top: 20vh;
     width: 120vh;
     height: 55vh;
-    background-color: #7970f5;
+    background-color: #0280c9;
   }
 
   #start { 
@@ -59,7 +61,7 @@ body{
   .titulo {
     display: flex;
     font-size: 40px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-items: center;
     align-self: center;
   }
@@ -67,7 +69,7 @@ body{
   .paragrafo1 {
     display: flex;
     font-size: 25px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 
   .iniciar {
@@ -82,7 +84,7 @@ body{
 
   .paragrafo2 {
     display: flex;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 9vh;
     font-size: 20px;
   }
@@ -90,16 +92,16 @@ body{
   .pergunta1 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 3vh;
+    margin-left: 7vh;
     font-size: 20px;
   }
 
   .pergunta2 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
     margin-left: 25vh;
     font-size: 20px;
@@ -108,7 +110,7 @@ body{
   .pergunta3 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
     margin-left: 25vh;
     font-size: 20px;
@@ -116,7 +118,7 @@ body{
 
   .titulo3 {
     display: flex;
-    margin-left: 15vh;
+    margin-left: 13vh;
   }
 
   
@@ -124,18 +126,18 @@ body{
   .pergunta4 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 10vh;
+    margin-left: 5vh;
     font-size: 20px;
   }
 
   .pergunta5 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 25vh;
+    margin-left: 27vh;
     font-size: 20px;
   }
 
@@ -147,56 +149,56 @@ body{
   .pergunta6 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 23vh;
+    margin-left: 20vh;
     font-size: 20px;
   }
 
   .pergunta7 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 17vh;
+    margin-left: 13vh;
     font-size: 20px;
   }
 
   .pergunta8 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 30vh;
+    margin-left: 38vh;
     font-size: 20px;
   }
 
   .titulo8 {
     display: flex;
-    margin-left: 10vh;
+    margin-left: 1vh;
   }
 
   .pergunta9 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 17vh;
+    margin-left: 16vh;
     font-size: 20px;
   }
 
   .pergunta10 {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 15vh;
-    margin-left: 17vh;
+    margin-left: 16vh;
     font-size: 20px;
   }
 
   .botao1 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -207,17 +209,17 @@ body{
   }
 
   .botao2 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #ffffff;
-    font-size: 14px;
-    width: 20vh;
+    font-size: 16px;
+    width: 25vh;
     height: 8vh;
     border: 2px solid black;
     border-radius: 20px;
   }
 
   .botao3 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #ffffff;
     font-size: 15px;
     width: 30vh;
@@ -229,7 +231,7 @@ body{
 
   .botao4 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -241,7 +243,7 @@ body{
 
   .botao5 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -253,7 +255,7 @@ body{
 
   .botao6 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -265,7 +267,7 @@ body{
 
   .botao7 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -277,19 +279,19 @@ body{
 
   .botao8 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
-    font-size: 18px;
-    width: 30vh;
-    height: 5vh;
+    font-size: 20px;
+    width: 20vh;
+    height: 7vh;
     border: 2px solid black;
     border-radius: 20px;
   }
 
   .botao9 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -301,7 +303,7 @@ body{
 
   .botao10 {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     justify-content: space-evenly;
     background-color: #ffffff;
     font-size: 30px;
@@ -449,19 +451,19 @@ body{
     height: 5vh;
     border-radius: 30px;
     margin-left: 50vh;
-    background-color: #00a2ff;
+    background-color: white;
 }
 
   .textofinal {
     display: flex;
-    margin-left: 4.5vh;
+    margin-left: 3vh;
     font-size: 20px;
   }
 
 .paragrafofinal {
   display: flex;
     align-items: center;
-    margin-left: 15vh;
-    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10vh;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 30px;
 }

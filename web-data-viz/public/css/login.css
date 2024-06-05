@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #ffffff;
     background-image: url(../assets/imgs/Design\ sem\ nome.png)
 }
 
@@ -9,7 +10,7 @@ body {
     display: flex;
     flex-direction: row;
     padding: 0.5rem 4rem;
-    width: 130vh;
+    width: 170vh;
     margin-left: 27vh;
 }
 
@@ -17,28 +18,30 @@ body {
     display: flex;
     margin: auto;
 }
-  
+
 .navbar {
     display: flex;
     flex-direction: row;
     list-style: none;
-    width: 400px;
+    width: 50vh;
     justify-content: space-between;
-    color: #ffffff;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #0846C0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
-    margin-left: 600px;
+    margin-left: 70vh;
 }
 
 .navbar a {
     text-decoration: none;
-    color: #ffffff;
+    color: white;
 }
 
 .cabecalho {
     display: flex;
     align-items:center;
     flex-direction: column;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .pagina__registro {
@@ -48,11 +51,11 @@ body {
     padding: 10vh; 
     border-radius: 40px; 
     border: 5px solid black; 
-    background-color: #00a2ff;
-    width: 17vh;
-    height:25vh;
-    margin-left: 750px;
-    margin-top: 200px;
+    width: 25vh;
+    height:35vh;
+    margin-left: 95vh;
+    margin-top: 20vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .pagina__registro__row {
@@ -68,6 +71,8 @@ body {
     margin-right: 1rem;
     border-radius: 15px;
     border: 2px solid black;
+    
+    
 }
 
 .pagina__registro__row__caixa {
@@ -78,6 +83,7 @@ body {
     width: 18vh;
     height: 3.5vh;
     position: end;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .pagina__botao__posicao {
@@ -93,5 +99,7 @@ body {
     width: 17vh;
     text-align: center;
     margin-top: 3vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
 }
   

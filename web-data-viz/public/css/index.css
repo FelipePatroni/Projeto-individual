@@ -10,7 +10,7 @@ body {
     flex-direction: row;
     padding: 0.5rem 4rem;
     position: fixed;
-    width: 130vh;
+    width: 170vh;
     margin-left: 27vh;
 }
 
@@ -26,9 +26,9 @@ body {
     width: 50vh;
     justify-content: space-between;
     color: #0846C0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
-    margin-left: 60vh;
+    margin-left: 70vh;
 }
 
 .navbar a {
@@ -38,7 +38,7 @@ body {
 
 .Inicio {
     background-image: url(../assets/imgs/brasill.png);
-    padding: 38vh;
+    padding: 45vh;
     border-bottom: 7px solid black;
 }
 
@@ -124,8 +124,8 @@ body {
 .card {
     background-color:  #00a2ff;
     border: 5px solid black;
-    width: 43vh;
-    height: 55vh;
+    width: 44vh;
+    height: 62vh;
     border-radius: 40px;
    
 }

@@ -10,7 +10,7 @@ body{
 .header {
   background: #0D0F36;
   display: flex;
-  width: 29vh;
+  width: 35vh;
   height: 97vh;
   border-radius: 15px;
 }
@@ -28,7 +28,7 @@ body{
   height: 95vh;
   width: 50%;
   justify-content:space-evenly;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 25px;
 }
 
@@ -47,9 +47,9 @@ body{
 .card1 {
   background-color: white;
   border-radius: 25px;
-  width: 43.5vh;
-  height: 50vh;
-  margin-left: 10vh;
+  width: 45vh;
+  height: 55vh;
+  margin-left: 18vh;
   margin-top: 12vh;
 }
 
@@ -94,9 +94,9 @@ body{
 .card2 {
   background-color: white;
   border-radius: 25px;
-  width: 43.5vh;
-  height: 50vh;
-  margin-left: 10vh;
+  width: 45vh;
+  height: 55vh;
+  margin-left: 15vh;
   margin-top: 12vh;
 }
 
@@ -141,9 +141,9 @@ body{
 .card3 {
   background-color: white;
   border-radius: 25px;
-  width: 43.5vh;
-  height: 50vh;
-  margin-left: 10vh;
+  width: 45vh;
+  height: 55vh;
+  margin-left: 15vh;
   margin-top: 12vh;
 }
 
