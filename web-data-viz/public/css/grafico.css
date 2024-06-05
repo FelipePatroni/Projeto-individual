@@ -38,8 +38,9 @@ body{
 }
 
 #graficos {
-  width: 150%;
+  width: 75%;
   height: 100%;
+  margin-left: 40vh;
 }
 
 #myChartCanvas {

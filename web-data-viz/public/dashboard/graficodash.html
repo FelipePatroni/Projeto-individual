@@ -55,12 +55,12 @@
 </html>
 
 <script>
-    let proximaAtualizacao;
+   let proximaAtualizacao;
 
-    window.onload = exibir();
+window.onload = exibir();
 
-    function exibir() {
-        document.getElementById("graficos").innerHTML += `
+function exibir() {
+    document.getElementById("graficos").innerHTML += `
        <div id="grafico">
            <h2 class="tituloGraficos">
                <span id="tituloGrafico">Gráfico de Acertos e Erros</span>
@@ -74,71 +74,63 @@
        </div>
    `;
 
-        obterDadosGrafico();
+    obterDadosGrafico();
+}
+
+function obterDadosGrafico() {
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
     }
 
-    function obterDadosGrafico() {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-
-        fetch(`/usuarios/buscarInformacao/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idUsuarioServer: sessionStorage.ID_USUARIO
-            })
-        }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    plotarGrafico(resposta);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
+    fetch(`/usuarios/buscarInformacao/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO
         })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                plotarGrafico(resposta);
             });
-    }
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+        });
+}
 
-    function plotarGrafico(resposta) {
+function plotarGrafico(resposta) {
     console.log('Iniciando plotagem do gráfico...');
 
-    let labels = [];
-    let dados = {
-        labels: labels,
-        datasets: [{
-                label: 'Pontuação Certa',
-                data: [],
-                backgroundColor: 'green',
-                borderColor: 'green',
-                borderWidth: 4,
-                barPercentage: 0.2  
-            },
-            {
-                label: 'Pontuação Errada',
-                data: [],
-                backgroundColor: 'red',
-                borderColor: 'red',
-                borderWidth: 4,
-                barPercentage: 0.2
-            }
-        ]
-    };
+    let labels = ['Pontuação Certa', 'Pontuação Errada'];
+    let acertos = 0;
+    let erros = 0;
 
     for (let index = 0; index < resposta.length; index++) {
         let registro = resposta[index];
-        labels.push(`Item ${index + 1}`);
-        dados.datasets[0].data.push(registro.PontoCerto);
-        dados.datasets[1].data.push(registro.PontoErrado);
+        acertos += registro.PontoCerto;
+        erros += registro.PontoErrado;
     }
 
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Pontuação',
+            data: [acertos, erros],
+            backgroundColor: ['green', 'red'],
+            borderColor: ['green', 'red'],
+            borderWidth: 1
+        }]
+    };
+
     const config = {
-        type: 'bar',
+        type: 'pie',
         data: dados,
     };
 
@@ -148,10 +140,9 @@
     );
 }
 
-    function limparSessao() {
-        sessionStorage.clear();
-        window.location.href = '../index.html';
-    }
-
+function limparSessao() {
+    sessionStorage.clear();
+    window.location.href = '../index.html';
+}
 
 </script>
