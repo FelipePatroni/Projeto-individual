@@ -10,8 +10,8 @@ body {
     flex-direction: row;
     padding: 0.5rem 4rem;
     position: fixed;
-    width: 170vh;
-    margin-left: 27vh;
+    width: 140vh;
+    margin-left: 23vh;
 }
 
 .container {
@@ -38,7 +38,7 @@ body {
 
 .Inicio {
     background-image: url(../assets/imgs/brasill.png);
-    padding: 45vh;
+    padding: 40vh;
     border-bottom: 7px solid black;
 }
 
@@ -78,11 +78,6 @@ body {
     height: 30vh;
     background-color: #ffffff;
     border-radius: 8px;
-}
-
-.bordafinal {
-    border-top: #0D0F36 3px solid;
-    margin-top: 50px;
 }
 
 .banner1 {

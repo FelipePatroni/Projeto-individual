@@ -10,8 +10,8 @@ body {
     display: flex;
     flex-direction: row;
     padding: 0.5rem 4rem;
-    width: 170vh;
-    margin-left: 27vh;
+    width: 140vh;
+    margin-left: 23vh;
 }
 
 .container {
@@ -52,8 +52,8 @@ body {
     border-radius: 40px; 
     border: 5px solid black; 
     width: 25vh;
-    height:35vh;
-    margin-left: 95vh;
+    height:30vh;
+    margin: auto;
     margin-top: 20vh;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
