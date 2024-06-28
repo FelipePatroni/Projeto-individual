@@ -24,6 +24,8 @@ router.post("/buscarInformacao", function (req, res) {
     usuarioController.buscarInformacao(req, res);
 });
 
-
+router.post("/buscarInformacaoSexo", function (req,res) {
+    usuarioController.buscarInformacaoSexo(req, res);
+});
 
 module.exports = router;

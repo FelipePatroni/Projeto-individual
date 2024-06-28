@@ -51,6 +51,8 @@ function buscarInformacao(idUsuario) {
     return database.executar(instrucaoSql)
 }
 
+
+
 module.exports = {
     autenticar,
     cadastrar,
