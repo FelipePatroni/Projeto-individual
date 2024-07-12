@@ -51,6 +51,7 @@
         </div>
     </div>
 
+    
 </body>
 
 </html>
@@ -73,6 +74,8 @@ function exibir() {
                <p id="avisoCaptura"></p>
            </div>
        </div>
+       <div id="mensagem_media" class="media">
+        </div>
    `;
 
     obterDadosGrafico();
@@ -112,6 +115,25 @@ function plotarGrafico(resposta) {
     let labels = ['Pontuação Certa', 'Pontuação Errada'];
     let acertos = 0;
     let erros = 0;
+
+
+    let Corretas= resposta[0].PontoCerto
+    let Incorretas= resposta[0].PontoErrado
+    let totalDeAcerto = Corretas + Incorretas;
+
+    let Porcentagem = ((Corretas/totalDeAcerto) * 100)/1 .toFixed(2);
+
+    const media= 60
+
+        if (Porcentagem < media) {
+            mensagem_media.innerHTML = `<div class='leo'> MANDOU MAL! <br> Você acertou ${Porcentagem}% Tente NOVAMENTE! </div>`
+        } else if (Porcentagem == media) {
+            mensagem_media.innerHTML = `<div class='leo'> NA MÉDIA! <br> Você acertou ${Porcentagem}% Caso queria uma MÉDIA melhor, tente novamente! </div>`
+        } else {
+            mensagem_media.innerHTML = `<div class='leo'> MANDOU BEM! <br> Você acertou ${Porcentagem}% PARABÉNS!! </div>`
+        }
+
+
 
     for (let index = 0; index < resposta.length; index++) {
         let registro = resposta[index];

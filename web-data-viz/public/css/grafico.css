@@ -38,12 +38,27 @@ body{
 }
 
 #graficos {
-  width: 75%;
-  height: 100%;
+  width: 65%;
+  height: 60%;
   margin-left: 40vh;
 }
 
 #myChartCanvas {
   width: 100%;
   height: 100%;
+}
+
+.media {
+  display: flex;
+  font-size: 30px;
+  background-color: #0D0F36;
+  color: white;
+  width: 60vh;
+  border-radius: 25px;
+  margin-left: 60px;
+}
+
+.leo {
+  display: flex;
+  margin-left: 70px;
 }
