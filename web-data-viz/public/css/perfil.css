@@ -37,3 +37,89 @@ body {
     text-decoration: none;
     color: white;
   }
+
+  .caixa_preta {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(10, 10, 10);
+    width: 80vh;
+    height: 98vh;
+    margin-left: 75vh;
+    border-radius: 20px;
+  }
+  
+  .comeco {
+    display: flex;
+    align-items: center;
+    align-self: center;
+  }
+
+  .para_voce {
+    display: flex;
+    color: white;
+    font-style: italic;
+    font-size: 25px;
+  }
+
+  .comentario{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid gray;
+    border-top: 2px solid gray;
+  }
+  .perfil{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .img {
+    display: flex;
+    width: 6vh;
+    height: 6vh;
+    margin-top: 1vh;
+    border-radius: 50px;
+    margin-left: 4vh;
+  }
+
+  #b_usuario{
+    display: flex;
+    font-size: 3vh;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 1vh;
+  }
+
+  textarea {
+    display: flex;
+    margin-bottom: 2vh;
+    margin-left: 4vh;
+    width: 70vh;
+    height: 11vh;
+    border-radius:20px;
+    background-color: rgb(10, 10, 10);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #000000;
+    border-radius: 4px;
+  }
+
+  .botao {
+    display: flex;
+    width: 10vh;
+    height: 3vh;
+    margin-left: 80%;
+    background-color: #00a2ff;
+    color: white;
+    border: 1px solid #00a2ff;
+    border-radius: 15px;
+    margin-bottom: 1vh;
+  }
+
+  .nome {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-left: 13px;
+  }

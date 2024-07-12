@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/perfil.css">
 </head>
+
 <body>
     <div class="dashboard">
         <div class="header" id="noticia">
@@ -24,8 +26,36 @@
         </div>
     </div>
 
-    <div class="caixa">
+    <div class="caixa_preta">
+        <div class="comeco">
+            <p class="para_voce">
+                Para você
+            </p>
+        </div>
+        <div class="comentario">
+            <div class="perfil">
+                <img src="https://labes.inf.ufes.br/wp-content/uploads/sem-foto.jpg" alt="" class="img">
+                <h6><span id="b_usuario">usuário</span></h6>
+            </div>
+            <textarea id="comentario_texto" maxlength="250" placeholder="O que está acontecendo?"></textarea>
+            <button onclick="publicar()" class="botao"> <span class="nome">Publicar</span></button>
+        </div>
 
+        <div id="div_mensagem"></div>
     </div>
 </body>
+
 </html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    const lista_comentario = []
+
+    function publicar() {
+        const comentario = comentario_texto.value;
+        lista_comentario.push(comentario)
+
+        
+    }
+</script>
