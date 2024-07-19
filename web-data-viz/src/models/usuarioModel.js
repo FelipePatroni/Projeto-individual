@@ -52,11 +52,23 @@ function buscarInformacao(idUsuario) {
 }
 
 
+function buscarComentario(descricao, idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED', \n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu bd está RODANDO CORRETAMENTE \n\n funcion buscarComentario():", descricao, idUsuario)
+
+    var instrucaoSql = `
+    INSERT INTO Post(descricao, FkUsuario) VALUES ('${descricao}', ${idUsuario});
+    `;
+    return database.executar(instrucaoSql)
+}
+
+
+
 
 module.exports = {
     autenticar,
     cadastrar,
     registrarQuiz,
     buscarQuiz,
-    buscarInformacao
+    buscarInformacao,
+    buscarComentario
 };

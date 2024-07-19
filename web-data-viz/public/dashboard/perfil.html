@@ -53,9 +53,23 @@
     const lista_comentario = []
 
     function publicar() {
-        const comentario = comentario_texto.value;
-        lista_comentario.push(comentario)
+        const descricao = comentario_texto.value;
+        lista_comentario.push(descricao)
 
-        
-    }
+        fetch("/usuarios/buscarComentario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            descricaoServer: descricao,
+            idUsuarioServer: sessionStorage.ID_USUARIO
+            }),
+        })
+        .then(function (resposta) {
+        console.log("resposta: ", resposta);
+      })
+    }   
 </script>

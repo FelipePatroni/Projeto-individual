@@ -27,7 +27,9 @@ function autenticar(req, res) {
                                 senha: resultadoAutenticar[0].senha
                             });
                         } else {
-                            res.status(204).json({ aquarios: [] });
+                            res.status(204).json({
+                                aquarios: []
+                            });
                         }
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -132,21 +134,50 @@ function buscarQuiz(req, res) {
         )
 }
 
-    function buscarInformacao(req, res) {
-        var idUsuario = req.body.idUsuarioServer;
+function buscarInformacao(req, res) {
+    var idUsuario = req.body.idUsuarioServer;
 
-        usuarioModel.buscarInformacao(idUsuario).then(function(resultado) {
-            if(resultado.length > 0) {
-                res.status(200).json(resultado)
-            } else {
-                res.status(204).send("Nenhum resultado encontrado");
-            }
-        }).catch(function(erro){
-            console.log(erro);
-            console.log("Houve um erro ao buscar a Informação.", erro.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
-        });
+    usuarioModel.buscarInformacao(idUsuario).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado)
+        } else {
+            res.status(204).send("Nenhum resultado encontrado");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a Informação.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarComentario(req, res) {
+    var descricao = req.body.descricaoServer;
+    var idUsuario = req.body.idUsuarioServer;
+
+    if (descricao == undefined) {
+        res.status(400).send("Seu comentario está undefined!");
+    } else if (idUsuario == undefined) {
+        res.status(400).send("Seu comentario está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.buscarComentario(descricao, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o comentario! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
+}
 
 
 module.exports = {
@@ -154,5 +185,6 @@ module.exports = {
     cadastrar,
     registrarQuiz,
     buscarQuiz,
-    buscarInformacao
+    buscarInformacao,
+    buscarComentario
 }
