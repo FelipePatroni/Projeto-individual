@@ -62,8 +62,6 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
             descricaoServer: descricao,
             idUsuarioServer: sessionStorage.ID_USUARIO
             }),
@@ -71,5 +69,10 @@
         .then(function (resposta) {
         console.log("resposta: ", resposta);
       })
+
+      for (let index = 0; index < lista_comentario; index++) {
+        let descricao = lista_comentario[index];
+        div_mensagem.innerHTML += `${descricao}`
+    }
     }   
 </script>

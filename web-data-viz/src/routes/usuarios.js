@@ -28,4 +28,8 @@ router.post("/buscarComentario", function (req,res) {
     usuarioController.buscarComentario(req, res);
 });
 
+router.post("/aparecerComentario", function (req,res) {
+    usuarioController.aparecerComentario(req, res);
+});
+
 module.exports = router;
