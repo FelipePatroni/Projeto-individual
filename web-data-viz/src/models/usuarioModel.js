@@ -25,9 +25,8 @@ function cadastrar(nome, email, cep, cpf, sexo, telefone, senha) {
 function registrarQuiz(PontoCerto, PontoErrado, idUsuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registrarQuiz():", PontoCerto, PontoErrado, idUsuario);
 
-    var instrucaoSql = 
-        `INSERT INTO Pontuacao (PontoCerto, PontoErrado, FkUsuario) VALUES (${PontoCerto}, ${PontoErrado}, ${idUsuario});`
-    ;
+    var instrucaoSql =
+        `INSERT INTO Pontuacao (PontoCerto, PontoErrado, FkUsuario) VALUES (${PontoCerto}, ${PontoErrado}, ${idUsuario});`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -35,9 +34,8 @@ function registrarQuiz(PontoCerto, PontoErrado, idUsuario) {
 function buscarQuiz(idUsuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function quizSelect():", idUsuario);
 
-    var instrucaoSql = 
-        `SELECT usuario.nome, Pontuacao.PontoCerto, Pontuacao.PontoErrado FROM usuario JOIN Pontuacao ON FkUsuario = ${idUsuario};`
-    ;
+    var instrucaoSql =
+        `SELECT usuario.nome, Pontuacao.PontoCerto, Pontuacao.PontoErrado FROM usuario JOIN Pontuacao ON FkUsuario = ${idUsuario};`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -71,13 +69,26 @@ function aparecerComentario(descricao, idUsuario) {
 }
 
 
+function aparecerRanking() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function aparecerRanking(): ");
 
-module.exports = {
-    autenticar,
-    cadastrar,
-    registrarQuiz,
-    buscarQuiz,
-    buscarInformacao,
-    buscarComentario,
-    aparecerComentario
-};
+    var instrucaoSql =
+        ` SELECT usuario.nome, MAX(Pontuacao.PontoCerto) AS 'Pontuação'FROM Pontuacao JOIN usuario ON Pontuacao.fkUsuario = usuario.idUsuario GROUP BY  usuario.nome ORDER BY Pontuação ASC;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    // Executa a instrução SQL no banco de dados e retorna o resultado
+    return database.executar(instrucaoSql);
+}
+
+
+    module.exports = {
+        autenticar,
+        cadastrar,
+        registrarQuiz,
+        buscarQuiz,
+        buscarInformacao,
+        buscarComentario,
+        aparecerComentario,
+        aparecerRanking
+    };

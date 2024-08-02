@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div_ranking"></div>
+</body>
+</html>
+
+<script>
+     aparecerRanking()
+    //Função que irá executar o fetch para o funcionamento do ranking 10/07/2024
+    function aparecerRanking() {
+        fetch(`/usuarios/aparecerRanking`, {cache: 'no-store'}).then(function (response){
+            if (response.ok){
+                response.json().then(function (resposta){
+                    resposta.reverse();
+                    gerarForRanking(resposta);
+                });
+            } else {
+                console.error('Erro ao Executar o Ranking')
+            }
+        })
+            .catch(function (error){
+                console.error(`Erro ao Executar o Ranking ${error.message}`)
+            });
+    }
+
+    
+    function gerarForRanking(resposta){
+        for(index = 0; index < resposta.length; index++){
+            let rankingAtualizado = resposta[index];
+            div_ranking.innerHTML +=  `<div class="jao"> <P> <span> ${index + 1} - </span> <b style="color: rgb(153, 44, 255);">${rankingAtualizado.nome}</b>: <span> ${rankingAtualizado.Pontuação} Pontos</span> </P></div>`
+        }
+    }
+</script>

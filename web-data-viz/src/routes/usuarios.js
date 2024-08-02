@@ -32,4 +32,8 @@ router.post("/aparecerComentario", function (req,res) {
     usuarioController.aparecerComentario(req, res);
 });
 
+router.get("/aparecerRanking", function(req, res){
+    usuarioController.aparecerRanking(req, res);
+})
+
 module.exports = router;

@@ -210,6 +210,25 @@ function aparecerComentario(req, res) {
 }
 
 
+function aparecerRanking(req, res){
+    usuarioModel.aparecerRanking()
+        .then(
+            function(resultado){
+                res.json(resultado);
+            }
+        ).catch(
+            function(erro){
+                console.log(erro);
+                console.log(
+                    "\nErro ao achar as pontuações! Erro:",
+                    erro.sqlMessage
+                  );
+                  res.status(500).json(erro.sqlMessage);
+            }
+        )
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -217,5 +236,6 @@ module.exports = {
     buscarQuiz,
     buscarInformacao,
     buscarComentario,
-    aparecerComentario
+    aparecerComentario,
+    aparecerRanking
 }
