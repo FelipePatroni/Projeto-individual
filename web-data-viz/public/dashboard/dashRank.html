@@ -12,7 +12,6 @@
 
 <script>
      aparecerRanking()
-    //Função que irá executar o fetch para o funcionamento do ranking 10/07/2024
     function aparecerRanking() {
         fetch(`/usuarios/aparecerRanking`, {cache: 'no-store'}).then(function (response){
             if (response.ok){
@@ -33,7 +32,7 @@
     function gerarForRanking(resposta){
         for(index = 0; index < resposta.length; index++){
             let rankingAtualizado = resposta[index];
-            div_ranking.innerHTML +=  `<div class="jao"> <P> <span> ${index + 1} - </span> <b style="color: rgb(153, 44, 255);">${rankingAtualizado.nome}</b>: <span> ${rankingAtualizado.Pontuação} Pontos</span> </P></div>`
+            div_ranking.innerHTML +=  `<div class="rank"> <P> <span> ${index + 1} - </span> <b style="color: rgb(153, 44, 255);">${rankingAtualizado.nome}</b>: <span> ${rankingAtualizado.Pontuação} Pontos</span> </P></div>`
         }
     }
 </script>

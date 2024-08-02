@@ -74,5 +74,37 @@
         let descricao = lista_comentario[index];
         div_mensagem.innerHTML += `${descricao}`
     }
-    }   
+
+    }
+    
+    aparecerComentario()
+    function aparecerComentario() {
+        fetch(`/usuarios/aparecerComentario`, {cache: 'no-store'}).then(function (response){
+            if (response.ok){
+                response.json().then(function (resposta){
+                    resposta.reverse();
+                    gerarComentario(resposta);
+                });
+            } else {
+                console.error('Erro ao Executar o comentario')
+            }
+        })
+            .catch(function (error){
+                console.error(`Erro ao Executar o comentario ${error.message}`)
+            });
+    }
+
+    function gerarComentario(resposta){
+        for(index = 0; index < resposta.length; index++){
+            let ComentarioAtualizado = resposta[index];
+            div_mensagem.innerHTML +=  `<div class="InicioComentario"> <P class="nomeComentario">${ComentarioAtualizado.nome}: </P> <span class"Comentario"> ${ComentarioAtualizado.descricao} </span> </div>`
+            
+        }
+
+        
+    }
+
+    
+
+
 </script>

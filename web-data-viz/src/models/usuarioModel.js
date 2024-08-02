@@ -59,11 +59,11 @@ function buscarComentario(descricao, idUsuario) {
     return database.executar(instrucaoSql)
 }
 
-function aparecerComentario(descricao, idUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED', \n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu bd está RODANDO CORRETAMENTE \n\n funcion buscarComentario():", descricao, idUsuario)
+function aparecerComentario() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED', \n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu bd está RODANDO CORRETAMENTE \n\n funcion aparecerComentario():")
 
     var instrucaoSql = `
-    SELECT usuario.nome, post.descricao from post join usuario on fkusuario = ${idusuario};
+    SELECT usuario.nome, post.descricao from post join usuario on Post.fkusuario = usuario.idUsuario;
     `;
     return database.executar(instrucaoSql)
 }

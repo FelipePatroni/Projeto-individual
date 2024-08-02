@@ -181,17 +181,7 @@ function buscarComentario(req, res) {
 
 
 function aparecerComentario(req, res) {
-    var descricao = req.body.descricaoServer;
-    var idUsuario = req.body.idUsuarioServer;
-
-    if (descricao == undefined) {
-        res.status(400).send("Seu comentario está undefined!");
-    } else if (idUsuario == undefined) {
-        res.status(400).send("Seu comentario está undefined!");
-    } else {
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.aparecerComentario(descricao, idUsuario)
+        usuarioModel.aparecerComentario()
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -200,30 +190,30 @@ function aparecerComentario(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o comentario! Erro: ",
+                        "\nErro ao achar os comentarios! Erro:",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
                 }
-            );
+            )
     }
-}
 
 
-function aparecerRanking(req, res){
+
+function aparecerRanking(req, res) {
     usuarioModel.aparecerRanking()
         .then(
-            function(resultado){
+            function (resultado) {
                 res.json(resultado);
             }
         ).catch(
-            function(erro){
+            function (erro) {
                 console.log(erro);
                 console.log(
                     "\nErro ao achar as pontuações! Erro:",
                     erro.sqlMessage
-                  );
-                  res.status(500).json(erro.sqlMessage);
+                );
+                res.status(500).json(erro.sqlMessage);
             }
         )
 }
