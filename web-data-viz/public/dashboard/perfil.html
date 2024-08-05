@@ -10,7 +10,7 @@
 
 <body>
     <div class="dashboard">
-        <div class="header" id="noticia">
+        <div class="header" id="#iniciodash">
             <div class="container">
                 <ul class="navbar">
                     <a href="../dashboard/dashboard.html">
@@ -20,11 +20,11 @@
                     <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
                     <li> <a href="../dashboard/jogodash.html">Jogo</a></li>
                     <li><a href="../dashboard/graficodash.html">Pontuação</a></li>
+                    <li><a href="../dashboard/dashRank.html">Ranking</a></li>
                     <li><a href="../index.html" onclick="limparSessao()">Sair</a></li>
                 </ul>
             </div>
         </div>
-    </div>
 
     <div class="caixa_preta">
         <div class="comeco">
@@ -70,12 +70,12 @@
         console.log("resposta: ", resposta);
       })
 
-      for (let index = 0; index < lista_comentario; index++) {
-        let descricao = lista_comentario[index];
-        div_mensagem.innerHTML += `${descricao}`
+        window.location.reload(true)
+        window.location.reload(forcedReload)
+    
     }
 
-    }
+
     
     aparecerComentario()
     function aparecerComentario() {
@@ -87,6 +87,7 @@
                 });
             } else {
                 console.error('Erro ao Executar o comentario')
+                
             }
         })
             .catch(function (error){
@@ -97,14 +98,17 @@
     function gerarComentario(resposta){
         for(index = 0; index < resposta.length; index++){
             let ComentarioAtualizado = resposta[index];
-            div_mensagem.innerHTML +=  `<div class="InicioComentario"> <P class="nomeComentario">${ComentarioAtualizado.nome}: </P> <span class"Comentario"> ${ComentarioAtualizado.descricao} </span> </div>`
+            div_mensagem.innerHTML +=  `<div class="InicioComentario"> <P class="nomeComentario">${ComentarioAtualizado.nome}: </P> <span class="Comentario"> ${ComentarioAtualizado.descricao} </span> </div>`
             
         }
 
         
     }
 
-    
+    function limparSessao() {
+    sessionStorage.clear();
+    window.location.href = '../index.html';
+}
 
 
 </script>

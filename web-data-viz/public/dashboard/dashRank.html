@@ -1,38 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/rank.css">
 </head>
+
 <body>
-    <div id="div_ranking"></div>
+    <div class="dashboard">
+        <div class="header" id="#iniciodash">
+            <div class="container">
+                <ul class="navbar">
+                    <a href="../dashboard/dashboard.html">
+                        <li>Inicio</li>
+                    </a>
+                    <li><a href="../dashboard/perfil.html">Perfil</a></li>
+                    <li><a href="../dashboard/dashNoticia.html">Noticias</a></li>
+                    <li> <a href="../dashboard/jogodash.html">Jogo</a></li>
+                    <li><a href="../dashboard/graficodash.html">Pontuação</a></li>
+                    <li><a href="../dashboard/dashRank.html">Ranking</a></li>
+                    <li><a href="../index.html" onclick="limparSessao()">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+        <h1 class="titulo">RANKING</h1>
+        <div class="caixaRank">
+            <div id="div_ranking"></div>
+        </div>
+    </div>
+
 </body>
+
 </html>
 
 <script>
-     aparecerRanking()
+    aparecerRanking()
+
     function aparecerRanking() {
-        fetch(`/usuarios/aparecerRanking`, {cache: 'no-store'}).then(function (response){
-            if (response.ok){
-                response.json().then(function (resposta){
-                    resposta.reverse();
-                    gerarForRanking(resposta);
-                });
-            } else {
-                console.error('Erro ao Executar o Ranking')
-            }
-        })
-            .catch(function (error){
+        fetch(`/usuarios/aparecerRanking`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        resposta.reverse();
+                        gerarForRanking(resposta);
+                    });
+                } else {
+                    console.error('Erro ao Executar o Ranking')
+                }
+            })
+            .catch(function (error) {
                 console.error(`Erro ao Executar o Ranking ${error.message}`)
             });
     }
 
-    
-    function gerarForRanking(resposta){
-        for(index = 0; index < resposta.length; index++){
+
+    function gerarForRanking(resposta) {
+        for (index = 0; index < resposta.length; index++) {
             let rankingAtualizado = resposta[index];
-            div_ranking.innerHTML +=  `<div class="rank"> <P> <span> ${index + 1} - </span> <b style="color: rgb(153, 44, 255);">${rankingAtualizado.nome}</b>: <span> ${rankingAtualizado.Pontuação} Pontos</span> </P></div>`
+            div_ranking.innerHTML +=
+                `<div class="rank"> <P> <span class="numero"> ${index + 1} - </span> <b class="nome">${rankingAtualizado.nome}</b>: <span class="ponto"> ${rankingAtualizado.Pontuação} Pontos</span> </P></div>`
         }
+    }
+
+    function limparSessao() {
+        sessionStorage.clear();
+        window.location.href = '../index.html';
     }
 </script>

@@ -1,0 +1,70 @@
+body {
+    background-color: #00a2ff;
+  }
+  .dashboard {
+    background-color: #00a2ff;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .header {
+    background: #0d0f36;
+    display: flex;
+    width: 35vh;
+    height: 97vh;
+    border-radius: 15px;
+    position: fixed;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    height: 95vh;
+    width: 50%;
+    justify-content: space-evenly;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .titulo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 102vh;
+    margin-top: 5vh;
+  }
+
+  .caixaRank{
+    display: flex;
+    flex-direction: column;
+    width: 40vh;
+    height: 80vh;
+    margin-left: 90vh;
+    margin-top: 3vh;
+    background-color: #4e52a0;
+    border-radius: 20px;
+  }
+
+  .rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #0d0f36;
+    margin-top: 3vh;
+    border-radius: 30px;
+    width: 30vh;
+    margin-left: 40px;
+    font-size: 20px;
+  }
+
