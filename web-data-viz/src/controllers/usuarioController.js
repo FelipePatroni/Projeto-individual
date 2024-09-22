@@ -50,7 +50,7 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
@@ -60,7 +60,7 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
 
 
-    // Faça as validações dos valores
+
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
@@ -77,7 +77,7 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+
         usuarioModel.cadastrar(nome, email, cep, cpf, sexo, telefone, senha)
             .then(
                 function (resultado) {
@@ -102,7 +102,6 @@ function registrarQuiz(req, res) {
     var PontoErrado = req.body.PontoErradoServer;
     var idUsuario = req.body.idUsuarioServer;
 
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     usuarioModel.registrarQuiz(PontoCerto, PontoErrado, idUsuario)
         .then(
             function (resultado) {
@@ -218,6 +217,20 @@ function aparecerRanking(req, res) {
         )
 }
 
+function graficoComentario(req, res) {
+    var idUsuario = req.body.idUsuarioServer
+
+    usuarioModel.graficoComentario(idUsuario)
+        .then(
+            function (resultado_Quiz) {
+
+                res.json({
+                    resultado_Quiz
+                });
+            }
+        )
+}
+
 
 module.exports = {
     autenticar,
@@ -227,5 +240,6 @@ module.exports = {
     buscarInformacao,
     buscarComentario,
     aparecerComentario,
-    aparecerRanking
+    aparecerRanking,
+    graficoComentario
 }

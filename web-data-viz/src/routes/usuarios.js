@@ -36,4 +36,8 @@ router.get("/aparecerRanking", function(req, res){
     usuarioController.aparecerRanking(req, res);
 })
 
+router.get("/graficoComentario", function(req, res){
+    usuarioController.graficoComentario(req, res);
+})
+
 module.exports = router;

@@ -105,10 +105,90 @@
         
     }
 
-    function limparSessao() {
+
+    function graficoComentario() {
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/usuarios/graficoComentario/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                plotarGraficoComentario(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+        });
+}
+
+function plotarGraficoComentario(resposta) {
+    
+    let = labels = resposta.labels;  
+    let comentarios = resposta.comentarios;
+
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Comentarios',
+            data: comentario,
+            backgroundColor: ['green', 'red'],
+            borderColor: ['green', 'red'],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: dados,
+    };
+
+    let myChart = new Chart(
+        document.getElementById(`myChartCanvas`),
+        config
+    );
+}
+
+function exibir() {
+    document.getElementById("graficos").innerHTML += `
+       <div id="grafico">
+           <h2 class="tituloGraficos">
+               <span id="tituloGrafico">Gráfico de Comentarios</span>
+           </h2>
+           <div class="graph">
+               <canvas id="myChartCanvas"></canvas>
+           </div>
+           <div class="label-captura">
+               <p id="avisoCaptura"></p>
+           </div>
+       </div>
+       <div id="mensagem_media" class="media">
+        </div>
+   `;
+
+   graficoComentario();
+}
+
+function limparSessao() {
     sessionStorage.clear();
     window.location.href = '../index.html';
 }
+
+
+
+
 
 
 </script>

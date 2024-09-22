@@ -81,6 +81,15 @@ function aparecerRanking() {
     return database.executar(instrucaoSql);
 }
 
+function graficoComentario() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED', \n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu bd está RODANDO CORRETAMENTE \n\n funcion graficoComentario():")
+
+    var instrucaoSql = `
+    SELECT * FROM post JOIN usuario ON fkusuario = idusuario;
+    `;
+    return database.executar(instrucaoSql)
+}
+
 
     module.exports = {
         autenticar,
@@ -90,5 +99,6 @@ function aparecerRanking() {
         buscarInformacao,
         buscarComentario,
         aparecerComentario,
-        aparecerRanking
+        aparecerRanking,
+        graficoComentario
     };
