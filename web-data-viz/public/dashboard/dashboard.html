@@ -13,6 +13,10 @@
         <div class="header" id="#iniciodash">
             <div class="container">
                 <ul class="navbar">
+                    <div class="usuario">
+                    <img src="https://labes.inf.ufes.br/wp-content/uploads/sem-foto.jpg" alt="" class="img">
+                    <h6><span id="b_usuario">usuário</span></h6>
+                    </div>
                     <a href="#iniciodash">
                         <li>Inicio</li>
                     </a>
@@ -87,5 +91,7 @@
         sessionStorage.clear();
         window.location.href = '../index.html';
     }
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 </script>
 </html>

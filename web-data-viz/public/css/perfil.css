@@ -22,20 +22,37 @@ body {
   align-items: center;
 }
 
+.usuario img{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  border-radius: 50%;
+  width: 10vh;
+  height: 10vh;
+}
+
+#b_usuario {
+  display: flex;
+  font-size: 3vh;
+  color: white;
+}
+
 .navbar {
   display: flex;
   flex-direction: column;
   list-style: none;
   height: 95vh;
   width: 50%;
-  justify-content: space-evenly;
+  justify-content:space-evenly;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 25px;
+  font-size: 3vh;
 }
 
 .navbar a {
   text-decoration: none;
   color: white;
+  border: 3px solid white;
+  border-radius: 2px;
 }
 
 .caixa_preta {
