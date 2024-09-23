@@ -1,6 +1,5 @@
 Create database Projeto_volei;
 use Projeto_volei;
-
 Create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar(45),
@@ -20,11 +19,23 @@ FkUsuario int,
 constraint FkpontuacaoUsuario foreign key (FkUsuario) references usuario(idUsuario)
 );
 
-Create table Paises (
-idPais int primary key auto_increment,
-nome varchar(60),
-FkPais int,
-constraint FkPais foreign key (FkPais) references usuario(IdUsuario)
+SELECT usuario.nome, MAX(Pontuacao.PontoCerto) AS 'Pontuação'FROM Pontuacao JOIN usuario ON Pontuacao.fkUsuario = usuario.idUsuario GROUP BY  usuario.nome ORDER BY Pontuação ASC;
+
+select * from pontuacao;
+
+Create table Post (
+idPost int primary key auto_increment,
+descricao varchar(250),
+FkUsuario int,
+constraint FkPostUsuario foreign key (FkUsuario) references usuario(IdUsuario)
 );
 
 select * from usuario;
+
+select usuario.nome, post.descricao from post join usuario on fkusuario = idusuario;
+
+truncate post	;
+
+select * from usuario;
+
+select * from post join usuario on fkusuario=idusuario;
