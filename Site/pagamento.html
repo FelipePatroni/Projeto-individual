@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TERROR- - Pagamento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Creepster&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Css/pagamento.css">
+</head>
+<body>
+  <header class="navbar">
+    <h1>TERROR-</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Sobre</a>
+      <a href="index.html">Contato</a>
+    </nav>
+    <div class="actions">
+      <input type="text" placeholder="Buscar..." />
+      <button><a href="cadastro.html">Cadastro</a></button>
+    </div>
+  </header>
+
+  <main class="payment-container">
+    <!-- RESUMO DO PLANO -->
+    <section class="plan-summary">
+      <h2>Resumo do Pedido</h2>
+      
+      <div class="plan-card">
+        <div class="plan-name">Plano Premium Drácula</div>
+        <div class="plan-price">R$ 49,90 <span>/mês</span></div>
+        
+        <ul class="plan-features">
+          <li><i class="fas fa-check-circle"></i> Catálogo completo + Exclusivos</li>
+          <li><i class="fas fa-check-circle"></i> Acesso ilimitado em dispositivos</li>
+          <li><i class="fas fa-check-circle"></i> Sessões virtuais em grupo</li>
+          <li><i class="fas fa-check-circle"></i> Qualidade 4K Ultra HD + HDR</li>
+          <li><i class="fas fa-check-circle"></i> Acesso antecipado a novidades</li>
+          <li><i class="fas fa-check-circle"></i> Suporte 24/7</li>
+        </ul>
+      </div>
+
+      <div class="total-section">
+        <div class="total-row">
+          <span>Subtotal:</span>
+          <span>R$ 49,90</span>
+        </div>
+        <div class="total-row">
+          <span>Desconto (Primeiro mês):</span>
+          <span style="color: #4caf50;">-R$ 5,00</span>
+        </div>
+        <div class="total-row total-final">
+          <span>Total:</span>
+          <span>R$ 44,90</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO DE PAGAMENTO -->
+    <section class="payment-form">
+      <h2>Informações de Pagamento</h2>
+      
+      <form id="paymentForm">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="payment-methods">
+          <h3>Método de Pagamento</h3>
+          <div class="method-options">
+            <label class="method-option" for="card">
+              <input type="radio" id="card" name="payment-method" value="card" checked>
+              <i class="fas fa-credit-card"></i> Cartão
+            </label>
+            <label class="method-option" for="pix">
+              <input type="radio" id="pix" name="payment-method" value="pix">
+              <i class="fas fa-qrcode"></i> PIX
+            </label>
+            <label class="method-option" for="boleto">
+              <input type="radio" id="boleto" name="payment-method" value="boleto">
+              <i class="fas fa-barcode"></i> Boleto
+            </label>
+          </div>
+        </div>
+
+        <div id="card-details">
+          <div class="form-group">
+            <label for="cardNumber">Número do Cartão</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+          </div>
+
+          <div class="form-group">
+            <label for="cardName">Nome no Cartão</label>
+            <input type="text" id="cardName" name="cardName" placeholder="NOME COMO ESTÁ NO CARTÃO">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry">Validade</label>
+              <input type="text" id="expiry" name="expiry" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14">
+        </div>
+
+        <div class="security-info">
+          <i class="fas fa-shield-alt"></i>
+          <span>Seus dados estão protegidos com criptografia SSL de 256 bits</span>
+        </div>
+
+        <button type="submit" class="pay-button">
+          <i class="fas fa-lock"></i> Finalizar Pagamento Seguro
+        </button>
+
+        <div class="terms">
+          Ao continuar, você concorda com nossos 
+          <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>.<br>
+          Cobrança recorrente mensal. Cancele a qualquer momento.
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Formatação de campos
+    document.getElementById('cardNumber').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+      e.target.value = value;
+    });
+
+    document.getElementById('expiry').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+      }
+      e.target.value = value;
+    });
+
+    document.getElementById('cpf').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      e.target.value = value;
+    });
+
+    document.getElementById('cvv').addEventListener('input', function(e) {
+      e.target.value = e.target.value.replace(/\D/g, '');
+    });
+
+    // Seleção de método de pagamento
+    const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+    const cardDetails = document.getElementById('card-details');
+    
+    paymentMethods.forEach(method => {
+      method.addEventListener('change', function() {
+        // Remove seleção visual anterior
+        document.querySelectorAll('.method-option').forEach(option => {
+          option.classList.remove('selected');
+        });
+        
+        // Adiciona seleção visual atual
+        this.parentElement.classList.add('selected');
+        
+        // Mostra/esconde campos do cartão
+        if (this.value === 'card') {
+          cardDetails.style.display = 'block';
+        } else {
+          cardDetails.style.display = 'none';
+        }
+      });
+    });
+
+    // Inicializar com cartão selecionado
+    document.querySelector('label[for="card"]').classList.add('selected');
+
+    // Submissão do formulário
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const payButton = document.querySelector('.pay-button');
+      const originalText = payButton.innerHTML;
+      
+      payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+      payButton.disabled = true;
+      
+      // Simular processamento
+      setTimeout(() => {
+        showSuccessPopup();
+        payButton.innerHTML = originalText;
+        payButton.disabled = false;
+      }, 2000);
+    });
+
+    // Função para mostrar popup de sucesso
+    function showSuccessPopup() {
+      // Criar overlay
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      `;
+
+      // Criar popup
+      const popup = document.createElement('div');
+      popup.style.cssText = `
+        background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        border: 2px solid #f4d35e;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        animation: popupSlideIn 0.5s ease-out;
+      `;
+
+      popup.innerHTML = `
+        <style>
+          @keyframes popupSlideIn {
+            from {
+              opacity: 0;
+              transform: scale(0.8) translateY(-50px);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+        </style>
+        <div style="color: #f4d35e; font-size: 4rem; margin-bottom: 20px;">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 style="color: #f4d35e; font-size: 1.8rem; margin-bottom: 15px; font-weight: 600;">
+          Pagamento Aprovado!
+        </h2>
+        <p style="color: #fff; font-size: 1.1rem; margin-bottom: 25px; line-height: 1.5;">
+          Bem-vindo ao <strong style="color: #f4d35e;">TERROR- Premium</strong>!<br>
+          Agora você pode assistir seus filmes de terror favoritos no seu ritmo.
+        </p>
+        <button id="continueBtn" style="
+          background: linear-gradient(135deg, #f4d35e, #ffe066);
+          border: none;
+          color: #000;
+          padding: 12px 30px;
+          border-radius: 15px;
+          cursor: pointer;
+          font-weight: 600;
+          font-family: 'Inter', sans-serif;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(244, 211, 94, 0.4);
+        ">
+          Continuar para Cadastro
+        </button>
+      `;
+
+      overlay.appendChild(popup);
+      document.body.appendChild(overlay);
+
+      // Efeito hover no botão
+      const continueBtn = popup.querySelector('#continueBtn');
+      continueBtn.addEventListener('mouseenter', function() {
+        this.style.background = 'linear-gradient(135deg, #ffe066, #fff176)';
+        this.style.transform = 'translateY(-2px)';
+        this.style.boxShadow = '0 6px 20px rgba(244, 211, 94, 0.6)';
+      });
+      
+      continueBtn.addEventListener('mouseleave', function() {
+        this.style.background = 'linear-gradient(135deg, #f4d35e, #ffe066)';
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 4px 15px rgba(244, 211, 94, 0.4)';
+      });
+
+      // Ação do botão continuar
+      continueBtn.addEventListener('click', function() {
+        window.location.href = 'cadastro.html';
+      });
+
+      // Fechar popup clicando no overlay (opcional)
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          document.body.removeChild(overlay);
+        }
+      });
+    }
+
+    // Adicionar efeito de hover nos campos de input
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.02)';
+        this.parentElement.style.transition = 'transform 0.2s ease';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

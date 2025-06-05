@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Escolher Perfil - TERROR-</title>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="Css/selecionar-perfil.css">
+</head>
+
+<body>
+    <audio id="somBoasVindas" src="AudioEntrada.opus"></audio>
+
+    <div class="borda-topo"></div>
+
+    <header class="site-header">
+        <h1>TERROR-</h1>
+    </header>
+
+    <main class="perfil-container">
+        <h2>Quem está assistindo?</h2>
+
+        <div class="perfis">
+            <div class="perfil" data-name="Bia Ribeiro">
+                <img src="img/img6_bianca.png" alt="Usuário 1" />
+                <span>Bia Ribeiro</span>
+            </div>
+            <div class="perfil protected" data-name="F_Ferrari" data-password="ferrari123">
+                <img src="img/img7_ferrari.png" alt="Usuário 2" />
+                <span>F_Ferrari</span>
+            </div>
+            <div class="perfil" data-name="Cauã">
+                <img src="img/img8_caua.png" alt="Usuário 3" />
+                <span>Cauã</span>
+            </div>
+            <div class="perfil protected" data-name="Ana Machado" data-password="ana2024">
+                <img src="img/img8_ana.png" alt="Usuário 4" />
+                <span>Ana Machado</span>
+            </div>
+            <div class="perfil" data-name="Adicionar">
+                <img src="img/+.png" alt="Adicionar" />
+                <span>Adicionar</span>
+            </div>
+        </div>
+
+        <a href="gerenciarPerfil.html"><button class="gerenciar">Gerenciar Perfis</button></a>
+    </main>
+
+    <!-- Modal de senha -->
+    <div class="modal-overlay" id="modalSenha">
+        <div class="modal-senha" id="modalContent">
+            <h3>Perfil Protegido</h3>
+            <div class="user-name" id="userName"></div>
+            <input type="password" id="senhaInput" placeholder="Digite a senha" maxlength="20">
+            <div class="error-message" id="errorMessage">Senha incorreta! Tente novamente.</div>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-confirmar" id="btnConfirmar">Confirmar</button>
+                <button class="btn-modal btn-cancelar" id="btnCancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="boas-vindas" style="display:none; 
+      position: fixed; 
+      top: 50%; left: 50%; 
+      transform: translate(-50%, -50%); 
+      background: rgba(0,0,0,0.8); 
+      padding: 40px 60px; 
+      border-radius: 15px; 
+      color: #f4d35e; 
+      font-family: 'Coiny', cursive; 
+      font-size: 2.5rem; 
+      text-align: center;
+      box-shadow: 0 0 20px #f4d35e;">
+    </div>
+
+    <div class="borda-base"></div>
+
+    <script>
+        const perfis = document.querySelectorAll(".perfil");
+        const containerPerfis = document.querySelector(".perfis");
+        const gerenciarBtn = document.querySelector(".gerenciar");
+        const boasVindasDiv = document.getElementById("boas-vindas");
+        const titulo = document.querySelector("main.perfil-container > h2");
+        const somBoasVindas = document.getElementById("somBoasVindas");
+
+        // Elementos do modal
+        const modalOverlay = document.getElementById("modalSenha");
+        const modalContent = document.getElementById("modalContent");
+        const userName = document.getElementById("userName");
+        const senhaInput = document.getElementById("senhaInput");
+        const errorMessage = document.getElementById("errorMessage");
+        const btnConfirmar = document.getElementById("btnConfirmar");
+        const btnCancelar = document.getElementById("btnCancelar");
+
+        let currentProfile = null;
+
+        // Função para mostrar o modal de senha
+        function showPasswordModal(profile) {
+            currentProfile = profile;
+            const name = profile.dataset.name;
+            userName.textContent = `Digite a senha para ${name}`;
+            senhaInput.value = '';
+            errorMessage.classList.remove('show');
+            modalOverlay.classList.add('show');
+            senhaInput.focus();
+        }
+
+        // Função para esconder o modal
+        function hidePasswordModal() {
+            modalOverlay.classList.remove('show');
+            currentProfile = null;
+            modalContent.classList.remove('shake');
+        }
+
+        // Função para verificar a senha
+        function checkPassword() {
+            const inputPassword = senhaInput.value.trim();
+            const correctPassword = currentProfile.dataset.password;
+
+            if (inputPassword === correctPassword) {
+                hidePasswordModal();
+                proceedWithLogin(currentProfile);
+            } else {
+                // Mostrar erro e shake animation
+                errorMessage.classList.add('show');
+                modalContent.classList.add('shake');
+                senhaInput.value = '';
+                senhaInput.focus();
+
+                // Remover shake animation após completar
+                setTimeout(() => {
+                    modalContent.classList.remove('shake');
+                }, 500);
+
+                // Esconder mensagem de erro após 3 segundos
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Função para proceder com o login
+        function proceedWithLogin(perfil) {
+            const nome = perfil.dataset.name;
+
+            // Se for o perfil "Adicionar", não faz nada
+            if (nome === "Adicionar") {
+                return;
+            }
+
+            // Aplica fade-out nos elementos
+            containerPerfis.style.transition = "opacity 0.6s ease";
+            gerenciarBtn.style.transition = "opacity 0.6s ease";
+            if (titulo) titulo.style.transition = "opacity 0.6s ease";
+
+            containerPerfis.style.opacity = "0";
+            gerenciarBtn.style.opacity = "0";
+            if (titulo) titulo.style.opacity = "0";
+
+            setTimeout(() => {
+                containerPerfis.style.display = "none";
+                gerenciarBtn.style.display = "none";
+                if (titulo) titulo.style.display = "none";
+
+                boasVindasDiv.textContent = `Seja bem-vindo, ${nome}!`;
+                boasVindasDiv.style.opacity = "0";
+                boasVindasDiv.style.display = "block";
+                boasVindasDiv.style.transition = "opacity 0.6s ease";
+                void boasVindasDiv.offsetWidth;
+                boasVindasDiv.style.opacity = "1";
+
+                // Toca o som
+                somBoasVindas.play().catch(e => console.log("Erro ao tocar som:", e));
+
+            }, 300);
+
+            // Faz fade-out após 1500ms
+            setTimeout(() => {
+                document.body.classList.add("fade-out");
+            }, 1500);
+
+            // Redireciona após 3000ms
+            setTimeout(() => {
+                window.location.href = "streaming.html";
+            }, 3000);
+        }
+
+        // Event listeners para os perfis
+        perfis.forEach(perfil => {
+            perfil.addEventListener("click", () => {
+                const isProtected = perfil.classList.contains('protected');
+                
+                if (isProtected) {
+                    showPasswordModal(perfil);
+                } else {
+                    proceedWithLogin(perfil);
+                }
+            });
+        });
+
+        // Event listeners para o modal
+        btnConfirmar.addEventListener("click", checkPassword);
+        btnCancelar.addEventListener("click", hidePasswordModal);
+
+        // Enter key no input de senha
+        senhaInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Escape key para fechar modal
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modalOverlay.classList.contains('show')) {
+                hidePasswordModal();
+            }
+        });
+
+        // Click fora do modal para fechar
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+                hidePasswordModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

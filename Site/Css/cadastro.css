@@ -1,0 +1,296 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Coiny', cursive;
+  background-color: #0d1b2a;
+  color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+    .navbar {
+      background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(244, 211, 94, 0.1);
+    }
+
+    .navbar h1 {
+      color: #f4d35e;
+      font-size: 1.8rem;
+      text-shadow: 2px 2px 8px rgba(244, 211, 94, 0.4);
+      font-family: 'Creepster', cursive;
+      font-weight: 400;
+      background: linear-gradient(135deg, #f4d35e, #ffe066);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navbar nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 18px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .navbar nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(244, 211, 94, 0.2), rgba(255, 224, 102, 0.2));
+      border-radius: 12px;
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+
+    .navbar nav a:hover::before {
+      width: 100%;
+    }
+
+    .navbar nav a:hover {
+      color: #f4d35e;
+      transform: translateY(-2px);
+      text-shadow: 0 2px 8px rgba(244, 211, 94, 0.3);
+    }
+
+    .navbar .actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .navbar input[type="text"] {
+      padding: 10px 18px;
+      border-radius: 25px;
+      border: 2px solid rgba(244, 211, 94, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      min-width: 200px;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .navbar input[type="text"]:focus {
+      outline: none;
+      border-color: #f4d35e;
+      box-shadow: 0 0 15px rgba(244, 211, 94, 0.4);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar button {
+      background: linear-gradient(135deg, #f4d35e, #ffe066);
+      border: none;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(244, 211, 94, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .navbar button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .navbar button:hover::before {
+      left: 100%;
+    }
+
+    .navbar button:hover {
+      background: linear-gradient(135deg, #ffe066, #fff176);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(244, 211, 94, 0.5);
+    }
+
+    .navbar button a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+/* FORMULÁRIO DE CADASTRO - CONTAINER */
+.cadastro-container {
+  max-width: 750px;
+  background-color: #1e2d3b;
+  margin: 60px auto 80px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px #000000cc;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+}
+
+/* TÍTULO */
+.cadastro-container h2 {
+  color: #f4d35e;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* GRID FORM ROWS - duas colunas */
+.cadastro-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 40px;
+  margin-bottom: 30px;
+}
+
+/* GRUPO DE INPUTS */
+.cadastro-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABELS */
+.cadastro-form label {
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #f4d35e;
+  font-size: 1.1rem;
+}
+
+/* INPUTS E SELECT */
+.cadastro-form input,
+.cadastro-form select {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Coiny', cursive;
+  font-size: 1.15rem;
+  background-color: #0d1b2a;
+  color: #fff;
+  box-shadow: inset 0 0 7px #000000aa;
+  transition: 0.3s;
+}
+
+.cadastro-form input::placeholder {
+  color: #bbb;
+}
+
+.cadastro-form input:focus,
+.cadastro-form select:focus {
+  outline: none;
+  box-shadow: 0 0 12px #f4d35e;
+  background-color: #14243d;
+}
+
+/* BOTÃO ENVIAR */
+.cadastro-form button[type="submit"] {
+  width: 100%;
+  background-color: #f4d35e;
+  border: none;
+  color: #000;
+  padding: 16px;
+  font-weight: 700;
+  font-family: 'Coiny', cursive;
+  font-size: 1.25rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.cadastro-form button[type="submit"]:hover {
+  background-color: #ffe066;
+}
+
+/* RESPONSIVO - EM TELAS PEQUENAS UMA COLUNA */
+@media (max-width: 600px) {
+  .cadastro-container {
+    width: 90%;
+    margin: 40px auto 60px;
+    padding: 30px 25px;
+  }
+
+  .cadastro-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* IMAGENS FLUTUANTES */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.floating-img {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  pointer-events: none; /* para não interferir em cliques */
+  animation: float 4s ease-in-out infinite;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.img1 {
+  top: 100px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.img2 {
+  bottom: 100px;
+  right: 20px;
+  animation-delay: 2s;
+}
+
+.cadastro-form a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}

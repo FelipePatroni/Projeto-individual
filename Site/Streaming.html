@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Streaming de Terror</title>
+  <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Css/Streaming.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <!-- Ícone do menu hambúrguer -->
+    <button class="menu-btn" id="menuToggle">☰</button>
+
+    <!-- Nome do site -->
+    <h1 class="logo">TERROR-</h1>
+
+    <!-- Barra de pesquisa -->
+    <div class="barra-pesquisa">
+      <input type="text" placeholder="Buscar filmes" />
+    </div>
+
+    <!-- Usuário -->
+    <div class="usuario">
+      <span class="nome">Felipe Patroni</span>
+      <div class="imagem-dropdown">
+        <img src="img/img7_ferrari.png" alt="Usuário" class="foto" />
+        <ul class="menu-usuario">
+          <li><a href="#">Trocar usuário</a></li>
+          <li><a href="#">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Menu de categorias (em vertical, aparece ao clicar) -->
+    <div class="categorias-menu" id="categoriasMenu">
+      <a href="#leve">Leve</a>
+      <a href="#namorado">Namorado(a)</a>
+      <a href="#familia">Família</a>
+      <a href="#classicos">Clássicos</a>
+      <a href="#suspense">Suspense</a>
+    </div>
+  </div>
+
+  <!-- CARROSSEL ABAIXO DA NAVBAR -->
+  <section class="carrossel-container">
+    <div class="carrossel">
+      <div class="slide ativo" style="background-image: url('img/Gaspa.png');">
+        <div class="btn-container">
+          <button class="btn-assistir">Assistir AGORA</button>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('img/img12.png');">
+        <div class="btn-container">
+          <button class="btn-assistir">Assistir AGORA</button>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('img/img13.png');">
+        <div class="btn-container">
+          <button class="btn-assistir">Assistir AGORA</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles -->
+    <button class="btn-prev">&#10094;</button>
+    <button class="btn-next">&#10095;</button>
+  </section>
+
+  <!-- SEÇÕES DE FILMES -->
+  <div class="container-filmes">
+
+    <!-- CATEGORIA: LEVE -->
+    <section class="secao-categoria" id="leve">
+      <h2 class="titulo-categoria">🌙 Terror Leve</h2>
+      <div class="grid-filmes">
+        <div class="card-filme" onclick="assistirFilme('Coraline')">
+          <div class="poster-filme" style="background-image: url('img/Carolina.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Coraline</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Monster House')">
+          <div class="poster-filme" style="background-image: url('img/Monster_House.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Monster House</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Beetlejuice')">
+          <div class="poster-filme" style="background-image: url('img/Beetlejuice_Beetlejuice_poster.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Beetlejuice</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Ghostbusters')">
+          <div class="poster-filme" style="background-image: url('img/Ghostbusters.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Ghostbusters</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Frighteners')">
+          <div class="poster-filme" style="background-image: url('img/The\ Frighteners.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Frighteners</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Scary Stories')">
+          <div class="poster-filme" style="background-image: url('img/Scary\ Stories.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Scary Stories to Tell in the Dark</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The House with a Clock')">
+          <div class="poster-filme" style="background-image: url('img/The_House_with_a_Clock_in_Its_Walls.png');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The House with a Clock in Its Walls</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Goosebumps')">
+          <div class="poster-filme" style="background-image: url('img/Goosebumps.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Goosebumps</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Addams Family')">
+          <div class="poster-filme" style="background-image: url('img/The\ Addams\ Family.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Addams Family</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Young Frankenstein')">
+          <div class="poster-filme" style="background-image: url('img/Young_Frankenstein_-_poster.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Young Frankenstein</div>
+        </div>
+
+        <!-- NOVOS FILMES ADICIONADOS -->
+        <div class="card-filme" onclick="assistirFilme('ParaNorman')">
+          <div class="poster-filme" style="background-image: url('img/ParaNorman.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">ParaNorman</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Casper')">
+          <div class="poster-filme" style="background-image: url('img/Casper.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Casper</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Hocus Pocus')">
+          <div class="poster-filme" style="background-image: url('img/Hocus\ Pocus.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Hocus Pocus</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Hotel Transylvania')">
+          <div class="poster-filme" style="background-image: url('img/Hotel\ Transylvania.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Hotel Transylvania</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Witches')">
+          <div class="poster-filme" style="background-image: url('img/The\ Witches\ \(filme\ de\ 1990\).jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Witches (1990)</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Edward Scissorhands')">
+          <div class="poster-filme" style="background-image: url('img/Edward\ Scissorhands.JPG');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Edward Scissorhands</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CATEGORIA: NAMORADO(A) -->
+    <section class="secao-categoria" id="namorado">
+      <h2 class="titulo-categoria">💕 Para Assistir a Dois</h2>
+      <div class="grid-filmes">
+        <div class="card-filme" onclick="assistirFilme('Scream')">
+          <div class="poster-filme" style="background-image: url('img/Scream-5.png');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Scream</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('A Quiet Place')">
+          <div class="poster-filme" style="background-image: url('img/A\ Quiet\ Place.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">A Quiet Place</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Ready or Not')">
+          <div class="poster-filme" style="background-image: url('img/Ready\ or\ Not.jpg');">
+            <span>Adicionar Poster<br>Ready or Not</span>
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Happy Death Day')">
+          <div class="poster-filme" style="background-image: url('img/Happy\ Death\ Day.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Happy Death Day</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Final Girls')">
+          <div class="poster-filme" style="background-image: url('img/The\ Final\ Girls.webp');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Final Girls</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Tucker and Dale')">
+          <div class="poster-filme" style="background-image: url('img/Tucker\ and\ Dale.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Tucker and Dale vs Evil</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Zombieland')">
+          <div class="poster-filme" style="background-image: url('img/Zombieland-poster.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Zombieland</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('What We Do in the Shadows')">
+          <div class="poster-filme" style="background-image: url('img/What\ We\ Do\ in\ the\ Shadows.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">What We Do in the Shadows</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Shaun of the Dead')">
+          <div class="poster-filme" style="background-image: url('img/Shaun\ of\ the\ Dead.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Shaun of the Dead</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Babysitter')">
+          <div class="poster-filme" style="background-image: url('img/The_Babysitter_\(2017\).png');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Babysitter</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Warm Bodies')">
+          <div class="poster-filme" style="background-image: url('img/Warm\ Bodies.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Warm Bodies</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Little Monsters')">
+          <div class="poster-filme" style="background-image: url('img/Little\ Monsters.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Little Monsters</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Love Witch')">
+          <div class="poster-filme" style="background-image: url('img/The_Love_Witch.png');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Love Witch</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Jennifer\'s Body')">
+          <div class="poster-filme" style="background-image: url('img/Jennifers_Body.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Jennifer's Body</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Crush the Skull')">
+          <div class="poster-filme" style="background-image: url('img/Crush_the_Skull.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Crush the Skull</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Dead Don’t Die')">
+          <div class="poster-filme" style="background-image: url('img/The_Dead_Dont_Die.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Dead Don’t Die</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIA: FAMÍLIA -->
+    <section class="secao-categoria" id="familia">
+      <h2 class="titulo-categoria">👨‍👩‍👧‍👦 Terror em Família</h2>
+      <div class="grid-filmes">
+        <div class="card-filme" onclick="assistirFilme('Hocus Pocus')">
+          <div class="poster-filme" style="background-image: url('img/Hocus\ Pocus.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Hocus Pocus</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Nightmare Before Christmas')">
+          <div class="poster-filme" style="background-image: url('img/The\ Nightmare\ Before\ Christmas.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Nightmare Before Christmas</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Coco')">
+          <div class="poster-filme" style="background-image: url('img/Coco.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Coco</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Hotel Transylvania')">
+          <div class="poster-filme" style="background-image: url('img/Hotel\ Transylvania.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Hotel Transylvania</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Casper')">
+          <div class="poster-filme" style="background-image: url('img/Casper.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Casper</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('ParaNorman')">
+          <div class="poster-filme" style="background-image: url('img/ParaNorman.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">ParaNorman</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Frankenweenie')">
+          <div class="poster-filme" style="background-image: url('img/Frankenweenie.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Frankenweenie</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Witches')">
+          <div class="poster-filme" style="background-image: url('img/The\ Witches\ \(filme\ de\ 1990\).jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Witches</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Corpse Bride')">
+          <div class="poster-filme" style="background-image: url('img/Corpse\ Bride.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Corpse Bride</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Book of Life')">
+          <div class="poster-filme" style="background-image: url('img/The\ Book\ of\ Life.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Book of Life</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Monster House')">
+          <div class="poster-filme" style="background-image: url('img/Monster_House.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Monster House</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Goosebumps')">
+          <div class="poster-filme" style="background-image: url('img/Goosebumps.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Goosebumps</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('The Addams Family')">
+          <div class="poster-filme" style="background-image: url('img/The\ Addams\ Family.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Addams Family</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Monster Family')">
+          <div class="poster-filme" style="background-image: url('img/Monster\ Family.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Monster Family</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Coraline')">
+          <div class="poster-filme" style="background-image: url('img/Carolina.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Coraline</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Scooby-Doo')">
+          <div class="poster-filme" style="background-image: url('img/Scooby-Doo_poster.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Scooby-Doo</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CATEGORIA: CLÁSSICOS -->
+    <section class="secao-categoria" id="classicos">
+      <h2 class="titulo-categoria">🎭 Clássicos do Terror</h2>
+      <div class="grid-filmes">
+        <div class="card-filme" onclick="assistirFilme('The Shining')">
+          <div class="poster-filme" style="background-image: url('img/The\ Shining.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Shining</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Psycho')">
+          <div class="poster-filme" style="background-image: url('img/Psycho.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Psycho</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Halloween')">
+          <div class="poster-filme" style="background-image: url('img/Halloween.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Halloween</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('A Nightmare on Elm Street')">
+          <div class="poster-filme" style="background-image: url('img/Nightmare_Elm_Street_1984.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">A Nightmare on Elm Street</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Friday the 13th')">
+          <div class="poster-filme" style="background-image: url('img/Friday\ the\ 13th.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Friday the 13th</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Exorcist')">
+          <div class="poster-filme" style="background-image: url('img/The\ Exorcist.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Exorcist</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Poltergeist')">
+          <div class="poster-filme" style="background-image: url('img/Poltergeist.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Poltergeist</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Rosemarys Baby')">
+          <div class="poster-filme" style="background-image: url('img/Rosemary\'s\ Baby.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Rosemary's Baby</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Omen')">
+          <div class="poster-filme" style="background-image: url('img/The\ Omen.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Omen</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Carrie')">
+          <div class="poster-filme" style="background-image: url('img/Carrie.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Carrie</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Martyrs')">
+          <div class="poster-filme" style="background-image: url('img/Martyrs\ \(2008\).jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Martyrs</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Inside')">
+          <div class="poster-filme" style="background-image: url('img/Inside.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Inside</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('High Tension')">
+          <div class="poster-filme" style="background-image: url('img/High\ Tension.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">High Tension</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Green Inferno')">
+          <div class="poster-filme" style="background-image: url('img/The\ Green\ Inferno.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Green Inferno</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Terrifier')">
+          <div class="poster-filme" style="background-image: url('img/Terrifier.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Terrifier</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Sadness')">
+          <div class="poster-filme" style="background-image: url('img/The\ Sadness.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Sadness</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIA: SUSPENSO -->
+    <section class="secao-categoria" id="suspense">
+      <h2 class="titulo-categoria">🕵️ Suspense</h2>
+      <div class="grid-filmes">
+        <div class="card-filme" onclick="assistirFilme('Gone Girl')">
+          <div class="poster-filme" style="background-image: url('img/Gone\ Girl.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Gone Girl</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Prisoners')">
+          <div class="poster-filme" style="background-image: url('img/Prisoners.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Prisoners</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Girl with the Dragon Tattoo')">
+          <div class="poster-filme" style="background-image: url('img/The\ Girl\ with\ the\ Dragon\ Tattoo.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Girl with the Dragon Tattoo</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Shutter Island')">
+          <div class="poster-filme" style="background-image: url('img/Shutter\ Island.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Shutter Island</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Zodiac')">
+          <div class="poster-filme" style="background-image: url('img/Zodiac.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Zodiac</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Se7en')">
+          <div class="poster-filme" style="background-image: url('img/Se7en.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Se7en</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Sixth Sense')">
+          <div class="poster-filme" style="background-image: url('img/The\ Sixth\ Sense.png');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Sixth Sense</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Others')">
+          <div class="poster-filme" style="background-image: url('img/The\ Others.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Others</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('The Invisible Guest')">
+          <div class="poster-filme" style="background-image: url('img/The\ Invisible\ Guest.jpeg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Invisible Guest</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Oldboy')">
+          <div class="poster-filme" style="background-image: url('img/Oldboy.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Oldboy</div>
+        </div>
+        <div class="card-filme" onclick="assistirFilme('Black Swan')">
+          <div class="poster-filme" style="background-image: url('img/Black\ Swan.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Black Swan</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('The Prestige')">
+          <div class="poster-filme" style="background-image: url('img/The\ Prestige.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Prestige</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Memento')">
+          <div class="poster-filme" style="background-image: url('img/Memento.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Memento</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Enemy')">
+          <div class="poster-filme" style="background-image: url('img/Enemy_poster.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Enemy</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('The Machinist')">
+          <div class="poster-filme" style="background-image: url('img/The\ Machinist.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">The Machinist</div>
+        </div>
+
+        <div class="card-filme" onclick="assistirFilme('Donnie Darko')">
+          <div class="poster-filme" style="background-image: url('img/Donnie\ Darko.jpg');">
+            <button class="btn-play" onclick="abrirPopup(this)">▶</button>
+          </div>
+          <div class="titulo-filme">Donnie Darko</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="popup-filme" class="popup oculto">
+      <div class="popup-conteudo">
+        <span class="popup-fechar" onclick="fecharPopup()">×</span>
+        <img id="popup-poster" src="" alt="Poster do Filme" />
+        <div class="popup-info">
+          <h3 id="popup-titulo">Título do Filme</h3>
+          <p id="popup-descricao">Descrição do filme aqui.</p>
+          <p id="popup-avaliacao">Avaliação: ⭐⭐⭐⭐⭐ (5/5)</p>
+          <button class="btn-assistir">Assistir</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script>
+      // Menu hambúrguer categorias
+      const menuToggle = document.getElementById('menuToggle');
+      const categoriasMenu = document.getElementById('categoriasMenu');
+
+      menuToggle.addEventListener('click', () => {
+        categoriasMenu.classList.toggle('mostrar');
+      });
+
+      // Dropdown usuário
+      const imagemDropdown = document.querySelector('.imagem-dropdown');
+      const menuUsuario = document.querySelector('.menu-usuario');
+
+      imagemDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuUsuario.classList.toggle('ativo');
+      });
+
+      document.addEventListener('click', () => {
+        menuUsuario.classList.remove('ativo');
+      });
+
+      // CARROSSEL
+      const carrossel = document.querySelector('.carrossel');
+      const slides = document.querySelectorAll('.slide');
+      const btnPrev = document.querySelector('.btn-prev');
+      const btnNext = document.querySelector('.btn-next');
+
+      let index = 0;
+
+      function mostrarSlide(i) {
+        if (i < 0) index = slides.length - 1;
+        else if (i >= slides.length) index = 0;
+        else index = i;
+
+        const offset = -index * 100;
+        carrossel.style.transform = `translateX(${offset}%)`
+      }
+
+      btnPrev.addEventListener('click', () => {
+        mostrarSlide(index - 1);
+      });
+
+      btnNext.addEventListener('click', () => {
+        mostrarSlide(index + 1);
+      });
+
+      // Auto play a cada 5 segundos (opcional)
+      setInterval(() => {
+        mostrarSlide(index + 1);
+      }, 5000);
+
+
+      function abrirPopup(botao) {
+        const card = botao.closest('.card-filme');
+        const titulo = card.querySelector('.titulo-filme').innerText;
+        const posterDiv = card.querySelector('.poster-filme');
+
+        const estilo = window.getComputedStyle(posterDiv);
+        const imagem = estilo.backgroundImage.slice(5, -2);
+
+        document.getElementById('popup-titulo').innerText = titulo;
+        document.getElementById('popup-poster').src = imagem;
+        document.getElementById('popup-descricao').innerText = "Descrição ainda não disponível.";
+        document.getElementById('popup-avaliacao').innerText = "Avaliação: ⭐⭐⭐⭐⭐ (5/5)";
+
+        document.getElementById('popup-filme').classList.remove('oculto');
+        document.body.classList.add('popup-aberto'); // 🚫 Impede rolagem
+      }
+
+      function fecharPopup() {
+        document.getElementById('popup-filme').classList.add('oculto');
+        document.body.classList.remove('popup-aberto'); // ✅ Libera rolagem
+      }
+    </script>
+  </div>
+</body>

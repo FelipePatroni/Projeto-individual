@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerenciar Perfis - TERROR-</title>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="Css/gerenciarPerfil.css">
+</head>
+
+<body>
+    <div class="borda-topo"></div>
+
+    <div class="container">
+        <div class="header">
+            <button class="voltar-btn" onclick="voltarParaPerfis()">← Voltar</button>
+        </div>
+
+        <div class="perfis-grid" id="perfisGrid">
+            <!-- Perfis existentes serão carregados aqui -->
+        </div>
+    </div>
+
+    <!-- Modal para trocar foto -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Escolher Nova Foto</h3>
+                <p>Selecione uma foto para o perfil</p>
+            </div>
+            <div class="photos-grid" id="photosGrid">
+                <!-- Fotos disponíveis -->
+            </div>
+            <div class="actions">
+                <button class="btn btn-success" onclick="confirmarFoto()">Confirmar</button>
+                <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup personalizado para alertas -->
+    <div class="custom-popup" id="alertPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-icon info" id="alertIcon">ℹ️</div>
+                <h3 class="popup-title" id="alertTitle">Informação</h3>
+            </div>
+            <p class="popup-message" id="alertMessage"></p>
+            <div class="popup-actions">
+                <button class="popup-btn popup-btn-primary" onclick="fecharPopup('alertPopup')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup personalizado para confirmações -->
+    <div class="custom-popup" id="confirmPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-icon warning">⚠️</div>
+                <h3 class="popup-title">Confirmação</h3>
+            </div>
+            <p class="popup-message" id="confirmMessage"></p>
+            <div class="popup-actions">
+                <button class="popup-btn popup-btn-danger" id="confirmYes">Sim</button>
+                <button class="popup-btn popup-btn-secondary" onclick="fecharPopup('confirmPopup')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup personalizado para inputs -->
+    <div class="custom-popup" id="promptPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-icon info">✏️</div>
+                <h3 class="popup-title" id="promptTitle">Digite</h3>
+            </div>
+            <p class="popup-message" id="promptMessage"></p>
+            <input type="text" class="popup-input" id="promptInput" placeholder="Digite aqui...">
+            <div class="popup-actions">
+                <button class="popup-btn popup-btn-primary" id="promptConfirm">Confirmar</button>
+                <button class="popup-btn popup-btn-secondary" onclick="fecharPopup('promptPopup')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup para mostrar informações do plano -->
+    <div class="custom-popup" id="planoPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-icon info">📋</div>
+                <h3 class="popup-title" id="planoTitle">Informações do Plano</h3>
+            </div>
+            <div class="plano-details" id="planoDetails"></div>
+            <div class="popup-actions">
+                <button class="popup-btn popup-btn-primary" onclick="fecharPopup('planoPopup')">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="borda-base"></div>
+
+    <script>
+        // Dados dos perfis (simulando dados salvos)
+        let perfilData = [
+            {
+                id: 1,
+                nome: 'Bia Ribeiro',
+                foto: 'img/img6_bianca.png',
+                plano: 'Premium',
+                senha: ''
+            },
+            {
+                id: 2,
+                nome: 'F_Ferrari',
+                foto: 'img/img7_ferrari.png',
+                plano: 'Premium',
+                senha: '1234'
+            },
+            {
+                id: 3,
+                nome: 'Cauã',
+                foto: 'img/img8_caua.png',
+                plano: 'Premium',
+                senha: ''
+            },
+            {
+                id: 4,
+                nome: 'Ana Machado',
+                foto: 'img/img8_ana.png',
+                plano: 'Premium',
+                senha: 'ana123'
+            }
+        ];
+
+        // Fotos disponíveis para escolha
+        const fotosDisponiveis = [
+            'img/img6_bianca.png',
+            'img/img7_ferrari.png',
+            'img/img8_caua.png',
+            'img/img8_ana.png',
+            'img/avatar1.png',
+            'img/avatar2.png',
+            'img/avatar3.png',
+            'img/avatar4.png'
+        ];
+
+        let perfilEditandoId = null;
+        let fotoSelecionada = null;
+
+        // Funções de Popup Personalizados
+        function mostrarAlert(mensagem, titulo = 'Informação', icone = 'ℹ️', tipo = 'info') {
+            document.getElementById('alertTitle').textContent = titulo;
+            document.getElementById('alertMessage').textContent = mensagem;
+            document.getElementById('alertIcon').textContent = icone;
+            document.getElementById('alertIcon').className = `popup-icon ${tipo}`;
+            document.getElementById('alertPopup').classList.add('active');
+        }
+
+        function mostrarConfirm(mensagem, onConfirm, titulo = 'Confirmação') {
+            document.getElementById('confirmMessage').textContent = mensagem;
+            document.getElementById('confirmPopup').classList.add('active');
+            
+            document.getElementById('confirmYes').onclick = function() {
+                fecharPopup('confirmPopup');
+                onConfirm();
+            };
+        }
+
+        function mostrarPrompt(mensagem, onConfirm, titulo = 'Digite', valorPadrao = '') {
+            document.getElementById('promptTitle').textContent = titulo;
+            document.getElementById('promptMessage').textContent = mensagem;
+            document.getElementById('promptInput').value = valorPadrao;
+            document.getElementById('promptPopup').classList.add('active');
+            
+            // Focar no input
+            setTimeout(() => {
+                document.getElementById('promptInput').focus();
+            }, 100);
+            
+            document.getElementById('promptConfirm').onclick = function() {
+                const valor = document.getElementById('promptInput').value;
+                fecharPopup('promptPopup');
+                onConfirm(valor);
+            };
+
+            // Permitir confirmar com Enter
+            document.getElementById('promptInput').onkeypress = function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('promptConfirm').click();
+                }
+            };
+        }
+
+        function fecharPopup(popupId) {
+            document.getElementById(popupId).classList.remove('active');
+        }
+
+        function mostrarPlano(perfil) {
+            const planoInfo = {
+                'Básico': {
+                    titulo: 'Plano Básico',
+                    recursos: [
+                        'Acesso a filmes em qualidade SD',
+                        '1 tela simultânea',
+                        'Catálogo básico de filmes',
+                        'Suporte por email'
+                    ]
+                },
+                'Premium': {
+                    titulo: 'Plano Premium',
+                    recursos: [
+                        'Acesso a filmes em HD e 4K',
+                        'Até 4 telas simultâneas',
+                        'Catálogo completo de filmes',
+                        'Downloads para assistir offline',
+                        'Suporte prioritário',
+                        'Conteúdo exclusivo'
+                    ]
+                },
+                'Família': {
+                    titulo: 'Plano Família',
+                    recursos: [
+                        'Acesso completo em 4K',
+                        'Até 6 telas simultâneas',
+                        'Catálogo completo + exclusivos',
+                        'Downloads ilimitados',
+                        'Controle parental avançado',
+                        'Perfis personalizados',
+                        'Suporte 24/7'
+                    ]
+                }
+            };
+
+            const info = planoInfo[perfil.plano];
+            document.getElementById('planoTitle').textContent = `${perfil.nome} - ${info.titulo}`;
+            
+            const detailsDiv = document.getElementById('planoDetails');
+            detailsDiv.innerHTML = `
+                <h4>${info.titulo}</h4>
+                <ul>
+                    ${info.recursos.map(recurso => `<li>${recurso}</li>`).join('')}
+                </ul>
+            `;
+            
+            document.getElementById('planoPopup').classList.add('active');
+        }
+
+        // Carregar perfis na tela
+        function carregarPerfis() {
+            const grid = document.getElementById('perfisGrid');
+            grid.innerHTML = '';
+
+            perfilData.forEach(perfil => {
+                const card = criarCardPerfil(perfil);
+                grid.appendChild(card);
+            });
+
+            // Adicionar card para novo perfil
+            const addCard = criarCardAdicionar();
+            grid.appendChild(addCard);
+        }
+
+        function criarCardPerfil(perfil) {
+            const card = document.createElement('div');
+            card.className = 'perfil-card';
+            card.innerHTML = `
+                <div class="perfil-view">
+                    <div class="perfil-header">
+                        <div class="perfil-img-container">
+                            <img src="${perfil.foto}" alt="${perfil.nome}" class="perfil-img" onclick="abrirModalFoto(${perfil.id})">
+                            <button class="change-photo-btn" onclick="abrirModalFoto(${perfil.id})">📷</button>
+                        </div>
+                        <div class="perfil-info">
+                            <h3>${perfil.nome}</h3>
+                            <span class="plano-badge">${perfil.plano}</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="editarPerfil(${perfil.id})">✏️ Editar</button>
+                        <button class="btn btn-secondary" onclick="verPlano(${perfil.id})">📋 Ver Plano</button>
+                        <button class="btn ${perfil.senha ? 'btn-success' : 'btn-secondary'}" onclick="gerenciarSenha(${perfil.id})">
+                            🔒 ${perfil.senha ? 'Alterar Senha' : 'Adicionar Senha'}
+                        </button>
+                        <button class="btn btn-danger" onclick="excluirPerfil(${perfil.id})">🗑️ Excluir</button>
+                    </div>
+                </div>
+                <div class="edit-form" id="editForm${perfil.id}">
+                    <div class="form-group">
+                        <label>Nome do Perfil</label>
+                        <input type="text" class="form-input" id="nomeInput${perfil.id}" value="${perfil.nome}" placeholder="Digite o nome">
+                    </div>
+                    <div class="form-group">
+                        <label>Plano</label>
+                        <select class="form-input" id="planoSelect${perfil.id}">
+                            <option value="Básico" ${perfil.plano === 'Básico' ? 'selected' : ''}>Básico</option>
+                            <option value="Premium" ${perfil.plano === 'Premium' ? 'selected' : ''}>Premium</option>
+                            <option value="Família" ${perfil.plano === 'Família' ? 'selected' : ''}>Família</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Senha (opcional)</label>
+                        <input type="password" class="form-input" id="senhaInput${perfil.id}" value="${perfil.senha}" placeholder="Digite uma senha">
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-success" onclick="salvarEdicao(${perfil.id})">💾 Salvar</button>
+                        <button class="btn btn-secondary" onclick="cancelarEdicao(${perfil.id})">❌ Cancelar</button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        function criarCardAdicionar() {
+            const card = document.createElement('div');
+            card.className = 'perfil-card add-profile-card';
+            card.onclick = () => adicionarNovoPerfil();
+            card.innerHTML = `
+                <div class="add-icon">+</div>
+                <div class="add-text">Adicionar Novo Perfil</div>
+            `;
+            return card;
+        }
+
+        function editarPerfil(id) {
+            const editForm = document.getElementById(`editForm${id}`);
+            const perfilView = editForm.previousElementSibling;
+            
+            perfilView.style.display = 'none';
+            editForm.classList.add('active');
+        }
+
+        function cancelarEdicao(id) {
+            const editForm = document.getElementById(`editForm${id}`);
+            const perfilView = editForm.previousElementSibling;
+            
+            editForm.classList.remove('active');
+            perfilView.style.display = 'block';
+        }
+
+        function salvarEdicao(id) {
+            const nome = document.getElementById(`nomeInput${id}`).value;
+            const plano = document.getElementById(`planoSelect${id}`).value;
+            const senha = document.getElementById(`senhaInput${id}`).value;
+
+            if (!nome.trim()) {
+                mostrarAlert('Por favor, digite um nome para o perfil.', 'Campo Obrigatório', '⚠️', 'warning');
+                return;
+            }
+
+            const perfil = perfilData.find(p => p.id === id);
+            perfil.nome = nome;
+            perfil.plano = plano;
+            perfil.senha = senha;
+
+            carregarPerfis();
+            
+            // Mostrar feedback
+            mostrarFeedback('Perfil atualizado com sucesso!', 'success');
+        }
+
+        function abrirModalFoto(id) {
+            perfilEditandoId = id;
+            const modal = document.getElementById('photoModal');
+            const photosGrid = document.getElementById('photosGrid');
+            
+            photosGrid.innerHTML = '';
+            fotosDisponiveis.forEach(foto => {
+                const img = document.createElement('img');
+                img.src = foto;
+                img.className = 'photo-option';
+                img.onclick = () => selecionarFoto(foto, img);
+                photosGrid.appendChild(img);
+            });
+            
+            modal.classList.add('active');
+        }
+
+        function selecionarFoto(foto, elemento) {
+            // Remove seleção anterior
+            document.querySelectorAll('.photo-option').forEach(img => {
+                img.classList.remove('selected');
+            });
+            
+            // Adiciona seleção atual
+            elemento.classList.add('selected');
+            fotoSelecionada = foto;
+        }
+
+        function confirmarFoto() {
+            if (!fotoSelecionada) {
+                mostrarAlert('Por favor, selecione uma foto.', 'Seleção Obrigatória', '📷', 'warning');
+                return;
+            }
+
+            const perfil = perfilData.find(p => p.id === perfilEditandoId);
+            perfil.foto = fotoSelecionada;
+            
+            carregarPerfis();
+            fecharModal();
+            mostrarFeedback('Foto alterada com sucesso!', 'success');
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('photoModal');
+            modal.classList.remove('active');
+            fotoSelecionada = null;
+            perfilEditandoId = null;
+        }
+
+        function verPlano(id) {
+            const perfil = perfilData.find(p => p.id === id);
+            mostrarPlano(perfil);
+        }
+
+        function gerenciarSenha(id) {
+            const perfil = perfilData.find(p => p.id === id);
+            const titulo = perfil.senha ? 'Alterar Senha' : 'Adicionar Senha';
+            const mensagem = perfil.senha ? 'Digite a nova senha:' : 'Digite uma senha para proteger este perfil:';
+            
+            mostrarPrompt(mensagem, (novaSenha) => {
+                if (novaSenha !== null && novaSenha !== undefined) {
+                    perfil.senha = novaSenha;
+                    carregarPerfis();
+                    const mensagemFeedback = novaSenha ? 'Senha atualizada com sucesso!' : 'Senha removida com sucesso!';
+                    mostrarFeedback(mensagemFeedback, 'success');
+                }
+            }, titulo, perfil.senha);
+        }
+
+        function excluirPerfil(id) {
+            const perfil = perfilData.find(p => p.id === id);
+            mostrarConfirm(
+                `Tem certeza que deseja excluir o perfil "${perfil.nome}"?\n\nEsta ação não pode ser desfeita.`,
+                () => {
+                    perfilData = perfilData.filter(p => p.id !== id);
+                    carregarPerfis();
+                    mostrarFeedback('Perfil excluído com sucesso!', 'success');
+                },
+                'Excluir Perfil'
+            );
+        }
+
+        function adicionarNovoPerfil() {
+            mostrarPrompt('Digite o nome do novo perfil:', (nome) => {
+                if (nome && nome.trim()) {
+                    const novoId = Math.max(...perfilData.map(p => p.id)) + 1;
+                    perfilData.push({
+                        id: novoId,
+                        nome: nome.trim(),
+                        foto: 'img/avatar1.png',
+                        plano: 'Básico',
+                        senha: ''
+                    });
+                    carregarPerfis();
+                    mostrarFeedback('Novo perfil criado com sucesso!', 'success');
+                }
+            }, 'Novo Perfil');
+        }
+
+        function mostrarFeedback(mensagem, tipo) {
+            const feedback = document.createElement('div');
+            feedback.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${tipo === 'success' ? 'var(--success-green)' : 'var(--warning-red)'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                z-index: 3000;
+                font-weight: 600;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                animation: slideInRight 0.3s ease;
+            `;
+            feedback.textContent = mensagem;
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    feedback.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        function voltarParaPerfis() {
+            // Simulando volta para a tela anterior
+            window.location.href = 'telaInicial.html';
+        }
+
+        // Fechar modais ao clicar fora
+        document.getElementById('photoModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                fecharModal();
+            }
+        });
+
+        // Fechar popups ao clicar fora
+        document.querySelectorAll('.custom-popup').forEach(popup => {
+            popup.addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    popup.classList.remove('active');
+                }
+            });
+        });
+
+        // Fechar popups com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.custom-popup.active').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+                if (document.getElementById('photoModal').classList.contains('active')) {
+                    fecharModal();
+                }
+            }
+        });
+
+        // Adicionar animações CSS para feedback
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Carregar perfis ao iniciar
+        carregarPerfis();
+    </script>
+</body>
+
+</html>
