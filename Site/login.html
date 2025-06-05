@@ -18,7 +18,7 @@
     </nav>
     <div class="actions">
       <input type="text" placeholder="Buscar..." />
-      <button><a href="cadastro.html">cadastro</a></button>
+      <a href="cadastro.html"><button>cadastro</button></a>
     </div>
   </header>
 
@@ -31,13 +31,13 @@
       <form class="login-form">
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" placeholder="email@exemplo.com" required />
+          <input type="email" id="email" placeholder="email@exemplo.com"  />
         </div>
         <div class="form-group">
           <label for="senha">Senha</label>
-          <input type="password" id="senha" placeholder="Sua senha" required />
+          <input type="password" id="senha" placeholder="Sua senha"  />
         </div>
-        <button type="submit"><a href="telaInicial.html">Entrar</a></button>
+        <button type="button" onclick="window.location.href='telaInicial.html'">Entrar</button>
         <p class="cadastro-link">Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
       </form>
     </section>

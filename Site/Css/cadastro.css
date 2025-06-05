@@ -271,7 +271,7 @@ body {
 }
 
 /* BOTÃO ENVIAR */
-.cadastro-form button[type="submit"] {
+.cadastro-form button[type="button"] {
   width: 100%;
   background: linear-gradient(135deg, #f4d35e 0%, #ffe066 100%);
   border: none;
@@ -291,7 +291,7 @@ body {
   overflow: hidden;
 }
 
-.cadastro-form button[type="submit"]::before {
+.cadastro-form button[type="button"]::before {
   content: '';
   position: absolute;
   top: 0;
@@ -302,11 +302,11 @@ body {
   transition: left 0.6s ease;
 }
 
-.cadastro-form button[type="submit"]:hover::before {
+.cadastro-form button[type="button"]:hover::before {
   left: 100%;
 }
 
-.cadastro-form button[type="submit"]:hover {
+.cadastro-form button[type="button"]:hover {
   background: linear-gradient(135deg, #ffe066 0%, #fff176 100%);
   transform: translateY(-2px);
   box-shadow: 
@@ -314,7 +314,7 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.cadastro-form button[type="submit"]:active {
+.cadastro-form button[type="button"]:active {
   transform: translateY(0);
   box-shadow: 
     0 4px 15px rgba(244, 211, 94, 0.4),
@@ -372,7 +372,7 @@ body {
     font-size: 0.95rem;
   }
 
-  .cadastro-form button[type="submit"] {
+  .cadastro-form button[type="button"] {
     font-size: 1.1rem;
     padding: 16px 20px;
   }

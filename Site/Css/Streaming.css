@@ -423,13 +423,10 @@
 .carrossel-container {
   position: relative;
   max-width: 1200px;
-  margin: 30px auto 50px;
+  margin: 30px auto 10px;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(244, 211, 94, 0.2);
-  background: linear-gradient(145deg, #1b263b, #2a3f5a);
+  margin-left: 20px;
 }
 
 .carrossel {
