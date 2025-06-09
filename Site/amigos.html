@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meus Amigos - Terror Movies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Creepster&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Css/amigo.css" />
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <!-- Ícone do menu hambúrguer -->
+        <button class="menu-btn" id="menuToggle">☰</button>
+
+        <!-- Nome do site -->
+        <h1 class="logo">TERROR-</h1>
+
+        <!-- Barra de pesquisa -->
+        <div class="barra-pesquisa">
+            <input type="text" id="searchInput" placeholder="Buscar filmes" />
+        </div>
+
+        <!-- Usuário -->
+        <div class="usuario">
+            <span class="nome">Felipe Patroni</span>
+            <div class="imagem-dropdown">
+                <img src="img/img7_ferrari.png" alt="Usuário" class="foto" />
+                <ul class="menu-usuario">
+                    <li><a href="Streaming.html">Tela inicial</a></li>
+                    <li><a href="telaInicial.html">Trocar usuário</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Menu de categorias (em vertical, aparece ao clicar) -->
+        <div class="categorias-menu" id="categoriasMenu">
+            <a href="#leve">Leve</a>
+            <a href="#namorado">Namorado(a)</a>
+            <a href="#familia">Família</a>
+            <a href="#classicos">Clássicos</a>
+            <a href="#suspense">Suspense</a>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main-content">
+        <div class="friends-header">
+            <h2 class="friends-title">Meus Amigos</h2>
+            <button class="add-friend-btn" onclick="openAddFriendModal()">+ Adicionar Amigo</button>
+        </div>
+        <div class="friends-grid" id="friendsGrid"></div>
+    </main>
+
+    <!-- MODAL: Perfil -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Perfil do Amigo</h3>
+                <button class="close-btn" onclick="closeModal('profileModal')">&times;</button>
+            </div>
+            <div class="movie-section">
+                <h4 class="section-title">🎬 Filme Favorito</h4>
+                <div id="favoriteMovie"></div>
+            </div>
+            <div class="movie-section">
+                <h4 class="section-title">👻 Filmes de Terror Assistidos</h4>
+                <div class="movie-list" id="watchedMovies"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Adicionar Amigo -->
+    <div class="modal-overlay" id="addFriendModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Adicionar Novo Amigo</h3>
+                <button class="close-btn" onclick="closeModal('addFriendModal')">&times;</button>
+            </div>
+            <form class="add-friend-form" onsubmit="addFriend(event)">
+                <div class="form-group">
+                    <label class="form-label">Nome do Amigo</label>
+                    <input type="text" class="form-input" id="friendName" required />
+                </div>
+                <button type="submit" class="form-submit">Adicionar Amigo</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const categoriasMenu = document.getElementById('categoriasMenu');
+
+        menuToggle.addEventListener('click', () => {
+            categoriasMenu.classList.toggle('mostrar');
+        });
+
+        // Dropdown usuário
+        const imagemDropdown = document.querySelector('.imagem-dropdown');
+        const menuUsuario = document.querySelector('.menu-usuario');
+
+        imagemDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuUsuario.classList.toggle('ativo');
+        });
+
+        document.addEventListener('click', () => {
+            menuUsuario.classList.remove('ativo');
+        });
+
+
+        let friends = [{
+                id: 1,
+                name: "Maria Santos",
+                status: "online",
+                description: "Apaixonada por filmes de terror clássicos dos anos 80. Sempre em busca de novos sustos!",
+                avatar: "https://images.unsplash.com/photo-1494790108755-2616b25a2d7b?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "O Exorcista",
+                    year: "1973",
+                    poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                },
+                watchedMovies: [{
+                        title: "Halloween",
+                        year: "1978",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    },
+                    {
+                        title: "Sexta-feira 13",
+                        year: "1980",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    },
+                    {
+                        title: "Pesadelo na Rua Elm",
+                        year: "1984",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: "Carlos Mendes",
+                status: "offline",
+                description: "Colecionador de filmes de terror japonês. Expert em J-Horror e filmes cult.",
+                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Ju-On: O Grito",
+                    year: "2002",
+                    poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                },
+                watchedMovies: [{
+                        title: "Ringu",
+                        year: "1998",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    },
+                    {
+                        title: "Dark Water",
+                        year: "2002",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    },
+                    {
+                        title: "Audition",
+                        year: "1999",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: "Ana Oliveira",
+                status: "online",
+                description: "Viciada em horror moderno e filmes indie. Sempre atualizando a lista com os últimos lançamentos.",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Hereditário",
+                    year: "2018",
+                    poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                },
+                watchedMovies: [{
+                        title: "Midsommar",
+                        year: "2019",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    },
+                    {
+                        title: "The Witch",
+                        year: "2015",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    },
+                    {
+                        title: "It Follows",
+                        year: "2014",
+                        poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                name: "Juliana Costa",
+                status: "online",
+                description: "Ama animações sombrias e histórias encantadoras com um toque macabro.",
+                avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a2c9f9?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Corpse Bride",
+                    year: "2005",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "The Nightmare Before Christmas",
+                        year: "1993",
+                        poster: ""
+                    },
+                    {
+                        title: "Frankenweenie",
+                        year: "2012",
+                        poster: ""
+                    },
+                    {
+                        title: "ParaNorman",
+                        year: "2012",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: "Rafael Lima",
+                status: "offline",
+                description: "Fascinado por terrores psicológicos e investigações sombrias. Suspense é sua praia.",
+                avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Se7en",
+                    year: "1995",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Gone Girl",
+                        year: "2014",
+                        poster: ""
+                    },
+                    {
+                        title: "Zodiac",
+                        year: "2007",
+                        poster: ""
+                    },
+                    {
+                        title: "The Girl with the Dragon Tattoo",
+                        year: "2011",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 6,
+                name: "Bianca Martins",
+                status: "online",
+                description: "Aventureira do gore extremo e horror visceral. Nada a assusta facilmente.",
+                avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Martyrs",
+                    year: "2008",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Inside",
+                        year: "2007",
+                        poster: ""
+                    },
+                    {
+                        title: "Terrifier",
+                        year: "2016",
+                        poster: ""
+                    },
+                    {
+                        title: "The Sadness",
+                        year: "2021",
+                        poster: ""
+                    }
+                ]
+            },
+
+
+
+            {
+                id: 7,
+                name: "Lucas Ferreira",
+                status: "offline",
+                description: "Apaixonado por clássicos do terror psicológico e suspense intenso.",
+                avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Psycho",
+                    year: "1960",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "The Shining",
+                        year: "1980",
+                        poster: ""
+                    },
+                    {
+                        title: "The Others",
+                        year: "2001",
+                        poster: ""
+                    },
+                    {
+                        title: "The Sixth Sense",
+                        year: "1999",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 8,
+                name: "Fernanda Souza",
+                status: "online",
+                description: "Ama filmes com histórias de fantasmas e maldições aterrorizantes.",
+                avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Poltergeist",
+                    year: "1982",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "The Exorcist",
+                        year: "1973",
+                        poster: ""
+                    },
+                    {
+                        title: "Rosemary's Baby",
+                        year: "1968",
+                        poster: ""
+                    },
+                    {
+                        title: "The Omen",
+                        year: "1976",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 9,
+                name: "Tiago Almeida",
+                status: "offline",
+                description: "Entusiasta dos slashers e dos filmes que dão aquele frio na espinha.",
+                avatar: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Halloween",
+                    year: "1978",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "A Nightmare on Elm Street",
+                        year: "1984",
+                        poster: ""
+                    },
+                    {
+                        title: "Friday the 13th",
+                        year: "1980",
+                        poster: ""
+                    },
+                    {
+                        title: "Carrie",
+                        year: "1976",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 10,
+                name: "Carolina Ribeiro",
+                status: "online",
+                description: "Adora filmes cult e histórias de terror que desafiam a mente.",
+                avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Oldboy",
+                    year: "2003",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Shutter Island",
+                        year: "2010",
+                        poster: ""
+                    },
+                    {
+                        title: "The Invisible Guest",
+                        year: "2016",
+                        poster: ""
+                    },
+                    {
+                        title: "Prisoners",
+                        year: "2013",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 11,
+                name: "Gustavo Nunes",
+                status: "offline",
+                description: "Curte horror extremo e filmes que desafiam os limites do medo.",
+                avatar: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Evil Dead",
+                    year: "1981",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "The Texas Chainsaw Massacre",
+                        year: "1974",
+                        poster: ""
+                    },
+                    {
+                        title: "Saw",
+                        year: "2004",
+                        poster: ""
+                    },
+                    {
+                        title: "Hostel",
+                        year: "2005",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 12,
+                name: "Patrícia Gomes",
+                status: "online",
+                description: "Fanática por terror moderno e histórias com finais surpreendentes.",
+                avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Hereditário",
+                    year: "2018",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Midsommar",
+                        year: "2019",
+                        poster: ""
+                    },
+                    {
+                        title: "It Follows",
+                        year: "2014",
+                        poster: ""
+                    },
+                    {
+                        title: "The Witch",
+                        year: "2015",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 13,
+                name: "Rafael Pinto",
+                status: "offline",
+                description: "Gosta de thrillers policiais e filmes com investigações complexas.",
+                avatar: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Zodiac",
+                    year: "2007",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Se7en",
+                        year: "1995",
+                        poster: ""
+                    },
+                    {
+                        title: "Gone Girl",
+                        year: "2014",
+                        poster: ""
+                    },
+                    {
+                        title: "Prisoners",
+                        year: "2013",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 14,
+                name: "Mariana Alves",
+                status: "online",
+                description: "Ama terror sobrenatural e filmes que exploram o oculto.",
+                avatar: "https://images.unsplash.com/photo-1542206395-9feb3edaa68e?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "The Exorcist",
+                    year: "1973",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Poltergeist",
+                        year: "1982",
+                        poster: ""
+                    },
+                    {
+                        title: "Rosemary's Baby",
+                        year: "1968",
+                        poster: ""
+                    },
+                    {
+                        title: "The Omen",
+                        year: "1976",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 15,
+                name: "Eduardo Silva",
+                status: "offline",
+                description: "Aficionado por terror francês e filmes que mexem com a psicologia.",
+                avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Martyrs",
+                    year: "2008",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Inside",
+                        year: "2007",
+                        poster: ""
+                    },
+                    {
+                        title: "High Tension",
+                        year: "2003",
+                        poster: ""
+                    },
+                    {
+                        title: "The Green Inferno",
+                        year: "2013",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 16,
+                name: "Larissa Mendes",
+                status: "online",
+                description: "Curte filmes de terror indie e com histórias originais.",
+                avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a2c9f9?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "The Sadness",
+                    year: "2021",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Terrifier",
+                        year: "2016",
+                        poster: ""
+                    },
+                    {
+                        title: "Martyrs",
+                        year: "2008",
+                        poster: ""
+                    },
+                    {
+                        title: "Inside",
+                        year: "2007",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 17,
+                name: "Felipe Duarte",
+                status: "offline",
+                description: "Entusiasta de terror asiático e filmes cult.",
+                avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "Ju-On: O Grito",
+                    year: "2002",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "Ringu",
+                        year: "1998",
+                        poster: ""
+                    },
+                    {
+                        title: "Dark Water",
+                        year: "2002",
+                        poster: ""
+                    },
+                    {
+                        title: "Audition",
+                        year: "1999",
+                        poster: ""
+                    }
+                ]
+            },
+            {
+                id: 18,
+                name: "Isabela Campos",
+                status: "online",
+                description: "Gosta de terror psicológico e histórias com reviravoltas.",
+                avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "The Sixth Sense",
+                    year: "1999",
+                    poster: ""
+                },
+                watchedMovies: [{
+                        title: "The Others",
+                        year: "2001",
+                        poster: ""
+                    },
+                    {
+                        title: "Shutter Island",
+                        year: "2010",
+                        poster: ""
+                    },
+                    {
+                        title: "Oldboy",
+                        year: "2003",
+                        poster: ""
+                    }
+                ]
+            }
+
+
+        ];
+
+        function renderFriends() {
+            const friendsGrid = document.getElementById('friendsGrid');
+            friendsGrid.innerHTML = '';
+
+            friends.forEach(friend => {
+                const friendCard = document.createElement('div');
+                friendCard.className = 'friend-card';
+                friendCard.innerHTML = `
+                    <div class="friend-header">
+                        <img src="${friend.avatar}" alt="${friend.name}" class="friend-avatar">
+                        <div class="friend-info">
+                            <h3 class="friend-name">${friend.name}</h3>
+                            <div class="friend-status ${friend.status}">
+                                <div class="status-dot"></div>
+                                ${friend.status === 'online' ? 'Online' : 'Offline'}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="friend-description">${friend.description}</p>
+                    <div class="friend-actions">
+                        <button class="action-btn view-profile-btn" onclick="viewProfile(${friend.id})">
+                            Ver Perfil
+                        </button>
+                        <button class="action-btn remove-friend-btn" onclick="removeFriend(${friend.id})">
+                            Excluir
+                        </button>
+                    </div>
+                `;
+                friendsGrid.appendChild(friendCard);
+            });
+        }
+
+        function viewProfile(id) {
+            const friend = friends.find(f => f.id === id);
+            if (!friend) return;
+            document.getElementById('modalTitle').textContent = `Perfil de ${friend.name}`;
+            document.getElementById('favoriteMovie').innerHTML = `
+        <div class="movie-item">
+          <img src="${friend.favoriteMovie.poster}" class="movie-poster" />
+          <div class="movie-info">
+            <h4>${friend.favoriteMovie.title}</h4>
+            <p>Ano: ${friend.favoriteMovie.year}</p>
+          </div>
+        </div>
+      `;
+            const watched = document.getElementById('watchedMovies');
+            watched.innerHTML = '';
+            friend.watchedMovies.forEach(movie => {
+                const div = document.createElement('div');
+                div.className = 'movie-item';
+                div.innerHTML = `
+          <img src="${movie.poster}" class="movie-poster" />
+          <div class="movie-info">
+            <h4>${movie.title}</h4>
+            <p>Ano: ${movie.year}</p>
+          </div>
+        `;
+                watched.appendChild(div);
+            });
+            document.getElementById('profileModal').classList.add('show');
+        }
+
+        function removeFriend(id) {
+            if (confirm('Deseja remover este amigo?')) {
+                friends = friends.filter(f => f.id !== id);
+                renderFriends();
+            }
+        }
+
+        function openAddFriendModal() {
+            document.getElementById('addFriendModal').classList.add('show');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        function addFriend(e) {
+            e.preventDefault();
+            const name = document.getElementById('friendName').value;
+            const newFriend = {
+                id: friends.length + 1,
+                name: name,
+                status: 'online',
+                description: 'Amante de filmes de terror.',
+                avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face",
+                favoriteMovie: {
+                    title: "IT - A Coisa",
+                    year: "2017",
+                    poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                },
+                watchedMovies: [{
+                    title: "Invocação do Mal",
+                    year: "2013",
+                    poster: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=150&fit=crop"
+                }]
+            };
+            friends.push(newFriend);
+            renderFriends();
+            closeModal('addFriendModal');
+            document.getElementById('friendName').value = '';
+        }
+
+        document.getElementById('searchInput').addEventListener('input', e => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.friend-card').forEach(card => {
+                const name = card.querySelector('.friend-name').textContent.toLowerCase();
+                card.style.display = name.includes(term) ? 'block' : 'none';
+            });
+        });
+
+        renderFriends();
+    </script>
+</body>
+
+</html>
