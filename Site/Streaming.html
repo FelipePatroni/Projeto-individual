@@ -48,29 +48,108 @@
   </div>
 
   <!-- CARROSSEL ABAIXO DA NAVBAR -->
-  <section class="carrossel-container">
-    <div class="carrossel">
-      <div class="slide ativo" style="background-image: url('img/Gaspa.png');">
-        <div class="btn-container">
-          <button class="btn-assistir">Assistir AGORA</button>
+  <div class="main-content">
+    <!-- CARROSSEL COM IMAGENS -->
+    <section class="carrossel-container">
+      <div class="carrossel">
+        <div class="slide ativo" style="background-image: url('img/Gaspa.png');">
+          <div class="btn-container">
+            <button class="btn-assistir">Assistir AGORA</button>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url('img/img12.png');">
+          <div class="btn-container">
+            <button class="btn-assistir">Assistir AGORA</button>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url('img/img13.png');">
+          <div class="btn-container">
+            <button class="btn-assistir">Assistir AGORA</button>
+          </div>
         </div>
       </div>
-      <div class="slide" style="background-image: url('img/img12.png');">
-        <div class="btn-container">
-          <button class="btn-assistir">Assistir AGORA</button>
-        </div>
-      </div>
-      <div class="slide" style="background-image: url('img/img13.png');">
-        <div class="btn-container">
-          <button class="btn-assistir">Assistir AGORA</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Controles -->
-    <button class="btn-prev">&#10094;</button>
-    <button class="btn-next">&#10095;</button>
-  </section>
+      <!-- Controles -->
+      <button class="btn-prev">&#10094;</button>
+      <button class="btn-next">&#10095;</button>
+    </section>
+
+    <!-- PAINEL DE CONTROLES -->
+    <aside class="controls-panel">
+
+      <!-- Sistema de Alerta de Sustos -->
+      <div class="control-item">
+        <div class="control-label">
+          <span><span class="control-icon">⚠️</span>Sistema de Alerta de Sustos</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="alertaSustos">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-description">
+          Receba avisos discretos antes de cenas de sustos intensos
+        </div>
+        <div class="status-indicator status-inactive" id="statusAlertas">
+          <div class="status-dot"></div>
+          Desativado
+        </div>
+      </div>
+
+      <!-- Medidor de Intensidade -->
+      <div class="control-item">
+        <div class="control-label">
+          <span><span class="control-icon">📊</span>Medidor de Intensidade</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="medidorIntensidade">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-description">
+          Visualize o nível de terror em tempo real durante o filme
+        </div>
+        <div class="status-indicator status-inactive" id="statusMedidor">
+          <div class="status-dot"></div>
+          Desativado
+        </div>
+      </div>
+
+      <!-- Comunidade de Apoio -->
+      <div class="control-item">
+        <div class="control-label">
+          <span><span class="control-icon">👥</span>Comunidade de Apoio</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="comunidadeApoio">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-description">
+          Conecte-se com outros usuários assistindo o mesmo filme
+        </div>
+        <div class="status-indicator status-inactive" id="statusComunidade">
+          <div class="status-dot"></div>
+          Desativado
+        </div>
+      </div>
+
+      <!-- Modo Luz Noturna -->
+      <div class="control-item">
+        <div class="control-label">
+          <span><span class="control-icon">🌙</span>Modo Luz Noturna</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="luzNoturna">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-description">
+          Reduz o brilho e ajusta as cores para uma experiência mais confortável
+        </div>
+        <div class="status-indicator status-inactive" id="statusLuzNoturna">
+          <div class="status-dot"></div>
+          Desativado
+        </div>
+      </div>
+    </aside>
+  </div>
 
   <!-- SEÇÕES DE FILMES -->
   <div class="container-filmes">
@@ -694,6 +773,78 @@
         document.getElementById('popup-filme').classList.add('oculto');
         document.body.classList.remove('popup-aberto'); // ✅ Libera rolagem
       }
+
+      const controles = {
+        alertaSustos: {
+          toggle: document.getElementById('alertaSustos'),
+          status: document.getElementById('statusAlertas')
+        },
+        medidorIntensidade: {
+          toggle: document.getElementById('medidorIntensidade'),
+          status: document.getElementById('statusMedidor')
+        },
+        comunidadeApoio: {
+          toggle: document.getElementById('comunidadeApoio'),
+          status: document.getElementById('statusComunidade')
+        },
+        luzNoturna: {
+          toggle: document.getElementById('luzNoturna'),
+          status: document.getElementById('statusLuzNoturna')
+        }
+      };
+
+      // Função para atualizar status
+      function atualizarStatus(controle, ativo) {
+        const statusElement = controles[controle].status;
+
+        if (ativo) {
+          statusElement.className = 'status-indicator status-active';
+          statusElement.innerHTML = '<div class="status-dot"></div>Ativado';
+        } else {
+          statusElement.className = 'status-indicator status-inactive';
+          statusElement.innerHTML = '<div class="status-dot"></div>Desativado';
+        }
+      }
+
+      // Event listeners para cada controle
+      Object.keys(controles).forEach(controle => {
+        controles[controle].toggle.addEventListener('change', (e) => {
+          const ativo = e.target.checked;
+          atualizarStatus(controle, ativo);
+
+          // Funcionalidades específicas
+          switch (controle) {
+            case 'luzNoturna':
+              if (ativo) {
+                document.body.style.filter = 'brightness(1) contrast(1)';
+              } else {
+                document.body.style.filter = 'none';
+              }
+              break;
+
+            case 'alertaSustos':
+              if (ativo) {
+                console.log('Sistema de Alerta de Sustos ativado');
+                // Aqui você implementaria a lógica do sistema de alertas
+              }
+              break;
+
+            case 'medidorIntensidade':
+              if (ativo) {
+                console.log('Medidor de Intensidade ativado');
+                // Aqui você implementaria a lógica do medidor
+              }
+              break;
+
+            case 'comunidadeApoio':
+              if (ativo) {
+                console.log('Comunidade de Apoio conectada');
+                // Aqui você implementaria a lógica da comunidade
+              }
+              break;
+          }
+        });
+      });
     </script>
   </div>
 </body>
