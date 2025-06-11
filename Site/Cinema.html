@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Online</title>
+    <link rel="stylesheet" href="Css/Cinema.css">
+</head>
+
+<body>
+    <div class="borda-topo"></div>
+    <div class="borda-base"></div>
+
+    <div class="cinema-container">
+        <!-- Área principal do filme -->
+        <div class="main-area">
+            <!-- Header com informações do filme -->
+            <div class="cinema-header">
+                <h1 class="movie-title">Sessão Cinema</h1>
+                <div class="movie-info">
+                    <span>🎬 Terror</span>
+                    <span>⏱️ 2h 15min</span>
+                    <span>🌟 5/5</span>
+                    <span>🔴 AO VIVO</span>
+                </div>
+            </div>
+
+            <!-- Área do vídeo -->
+            <div class="video-area">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <div class="play-button" onclick="togglePlay()"></div>
+                        <div class="video-text">Clique para iniciar o filme</div>
+                    </div>
+
+                    <div class="video-controls">
+                        <button class="control-btn" onclick="togglePlay()">⏯️</button>
+                        <button class="control-btn" onclick="toggleMute()">🔊</button>
+                        <button class="control-btn" onclick="toggleFullscreen()">⛶</button>
+                        <button class="control-btn" onclick="openSettings()">⚙️</button>
+                        <button class="control-btn" onclick="exitSession()">🚪</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar dos participantes -->
+
+        <div class="sidebar">
+            <div class="participants-header">
+                <div class="participants-title">
+                    👥 Assistindo
+                </div>
+                <span class="participants-count">8</span>
+            </div>
+
+            <div class="participants-list">
+                <div class="participant speaking">
+                    <div class="participant-avatar">
+                        <img src="img/img6_bianca.png" alt="Bia Ribeiro">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Bia Ribeiro</div>
+                        <div class="participant-status">Falando agora</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/img7_ferrari.png" alt="F_Ferrari">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">F_Ferrari</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/img8_caua.png" alt="Cauã">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Cauã</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/img8_ana.png" alt="Ana Carol">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Ana Carol</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/Banana.png" alt="Roque">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Roque</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/Juliana.png" alt="Duarte">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Duarte</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/Porco.png" alt="Gasparotto">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Gasparotto</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+                <div class="participant">
+                    <div class="participant-avatar">
+                        <img src="img/Medico.png" alt="Leo">
+                    </div>
+                    <div class="participant-info">
+                        <div class="participant-name">Leo</div>
+                        <div class="participant-status">Online</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            let isPlaying = false;
+            let isMuted = false;
+
+            function togglePlay() {
+                isPlaying = !isPlaying;
+                const playButton = document.querySelector('.play-button');
+                const videoText = document.querySelector('.video-text');
+
+                if (isPlaying) {
+                    playButton.style.display = 'none';
+                    videoText.textContent = 'Reproduzindo...';
+                    videoText.style.opacity = '0.3';
+                } else {
+                    playButton.style.display = 'flex';
+                    videoText.textContent = 'Clique para iniciar o filme';
+                    videoText.style.opacity = '0.7';
+                }
+            }
+
+            function toggleMute() {
+                isMuted = !isMuted;
+                const muteBtn = document.querySelector('.control-btn:nth-child(2)');
+                muteBtn.textContent = isMuted ? '🔇' : '🔊';
+            }
+
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+
+            function openSettings() {
+                alert('Configurações do vídeo em desenvolvimento!');
+            }
+
+            // Simular mudança de quem está falando
+            setInterval(() => {
+                const participants = document.querySelectorAll('.participant');
+                participants.forEach(p => {
+                    p.classList.remove('speaking');
+                    const status = p.querySelector('.participant-status');
+                    if (status) status.textContent = 'Online';
+                });
+
+                const randomIndex = Math.floor(Math.random() * participants.length);
+                participants[randomIndex].classList.add('speaking');
+                const speakingStatus = participants[randomIndex].querySelector('.participant-status');
+                if (speakingStatus) speakingStatus.textContent = 'Falando agora';
+            }, 3000);
+
+            // Efeito de piscar no indicador AO VIVO
+            setInterval(() => {
+                const liveIndicator = document.querySelector('.movie-info span:last-child');
+                liveIndicator.style.opacity = liveIndicator.style.opacity === '0.5' ? '1' : '0.5';
+            }, 1000);
+
+            function exitSession() {
+                
+                    window.location.href = "Streaming.html";
+                
+            }
+        </script>
+</body>
+
+</html>

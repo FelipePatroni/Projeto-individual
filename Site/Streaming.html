@@ -691,7 +691,7 @@
           <h3 id="popup-titulo">Título do Filme</h3>
           <p id="popup-descricao">Descrição do filme aqui.</p>
           <p id="popup-avaliacao">Avaliação: ⭐⭐⭐⭐⭐ (5/5)</p>
-          <button class="btn-assistir">Assistir</button>
+          <button class="btn-assistir" onclick="assistirfilme()">Assistir</button>
         </div>
       </div>
     </div>
@@ -769,6 +769,11 @@
         document.body.classList.add('popup-aberto'); // 🚫 Impede rolagem
       }
 
+      function assistirfilme() {
+      window.location.href = "Cinema.html";
+      } 
+
+
       function fecharPopup() {
         document.getElementById('popup-filme').classList.add('oculto');
         document.body.classList.remove('popup-aberto'); // ✅ Libera rolagem
@@ -845,6 +850,8 @@
           }
         });
       });
+
+       
     </script>
   </div>
 </body>
