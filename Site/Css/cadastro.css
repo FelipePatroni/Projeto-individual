@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
   color: #ffffff;
   min-height: 100vh;
@@ -91,7 +91,7 @@ body {
   border: 2px solid rgba(244, 211, 94, 0.3);
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.9rem;
   transition: all 0.3s ease;
   min-width: 200px;
@@ -117,7 +117,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.9rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(244, 211, 94, 0.3);
@@ -188,7 +188,7 @@ body {
   margin-bottom: 45px;
   font-size: 2.2rem;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-shadow: 0 2px 10px rgba(244, 211, 94, 0.3);
   position: relative;
 }
@@ -226,7 +226,7 @@ body {
   font-weight: 600;
   color: #f4d35e;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
@@ -237,7 +237,7 @@ body {
   padding: 16px 20px;
   border-radius: 12px;
   border: 2px solid rgba(244, 211, 94, 0.2);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   background: rgba(13, 27, 42, 0.8);
   color: #fff;
@@ -278,7 +278,7 @@ body {
   color: #000;
   padding: 18px 24px;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
   border-radius: 12px;
   cursor: pointer;
@@ -445,7 +445,7 @@ body {
 
 /* EFEITOS ADICIONAIS */
 .cadastro-form input:valid {
-  border-color: rgba(76, 175, 80, 0.5);
+  border-color: #f4d35e
 }
 
 .cadastro-form input:invalid:not(:placeholder-shown) {
